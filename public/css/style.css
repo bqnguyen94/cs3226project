@@ -1,0 +1,133 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arvo', serif;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  padding: 40px;
+}
+
+.header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-pills li a {
+  color: #d8192f;
+  border: 1px solid #d8192f;
+  border-radius: 4px;
+  margin-left: 10px;
+  width: 100px;
+  text-align: center;
+}
+
+.nav-pills li.active a,
+.nav-pills li a:hover,
+.section .btn:hover {
+  background-color:#d8192f;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+  color: white;
+}
+
+.nav-pills li.active a:hover {
+  background-color: #d8192f;
+}
+
+/* Jumbotron */
+.jumbotron {
+  height: 500px;
+  background: url("/img/bg.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 25px;
+  margin-bottom: 0;
+  color: snow;
+  text-align: right;
+}
+
+.jumbotron h1:first-child {
+  margin: 120px 0 0;
+}
+
+/* Banner */
+.banner, .supporting {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.banner {
+  background-color:#36343f;
+  height:180px;
+  color: #fff;
+}
+
+.banner h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+}
+
+.section h3 {
+  margin: 0;
+  padding: 0 0 20px;
+}
+
+.section .btn {
+  color: white;
+  background: rgba(216, 25, 47, .5);
+  padding: 10px;
+  margin-top: 0;
+}
+
+/* Supporting */
+.section h4 {
+  color: #d8192f;
+  margin: 30px 0 20px;
+  padding: 0;
+}
+
+.supporting ul {
+  list-style-type: none;
+  margin-top: 10px;
+  padding: 0;
+}
+
+/* footer */
+.footer {
+  height: 100px;
+  padding: 40px;
+  margin-top: 80px;
+  background-color: #eee;
+  font-size: 14px;
+}
+
+.footer a {
+  color: #d8192f;
+}
+
+/* Media Queries */
+@media (max-width: 680px) {
+  .header h1 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .nav {
+    float: none;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+  .banner {
+    height: 220px;
+  }
+
+  .nav-pills li:first-child a  {
+    margin-left: 0;
+  }
+}
