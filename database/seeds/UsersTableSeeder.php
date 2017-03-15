@@ -16,6 +16,24 @@ class UsersTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         $limit = 10;
 
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@unicorn.com',
+            'password' => bcrypt('123456'),
+        ]);
+
+        User::create([
+            'name' => 'Test Buyer',
+            'email' => 'buyer@unicorn.com',
+            'password' => bcrypt('123456'),
+        ]);
+
+        User::create([
+            'name' => 'Test Deliverer',
+            'email' => 'deliverer@unicorn.com',
+            'password' => bcrypt('123456'),
+        ]);
+
         for ($i = 0; $i < $limit; $i++) {
             User::create([
                 'name' => $faker->name,

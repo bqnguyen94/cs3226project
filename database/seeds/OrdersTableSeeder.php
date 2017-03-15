@@ -15,12 +15,12 @@ class OrdersTableSeeder extends Seeder
         //
         $faker = Faker\Factory::create();
 
-        $limit = 30;
+        $limit = 100;
         for ($i = 0; $i < $limit; $i++) {
-            $buyer_id = $faker->numberBetween($min = 1, $max = 10);
+            $buyer_id = $faker->numberBetween($min = 2, $max = 13);
             $deliverer_id = $buyer_id;
             while ($deliverer_id == $buyer_id) {
-                $deliverer_id = $faker->numberBetween($min = 1, $max = 10);
+                $deliverer_id = $faker->numberBetween($min = 2, $max = 13);
             }
             $food_id = $faker->numberBetween($min = 1, $max = 50);
 
