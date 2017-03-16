@@ -20,18 +20,21 @@ class UsersTableSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@unicorn.com',
             'password' => bcrypt('123456'),
+            'role' => User::ROLE_ADMIN,
         ]);
 
         User::create([
             'name' => 'Test Buyer',
             'email' => 'buyer@unicorn.com',
             'password' => bcrypt('123456'),
+            'role' => User::ROLE_USER,
         ]);
 
         User::create([
             'name' => 'Test Deliverer',
             'email' => 'deliverer@unicorn.com',
             'password' => bcrypt('123456'),
+            'role' => User::ROLE_USER,
         ]);
 
         for ($i = 0; $i < $limit; $i++) {
