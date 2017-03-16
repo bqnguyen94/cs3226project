@@ -20,7 +20,7 @@
 <div class="section banner">
     <div class="container">
         <h3>No time to grab a lunch? Ask others for help!</h3>
-        <a href="#" class="btn">Learn More</a>
+        <a href="foods" class="btn">Get Started</a>
     </div>
 </div>
 <div class="section supporting">
