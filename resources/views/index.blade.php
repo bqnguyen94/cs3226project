@@ -14,7 +14,7 @@
             <img class="first-slide" src="/img/nus-sci-ayampenyet.jpg" alt="First slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>Example headline.</h1>
+                    <h1>Never Queue For The Food You Love!</h1>
                     <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
                 </div>
             </div>
@@ -23,7 +23,7 @@
             <img class="second-slide" src="/img/nus-art-chickenrice.jpg" alt="Second slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>Another example headline.</h1>
+                    <h1>Lecture During Lunch Hour? No Worries!</h1>
                     <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
                 </div>
             </div>
@@ -32,19 +32,12 @@
             <img class="third-slide" src="/img/nus-utown-astons.jpg" alt="Third slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>One more for good measure.</h1>
+                    <h1>Start Ordering From NUSEats Now!</h1>
                     <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
                 </div>
             </div>
         </div>
     </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
     </a>
 </div><!-- /.carousel -->
 <div class="jumbotron">
