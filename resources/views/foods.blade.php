@@ -12,15 +12,24 @@
 	      			</h4>
 	    		</div>
 	    		<div id="collapse1" class="panel-collapse collapse">
+	    			<?php $hasRes=false; ?>
 	      			@foreach ($restaurants as $restaurant)
             		<?php 
             			if($restaurant->location=="Universiv Town"){
+            				$hasRes=true;
             		?>		
             				@include('_restaurant_panel')
             		<?php  
             			}
             		?>
         			@endforeach
+        			<?php 
+        			if($hasRes==false){
+        			?>
+        				<h5>&nbsp;&nbsp;&nbsp;&nbsp;No restaurant available yet!</h5>	
+        			<?php 
+        			}
+        			 ?>
 	    		</div>
 	  		</div>
 		</div>
@@ -33,15 +42,24 @@
 	      			</h4>
 	    		</div>
 	    		<div id="collapse2" class="panel-collapse collapse">
+	    			<?php $hasRes=false; ?>
 	    			@foreach ($restaurants as $restaurant)
             		<?php 
             			if($restaurant->location=="The Deck"){
-            		?>		
+            				$hasRes=true;
+            		?>
             				@include('_restaurant_panel')
             		<?php  
             			}
             		?>
         			@endforeach
+        			<?php 
+        			if($hasRes==false){
+        			?>
+        				<h5>&nbsp;&nbsp;&nbsp;&nbsp;No restaurant available yet!</h5>	
+        			<?php 
+        			}
+        			 ?>	
 	    		</div>
 	  		</div>
 		</div>
@@ -54,15 +72,24 @@
 	      			</h4>
 	    		</div>
 	    		<div id="collapse3" class="panel-collapse collapse">
+	    			<?php $hasRes=false; ?>
 	      			@foreach ($restaurants as $restaurant)
             		<?php 
             			if($restaurant->location=="Biz Canteen"){
+            				$hasRes=true;
             		?>		
             				@include('_restaurant_panel')
             		<?php  
             			}
             		?>
         			@endforeach
+        			<?php 
+        			if($hasRes==false){
+        			?>
+        				<h5>&nbsp;&nbsp;&nbsp;&nbsp;No restaurant available yet!</h5>	
+        			<?php 
+        			}
+        			 ?>
 	    		</div>
 	  		</div>
 		</div>
@@ -75,15 +102,24 @@
 	      			</h4>
 	    		</div>
 	    		<div id="collapse4" class="panel-collapse collapse">
+	    			<?php $hasRes=false; ?>
 	      			@foreach ($restaurants as $restaurant)
             		<?php 
             			if($restaurant->location=="Yusof Ishak House"){
+            				$hasRes=true;
             		?>		
             				@include('_restaurant_panel')
             		<?php  
             			}
             		?>
         			@endforeach
+        			<?php 
+        			if($hasRes==false){
+        			?>
+        				<h5>&nbsp;&nbsp;&nbsp;&nbsp;No restaurant available yet!</h5>	
+        			<?php 
+        			}
+        			 ?>
 	    		</div>
 	  		</div>
 		</div>
@@ -96,15 +132,24 @@
 	      			</h4>
 	    		</div>
 	    		<div id="collapse5" class="panel-collapse collapse">
+	    			<?php $hasRes=false; ?>
 	      			@foreach ($restaurants as $restaurant)
             		<?php 
             			if($restaurant->location=="Science Canteen"){
+            				$hasRes=true;
             		?>		
             				@include('_restaurant_panel')
             		<?php  
             			}
             		?>
         			@endforeach
+        			<?php 
+        			if($hasRes==false){
+        			?>
+        				<h5>&nbsp;&nbsp;&nbsp;&nbsp;No restaurant available yet!</h5>	
+        			<?php 
+        			}
+        			 ?>
 	    		</div>
 	  		</div>
 		</div>
