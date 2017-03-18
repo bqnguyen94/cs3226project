@@ -1,9 +1,18 @@
 <div class="header">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-xs-6">
-                <h1>
-                    NUS Eat
+            <div class="navbar-header col-md-6 col-xs-6">
+	            <a class="" href="/">
+	                <img alt="Brand" src="/img/logo.png" width="75" height="75">
+	            </a>
+	            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            </button>
+	            <h1 style="display: inline;">
+                    &nbsp;&nbsp;NUS Eat
                 </h1>
             </div>
             <div class="col-md-6 col-xs-6">
