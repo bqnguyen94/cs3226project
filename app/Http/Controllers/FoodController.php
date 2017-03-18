@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Food;
+use App\Restaurant;
 
 class FoodController extends Controller
 {
@@ -25,8 +26,9 @@ class FoodController extends Controller
     public function foods()
     {
         $foods = Food::all();
+        $restaurants = Restaurant::all();
         return view('foods')
-                ->with('foods', $foods);
+                ->with('foods', $foods)->with('restaurants', $restaurants);
     }
 
 }
