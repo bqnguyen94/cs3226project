@@ -25,5 +25,25 @@ class HomeController extends Controller
     {
         return view('index');
     }
+	
+	public function cancel()
+    {
+        return view('cancel');
+    }
+	
+	public function success()
+    {
+        return view('success');
+    }
+	
+	public function addtocart()
+    {
+        return view('addtocart');
+    }
+	
+	public function viewcart()
+    {
+        return view('viewcart');
+    }
 
 }

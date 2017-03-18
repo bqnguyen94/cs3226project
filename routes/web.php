@@ -11,6 +11,10 @@
 |
 */
 Route::get('/', 'HomeController@index');
+Route::get('/cancel', 'HomeController@cancel');
+Route::get('/success', 'HomeController@success');
+Route::get('/addtocart', 'HomeController@addtocart');
+Route::get('/viewcart', 'HomeController@viewcart');
 
 Auth::routes();
 
