@@ -18,6 +18,7 @@ class CreateFoodsTable extends Migration
             $table->integer('restaurant_id')->unsigned();
             $table->string('name');
             $table->float('price', 5, 2);
+			$table->string('imgurl');
             $table->timestamps();
             $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
         });
