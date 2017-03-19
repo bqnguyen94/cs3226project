@@ -24,8 +24,18 @@ class FoodsTableSeeder extends Seeder
             Food::create([
                 'restaurant_id' => $restaurant_id,
                 'name' => $name,
-                'price' => $price
+                'price' => $price,
+				'imgurl' => 'default'
             ]);
         }
+		
+
+//		 $temp1 = Food::create(array(
+//            'restaurant_id'         => '1',
+//            'name'         => 'Chicken Rice',
+//            'price' => '2.50',
+//			'imgurl' => 'default'
+//        ));
+
     }
 }
