@@ -10,12 +10,29 @@ body {
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
-
+.outer_block {
+    clear:both;
+}
+.content_form {
+    float: left;
+    width: 40%;
+}
+.inner_block {
+  padding: 68px 60px 0 105px;
+}
+.tag_line {
+  min-height: 144px;
+}
+.msg {
+  margin-bottom: 32px;
+}
 /* Carousel base class */
 .carousel {
   height: 600px;
   margin-bottom: 60px;
-  width: 800px;
+  width: 60%;
+  float: right;
+  position: relative;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {

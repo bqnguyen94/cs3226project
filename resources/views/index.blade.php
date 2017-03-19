@@ -2,44 +2,59 @@
 @section('main')
 <!-- Carousel
 ================================================== -->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img class="first-slide" src="/img/nus-sci-ayampenyet.jpg" alt="First slide">
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>Never Queue For The Food You Love!</h1>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+<div class="outer_block">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img class="first-slide" src="/img/nus-sci-ayampenyet.jpg" alt="First slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Never Queue For The Food You Love!</h1>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="second-slide" src="/img/nus-art-chickenrice.jpg" alt="Second slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Lecture During Lunch Hour? No Worries!</h1>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="third-slide" src="/img/nus-utown-astons.jpg" alt="Third slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Start Ordering From NUSEats Now!</h1>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="item">
-            <img class="second-slide" src="/img/nus-art-chickenrice.jpg" alt="Second slide">
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>Lecture During Lunch Hour? No Worries!</h1>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <img class="third-slide" src="/img/nus-utown-astons.jpg" alt="Third slide">
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>Start Ordering From NUSEats Now!</h1>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
     </a>
 </div><!-- /.carousel -->
+<div class="content_form">
+    <div class="inner_block">
+        <div class="tag_line">
+            NUSEats for busy students
+        </div>
+        <div class="msg">
+            Order food from your favourite local NUS food stall delivered by your fellow NUS friends!
+        </div>
+        <form>
+            <label >ENTER CANTEEN NAME</label>
+            <div>
+                <input type="text" autocomplete="off" id="canteen-select-input" placeholder="Science Canteen, UTown..." />
+                <button class="btn-primary btn" type="submit">Find Food</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+</div>
 <div class="jumbotron">
     <div class="container">
         <div class="row">
