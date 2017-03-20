@@ -18,7 +18,7 @@
         </div>
     </div>
 </div>
-@if($order)
+@if($order!=null)
     {{$order->id}}
     {{$order->buyer->id}}
     {{$order->seller->id}}
