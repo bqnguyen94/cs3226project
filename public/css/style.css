@@ -59,6 +59,7 @@ html, body {
   margin-bottom: 0;
   color: snow;
   text-align: right;
+  clear:both;
 }
 
 .jumbotron h1:first-child {
