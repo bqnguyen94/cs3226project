@@ -11,4 +11,12 @@ class Order extends Model
         'buyer_feedback','deliverer_feedback',
         'buyer_rates','deliverer_rates'
     ];
+
+    public function deliverer(){
+        $this->belongsTo('App\User');
+    }
+
+    public function buyer(){
+        $this->belongsTo('App\User');
+    }
 }
