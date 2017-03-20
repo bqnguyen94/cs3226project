@@ -49,7 +49,7 @@ class UserController extends Controller
             'buyer_id'=>$buyer,
             'seller_id'=>$seller
         ]);
-        Session::flash();
+        
         redirect::to('/')->with(compact('order'));
     }
 

@@ -17,6 +17,11 @@
         </div>
     </div>
 </div>
+@if($order)
+    {{$order->id}}
+    {{$order->buyer->id}}
+    {{$order->seller->id}}
+@endif
 <div class="section banner">
     <div class="container">
         <h3>No time to grab a lunch? Ask others for help!</h3>
