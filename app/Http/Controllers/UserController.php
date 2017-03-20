@@ -45,12 +45,11 @@ class UserController extends Controller
         $buyer = User::where('id',1)->first();
         $deliverer = User::where('id',2)->first();
         $food = Food::where('id',1)->first();
-        $order = Order::create([
-            'buyer_id'=>$buyer->id,
-            'deliverer_id'=>$deliverer->id,
-            'food_id'=>$food->id,
-        ]);
-
+        $order = Order::create();
+        $order->buyer = $buyer;
+        $order->deliverer = $deliverer;
+        $order->food = $food;
+        $order->save();
         dd($order->buyer);
 
         return redirect()->route('/',[$order]);
