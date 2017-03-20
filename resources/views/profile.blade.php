@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{ $i }}</td>
                             <td>{{ $order->created_at }}</td>
-                            <td><a href="#">${{ $price }}</a></td>
+                            <td>${{ $price }}</td>
                             @if ($deliverer)
                             <td><a href="#">{{ $deliverer->name }}</a></td>
                             @else

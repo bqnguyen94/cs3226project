@@ -36,11 +36,29 @@ class UserController extends Controller
                     ->with('foods', $foods)
                     ->with('orders', $this->get_orders($id));
         } else {
-            redirect::to('/');
+            return redirect()->to('/');
         }
 
     }
-    
+
+    public function cart() {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $cart = $user->cart_get_foods();
+            return view('cart')
+                    ->with('cart', $cart);
+        } else {
+            return redirect()->to('/');
+        }
+    }
+
+    public function add_to_cart($food_id, $amt) {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $user->update_cart($food_id, $amt);
+        }
+    }
+
     /**
      * Return the user's past transactions.
      *

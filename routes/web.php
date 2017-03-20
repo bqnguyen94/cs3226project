@@ -19,3 +19,5 @@ Route::get('profile', 'UserController@profile')->name('user.profile');
 Route::get('foods', 'FoodController@foods');
 
 Route::get('orders', 'OrderController@orders');
+
+Route::get('cart', 'UserController@cart');
