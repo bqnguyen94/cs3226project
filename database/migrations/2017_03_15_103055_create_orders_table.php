@@ -16,15 +16,13 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('buyer_id')->unsigned();
-            $table->integer('deliverer_id')->unsigned();
-            $table->integer('food_id')->unsigned();
+            $table->integer('deliverer_id')->unsigned()->nullable();
             $table->longText('buyer_feedback')->nullable();
             $table->longText('deliverer_feedback')->nullable();
             $table->tinyInteger('buyer_rates')->nullable();
             $table->tinyInteger('deliverer_rates')->nullable();
             $table->foreign('buyer_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('deliverer_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('food_id')->references('id')->on('foods')->onDelete('cascade');
             $table->timestamps();
         });
 

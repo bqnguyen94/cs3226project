@@ -15,7 +15,7 @@
                 <tr>
                     <th class="col-xs-1"></th>
                     <th class="col-xs-4">Date</th>
-                    <th class="col-xs-3">Item</th>
+                    <th class="col-xs-3">Price</th>
                     <th class="col-xs-4">Deliverer</th>
                 </tr>
             </thead>
@@ -25,14 +25,18 @@
                     @if ($order->buyer_id == $user->id)
                         <?php
                         $i++;
-                        $food = $foods->where('id', $order->food_id)->first();
                         $deliverer = $users->where('id', $order->deliverer_id)->first();
+                        $price = $order->get_total_food_price();
                         ?>
                         <tr>
                             <td>{{ $i }}</td>
                             <td>{{ $order->created_at }}</td>
-                            <td><a href="#">{{ $food->name }}</a></td>
+                            <td><a href="#">${{ $price }}</a></td>
+                            @if ($deliverer)
                             <td><a href="#">{{ $deliverer->name }}</a></td>
+                            @else
+                            <td>No Deliverer</td>
+                            @endif
                         </tr>
                     @endif
                 @endforeach
@@ -49,7 +53,7 @@
                 <tr>
                     <th class="col-xs-1"></th>
                     <th class="col-xs-4">Date</th>
-                    <th class="col-xs-3">Item</th>
+                    <th class="col-xs-3">Price</th>
                     <th class="col-xs-4">Buyer</th>
                 </tr>
             </thead>
@@ -59,13 +63,13 @@
                     @if ($order->deliverer_id == $user->id)
                         <?php
                         $i++;
-                        $food = $foods->where('id', $order->food_id)->first();
                         $buyer = $users->where('id', $order->buyer_id)->first();
+                        $price = $order->get_total_food_price();
                         ?>
                         <tr>
                             <td>{{ $i }}</td>
                             <td>{{ $order->created_at }}</td>
-                            <td><a href="#">{{ $food->name }}</a></td>
+                            <td><a href="#">${{ $price }}</a></td>
                             <td><a href="#">{{ $buyer->name }}</a></td>
                         </tr>
                     @endif

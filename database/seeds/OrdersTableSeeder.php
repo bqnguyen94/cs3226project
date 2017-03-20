@@ -22,13 +22,18 @@ class OrdersTableSeeder extends Seeder
             while ($deliverer_id == $buyer_id) {
                 $deliverer_id = $faker->numberBetween($min = 2, $max = 13);
             }
-            $food_id = $faker->numberBetween($min = 1, $max = 50);
+            $chance = $faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 1);
+            if ($chance >= 0.5) {
+                Order::create([
+                    'buyer_id' => $buyer_id,
+                    'deliverer_id' => $deliverer_id,
+                ]);
+            } else {
+                Order::create([
+                    'buyer_id' => $buyer_id,
+                ]);
+            }
 
-            Order::create([
-                'buyer_id' => $buyer_id,
-                'deliverer_id' => $deliverer_id,
-                'food_id' => $food_id,
-            ]);
         }
     }
 }
