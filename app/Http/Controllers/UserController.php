@@ -41,6 +41,18 @@ class UserController extends Controller
 
     }
 
+    public function yada(){
+        $buyer = User::where('id',1)->first();
+        $seller = User::where('id',2)->first();
+        $food = Food::where('id',1)->first();
+        $order = Order::create([
+            'buyer_id'=>$buyer,
+            'seller_id'=>$seller
+        ]);
+        Session::flash();
+        redirect::to('/')->with(compact('order'));
+    }
+
     /**
      * Return the user's past transactions.
      *
