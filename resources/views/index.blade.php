@@ -21,7 +21,7 @@
 @if($order!=null)
     {{$order->id}}
     {{$order->buyer->id}}
-    {{$order->seller->id}}
+    {{$order->deliverer->id}}
 @endif
 <div class="section banner">
     <div class="container">

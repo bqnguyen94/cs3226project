@@ -43,11 +43,11 @@ class UserController extends Controller
 
     public function yada(){
         $buyer = User::where('id',1)->first();
-        $seller = User::where('id',2)->first();
+        $deliverer = User::where('id',2)->first();
         $food = Food::where('id',1)->first();
         $order = Order::create([
             'buyer_id'=>$buyer->id,
-            'seller_id'=>$seller->id,
+            'deliverer_id'=>$deliverer->id,
             'food_id'=>$food->id,
         ]);
 
