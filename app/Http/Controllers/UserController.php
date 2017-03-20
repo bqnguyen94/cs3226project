@@ -46,9 +46,9 @@ class UserController extends Controller
         $deliverer = User::where('id',2)->first();
         $food = Food::where('id',1)->first();
         $order = Order::create();
-        $order->buyer = $buyer;
-        $order->deliverer = $deliverer;
-        $order->food = $food;
+        $order->buyer()->associate($buyer);
+        $order->deliverer()->associate($deliverer);
+        $order->food()->associate($food);
         $order->save();
         dd($order->buyer);
 
