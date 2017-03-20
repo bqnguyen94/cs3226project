@@ -51,6 +51,8 @@ class UserController extends Controller
             'food_id'=>$food->id,
         ]);
 
+        dd($order);
+
         return redirect()->route('/',[$order]);
     }
 

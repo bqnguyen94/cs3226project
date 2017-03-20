@@ -18,13 +18,13 @@
         </div>
     </div>
 </div>
-@if($order!=null)
-    {{$order->id}}
-    {{$order->buyer->id}}
-    {{$order->deliverer->id}}
-@endif
 <div class="section banner">
     <div class="container">
+        @if($order!=null)
+            {{$order->id}}
+            {{$order->buyer->id}}
+            {{$order->deliverer->id}}
+        @endif
         <h3>No time to grab a lunch? Ask others for help!</h3>
         <a href="#" class="btn">Learn More</a>
     </div>
