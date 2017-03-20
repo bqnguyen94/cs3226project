@@ -45,7 +45,7 @@
     @if (Auth::check())
     <div class="row" >
     	<div class="col-md-6 menue"><ul><li><a href="/foods">Get Food</a></li></ul></div>
-    	<div class="col-md-6 menue"><ul><li><a href="">Get Order</a></li></ul></div>
+    	<div class="col-md-6 menue"><ul><li><a href="/orders">Get Order</a></li></ul></div>
     </div>
     @endif
     </div>
