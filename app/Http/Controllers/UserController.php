@@ -48,6 +48,7 @@ class UserController extends Controller
         $order = Order::create([
             'buyer_id'=>$buyer->id,
             'seller_id'=>$seller->id,
+            'food_id'=>$food->id,
         ]);
 
         redirect::to('/')->with(compact('order'));
