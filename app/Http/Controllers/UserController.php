@@ -51,7 +51,7 @@ class UserController extends Controller
             'food_id'=>$food->id,
         ]);
 
-        redirect::to('/')->with(compact('order'));
+        return redirect()->route('/',compact('order'));
     }
 
     /**
