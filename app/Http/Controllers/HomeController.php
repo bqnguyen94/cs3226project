@@ -23,8 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $order = null;
-        return view('index')->with(compact('order'));
+        return view('index');
     }
 
 }

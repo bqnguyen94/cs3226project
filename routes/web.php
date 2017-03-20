@@ -17,6 +17,3 @@ Auth::routes();
 Route::get('profile', 'UserController@profile')->name('user.profile');
 
 Route::get('foods', 'FoodController@foods');
-
-
-Route::get('yada','UserController@yada');
