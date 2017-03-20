@@ -40,7 +40,7 @@ class UserController extends Controller
         }
 
     }
-
+    
     /**
      * Return the user's past transactions.
      *
