@@ -46,10 +46,10 @@ class UserController extends Controller
         $seller = User::where('id',2)->first();
         $food = Food::where('id',1)->first();
         $order = Order::create([
-            'buyer_id'=>$buyer,
-            'seller_id'=>$seller
+            'buyer_id'=>$buyer->id,
+            'seller_id'=>$seller->id,
         ]);
-        
+
         redirect::to('/')->with(compact('order'));
     }
 
