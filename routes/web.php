@@ -21,3 +21,13 @@ Route::get('foods', 'FoodController@foods');
 Route::get('orders', 'OrderController@orders');
 
 Route::get('cart', 'UserController@cart');
+
+Route::get('threads', 'MessageController@index');
+
+Route::post('reply', 'MessageController@reply');
+
+Route::get('messages/{id}', 'MessageController@messages');
+
+Route::post('messages/{id}', 'MessageController@reply');
+
+Route::get('refreshmessages/{id}', 'MessageController@refresh_messages');

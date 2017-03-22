@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
 use App\Food;
 use App\Order;
+use App\Thread;
 
 class User extends Authenticatable
 {
@@ -109,5 +110,12 @@ class User extends Authenticatable
                 ]);
             $user_to_food->delete();
         }
+    }
+
+    public function get_all_threads() {
+        $threads = Thread::where('first_user_id', $this->id)
+                        ->orWhere('second_user_id', $this->id)
+                        ->get();
+        return $threads;
     }
 }
