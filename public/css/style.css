@@ -22,6 +22,7 @@ html, body {
 }
 
 .nav-pills li a {
+  background-color: white;
   color: #d8192f;
   border: 1px solid #d8192f;
   border-radius: 4px;
@@ -47,17 +48,17 @@ html, body {
 .open .dropdown-toggle:hover{
 	color:#d8192f;
 	border:#d8192f;
-	
+
 }
 
 
 .dropdown-menu li a:hover{
 	color:#d8192f;
-	
+
 }
 
 .dropdown-menu{
-	
+	background-color: transparent;
 	box-shadow: none;
 }
 
@@ -133,7 +134,7 @@ html, body {
 
 
 footer{
- 
+
   background: linear-gradient(#eee, #afaaaf);
   text-align:center;
   border-radius:20px;
@@ -142,8 +143,8 @@ footer{
   text-decoration:none;
   padding-top:10px;
   height:45px;
-  
-  
+
+
 }
 
 footer ul{
@@ -167,7 +168,7 @@ footer li a {
 
 
 footer li a:hover{
-  
+
   color:red;
   opacity:0.8;
 }

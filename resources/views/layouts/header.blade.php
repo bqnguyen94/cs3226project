@@ -1,7 +1,7 @@
 <div class="header">
     <div class="container">
         <div class="row">
-            <div class="navbar-header col-md-6 col-xs-6">
+            <div class="navbar-header col-md-4 col-xs-4">
 	            <a class="" href="/">
 	                <img alt="Brand" src="/img/logo.png" width="75" height="75">
 	            </a>
@@ -15,15 +15,13 @@
                     &nbsp;&nbsp;NUS Food
                 </h1>
             </div>
-            <div class="col-md-6 col-xs-6">
+            <div class="col-md-8 col-xs-8">
                 <ul class="nav nav-pills">
                     <li role="presentation" class="active"><a href="/">Home</a></li>
                     @if (Auth::guest())
                         <li role="presentation"><a href="{{ route('register') }}">Sign Up</a></li>
                         <li role="presentation"><a href="{{ route('login') }}">Log In</a></li>
                     @elseif (Auth::check())
-
-
 						<li class="dropdown" role="presentation" >
 							<a role="presentation" class="dropdown-toggle" data-toggle="dropdown">User <span class="caret"></span></a>
                         	<ul class="dropdown-menu">
@@ -32,9 +30,6 @@
 								<li><a role="presentation" href="/cart">Cart</a></li>
 							</ul>
 						</li>
-                        <li role="presentation">
-                            <a href="/profile/<?php echo Auth::user()->id ?>">Profile</a>
-                        </li>
                         <li role="presentation">
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
