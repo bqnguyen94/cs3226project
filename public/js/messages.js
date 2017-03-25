@@ -37,7 +37,7 @@ function getChatText() {
         type: "GET",
         url: "/refreshmessages/" + thread_id,
         success: function(data) {
-            console.log('reply success');
+            console.log('Retrieve success');
         },
         error: function(data) {
             console.log('Error: ', data);

@@ -45,6 +45,19 @@ class User extends Authenticatable
         $this->hasMany('App\Order');
     }
 
+    /**
+     * Return the user's past transactions.
+     *
+     * @return Collection
+     */
+    private function get_orders() {
+        $orders = Order::where('buyer_id', $this->id)
+                            ->orWhere('deliverer_id', $this->id)
+                            ->orderBy('created_at')
+                            ->get();
+        return $orders;
+    }
+
     public function cart_get_foods() {
         $user_to_foods = DB::table('user_to_foods')
                 ->where('user_id', $this->id)
@@ -79,6 +92,9 @@ class User extends Authenticatable
                     'user_id' => $this->id,
                     'food_id' => $food_id,
                 ]);
+        } else {
+            $user_to_food->food_amount = $user_to_food->food_amount + 1;
+            $user_to_food->save();
         }
     }
 
@@ -94,12 +110,13 @@ class User extends Authenticatable
         }
     }
 
-    public function cart_to_order() {
+    public function cart_to_order($location) {
         $user_to_foods = DB::table('user_to_foods')
                 ->where('user_id', $this->id)
                 ->get();
         $order = Order::create([
             'buyer_id' => $this->id,
+            'deliver_location' => $location,
         ]);
         foreach ($user_to_foods as $user_to_food) {
             DB::table('order_to_foods')
@@ -108,8 +125,11 @@ class User extends Authenticatable
                     'food_id' => $user_to_food->food_id,
                     'food_amount' => $user_to_food->food_amount,
                 ]);
-            $user_to_food->delete();
         }
+        DB::table('user_to_foods')
+                ->where('user_id', $this->id)
+                ->delete();
+        return $order;
     }
 
     public function get_all_threads() {

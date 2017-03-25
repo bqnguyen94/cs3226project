@@ -14,13 +14,17 @@ Route::get('/', ['as'=>'/', 'uses'=>'HomeController@index']);
 
 Auth::routes();
 
-Route::get('profile', 'UserController@profile')->name('user.profile');
+Route::get('profile/{id}', 'UserController@profile');
 
 Route::get('foods', 'FoodController@foods');
 
 Route::get('orders', 'OrderController@orders');
 
+Route::get('order/{id}', 'OrderController@order');
+
 Route::get('cart', 'UserController@cart');
+
+Route::post('cart', 'UserController@confirm_order');
 
 Route::get('threads', 'MessageController@index');
 

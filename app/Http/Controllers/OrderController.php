@@ -29,4 +29,8 @@ class OrderController extends Controller
                 ->with('orders', $orders);
     }
 
+    public function order($id) {
+        $order = Order::where('id', $id)->first();
+        return view('order')->with('order', $order);
+    }
 }

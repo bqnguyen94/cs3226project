@@ -33,6 +33,9 @@
 							</ul>
 						</li>
                         <li role="presentation">
+                            <a href="/profile/<?php echo Auth::user()->id ?>">Profile</a>
+                        </li>
+                        <li role="presentation">
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">

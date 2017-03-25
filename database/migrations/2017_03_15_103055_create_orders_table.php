@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('buyer_id')->unsigned();
+            $table->string('deliver_location');
             $table->integer('deliverer_id')->unsigned()->nullable();
             $table->longText('buyer_feedback')->nullable();
             $table->longText('deliverer_feedback')->nullable();

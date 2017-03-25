@@ -26,11 +26,13 @@ class OrdersTableSeeder extends Seeder
             if ($chance >= 0.5) {
                 Order::create([
                     'buyer_id' => $buyer_id,
+                    'deliver_location' => 'somewhere',
                     'deliverer_id' => $deliverer_id,
                 ]);
             } else {
                 Order::create([
                     'buyer_id' => $buyer_id,
+                    'deliver_location' => 'somewhere',
                 ]);
             }
 

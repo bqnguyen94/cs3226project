@@ -1,9 +1,8 @@
 @extends('layouts.template')
 @section('main')
-<?php $user = Auth::user(); ?>
 <div class="container">
     <div class="row">
-        <h2 style="text-align: center">This is {{ $user->name }}'s profile page</h2>
+        <h2 style="text-align: center">This is {{ $target->name }}'s profile page</h2>
     </div>
 </div>
 <br/>
@@ -22,7 +21,7 @@
             <tbody>
                 <?php $i = 0; ?>
                 @foreach ($orders as $order)
-                    @if ($order->buyer_id == $user->id)
+                    @if ($order->buyer_id == $target->id)
                         <?php
                         $i++;
                         $deliverer = $users->where('id', $order->deliverer_id)->first();
@@ -33,7 +32,7 @@
                             <td>{{ $order->created_at }}</td>
                             <td>${{ $price }}</td>
                             @if ($deliverer)
-                            <td><a href="#">{{ $deliverer->name }}</a></td>
+                            <td><a href="/profile/<?php echo $deliverer->id ?>">{{ $deliverer->name }}</a></td>
                             @else
                             <td>No Deliverer</td>
                             @endif
@@ -60,7 +59,7 @@
             <tbody>
                 <?php $i = 0; ?>
                 @foreach ($orders as $order)
-                    @if ($order->deliverer_id == $user->id)
+                    @if ($order->deliverer_id == $target->id)
                         <?php
                         $i++;
                         $buyer = $users->where('id', $order->buyer_id)->first();
@@ -69,8 +68,8 @@
                         <tr>
                             <td>{{ $i }}</td>
                             <td>{{ $order->created_at }}</td>
-                            <td><a href="#">${{ $price }}</a></td>
-                            <td><a href="#">{{ $buyer->name }}</a></td>
+                            <td>${{ $price }}</td>
+                            <td><a href="/profile/<?php echo $buyer->id ?>">{{ $buyer->name }}</a></td>
                         </tr>
                     @endif
                 @endforeach

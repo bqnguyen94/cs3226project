@@ -1,8 +1,8 @@
 @extends('layouts.template')
 @section('main')
 <div class="container">
+    <h3>This is order {{ $order->id }} 's details.</h3>
     <div class="row">
-        <h3>Cart</h3>
         <table class="table table-condensed">
             <thead>
                 <tr>
@@ -16,17 +16,17 @@
                 <?php
                 $i = 0;
                 $user = Auth::user();
-                $cart = $user->cart_get_foods();
+                $order_to_foods = $order->get_all_foods_with_details();
                 ?>
-                @foreach ($cart as $cart_item)
+                @foreach ($order_to_foods as $item)
                     <?php
                     $i++;
                     ?>
                     <tr>
                         <td>{{ $i }}</td>
-                        <td>{{ $cart_item['food']->name }}</td>
-                        <td>${{ $cart_item['food']->price }}</td>
-                        <td>{{ $cart_item['amount'] }}</td>
+                        <td>{{ $item['food']->name }}</td>
+                        <td>${{ $item['food']->price }}</td>
+                        <td>{{ $item['amount'] }}</td>
                     </tr>
                 @endforeach
                 <tr>
@@ -34,25 +34,11 @@
                         Total
                     </td>
                     <td>
-                        ${{ $user->cart_get_total_price() }}
+                        ${{ $order->get_total_food_price() }}
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <div class="row">
-        {!! Form::open() !!}
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon2">Deliver to:</span>
-                    <input id="location" name="location" type="text" class="form-control" placeholder="e.g: PGP Residence 4" required/>
-                </div>
-            </div>
-            <center>
-                <button id="btn-submit" class="btn btn-success" type="submit">PLACE ORDER</button>
-            </center>
-        {!! Form::close() !!}
-    </div>
 </div>
-<br/>
 @endsection

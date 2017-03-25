@@ -17,7 +17,7 @@ class MessageController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -55,7 +55,7 @@ class MessageController extends Controller
         $receiver = User::where('id', $receiver_id)->first();
         return view('messages')
             ->with('receiver', $receiver)
-            ->with('messages', $thread->get_all_messages());
+            ->with('messages', $thread->get_all_messages()->take(-10));
     }
 
     public function reply(Request $request) {
@@ -88,22 +88,27 @@ class MessageController extends Controller
     }
 
     public function refresh_messages($id) {
-        $thread = Thread::where('id', $id)->first();
-        $messages = $thread->get_all_messages();
-        $data = array();
-        $line = new \stdClass();
-        foreach ($messages as $message) {
-            $sender = User::where('id', $message->sender_id)->first();
-            $line->sender_name = $sender->name;
-            $line->sender_id = $sender->id;
-            $line->message = $message->message;
-            $line->created_at = $message->created_at;
-            $line->message_id = $message->id;
-            $data[] = json_encode($line);
+        if (Auth::check()) {
+            $thread = Thread::where('id', $id)->first();
+            $user = Auth::user();
+            if ($user->id == $thread->first_user_id || $user->id == $thread->second_user_id) {
+                $messages = $thread->get_all_messages();
+                $data = array();
+                $line = new \stdClass();
+                foreach ($messages as $message) {
+                    $sender = User::where('id', $message->sender_id)->first();
+                    $line->sender_name = $sender->name;
+                    $line->sender_id = $sender->id;
+                    $line->message = $message->message;
+                    $line->created_at = $message->created_at;
+                    $line->message_id = $message->id;
+                    $data[] = json_encode($line);
+                }
+                $jsonData = '{"results":[';
+                $jsonData .= implode(",", $data);
+                $jsonData .= ']}';
+                return $jsonData;
+            }
         }
-        $jsonData = '{"results":[';
-        $jsonData .= implode(",", $data);
-        $jsonData .= ']}';
-        return $jsonData;
     }
 }

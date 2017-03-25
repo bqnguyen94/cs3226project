@@ -25,20 +25,23 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function profile()
+    public function profile($id)
     {
         if (Auth::check()) {
-            $id = Auth::user()->id;
+            $user = Auth::user();
+            $target = User::where('id', $id)->first();
+            if (!$target) {
+                return redirect()->to('/');
+            }
             $foods = Food::all();
             $users = User::all();
             return view('profile')
+                    ->with('target', $target)
                     ->with('users', $users)
                     ->with('foods', $foods)
-                    ->with('orders', $this->get_orders($id));
-        } else {
-            return redirect()->to('/');
+                    ->with('orders', $user->get_orders());
         }
-
+        return redirect()->to('/');
     }
 
     public function cart() {
@@ -47,9 +50,8 @@ class UserController extends Controller
             $cart = $user->cart_get_foods();
             return view('cart')
                     ->with('cart', $cart);
-        } else {
-            return redirect()->to('/');
         }
+        return redirect()->to('/');
     }
 
     public function add_to_cart($food_id, $amt) {
@@ -57,18 +59,16 @@ class UserController extends Controller
             $user = Auth::user();
             $user->update_cart($food_id, $amt);
         }
+        return redirect()->to('/');
     }
 
-    /**
-     * Return the user's past transactions.
-     *
-     * @return Collection
-     */
-    private function get_orders($id) {
-        $orders = Order::where('buyer_id', $id)
-                            ->orWhere('deliverer_id', $id)
-                            ->orderBy('created_at')
-                            ->get();
-        return $orders;
+    public function confirm_order(Request $request) {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $order = $user->cart_to_order($request->location);
+            return view('order')->with('order', $order);
+        }
+
+        return redirect()->to('/');
     }
 }
