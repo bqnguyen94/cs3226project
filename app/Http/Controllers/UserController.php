@@ -66,7 +66,11 @@ class UserController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $order = $user->cart_to_order($request->location);
-            return view('order')->with('order', $order);
+            $deliverer = User::where('id', $order->deliverer_id)->first();
+            return view('order')
+                    ->with('buyer', $user)
+                    ->with('deliverer', $deliverer)
+                    ->with('order', $order);
         }
 
         return redirect()->to('/');

@@ -7,9 +7,9 @@
     <br />
     <h4>Buyer: {{ $buyer->name }}</h4>
     @if ($deliverer)
-    <h4>Buyer: {{ $buyer->name }}</h4>
+    <h4>Deliverer: {{ $buyer->name }}</h4>
     @else
-    <h4>Buyer: Not yet!</h4>
+    <h4>Deliverer: Not yet!</h4>
     @endif
     <h4>Deliver to: {{ $order->deliver_location }}</h4>
     <br />
