@@ -22,6 +22,8 @@ Route::get('orders', 'OrderController@orders');
 
 Route::get('order/{id}', 'OrderController@order');
 
+Route::post('foods', 'UserController@add_to_cart');
+
 Route::get('cart', 'UserController@cart');
 
 Route::post('cart', 'UserController@confirm_order');

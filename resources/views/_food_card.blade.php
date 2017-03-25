@@ -14,7 +14,10 @@
         <h4 class="card-title">{{ $food->name }}</h4>
         <!--Text-->
         <p class="card-text">Price: {{ $food->price }}</p>
-        <a href="#" class="btn btn-primary">Buy</a>
+        {!! Form::open() !!}
+        <input id="food_id" name="food_id" type="hidden" value="<?php echo $food->id ?>">
+        <button id="btn-submit" class="btn btn-success" type="submit">ADD TO CART</button>
+        {!! Form::close() !!}
     </div>
     <!--/.Card content-->
 </div>

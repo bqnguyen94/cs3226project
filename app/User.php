@@ -84,7 +84,7 @@ class User extends Authenticatable
     public function add_to_cart($food_id) {
         $user_to_food = DB::table('user_to_foods')
                 ->where('user_id', $this->id)
-                ->andWhere('food_id', $food_id)
+                ->where('food_id', $food_id)
                 ->first();
         if (!$user_to_food) {
             DB::table('user_to_foods')
@@ -101,7 +101,7 @@ class User extends Authenticatable
     public function update_cart($food_id, $amt) {
         $user_to_food = DB::table('user_to_foods')
                 ->where('user_id', $this->id)
-                ->andWhere('food_id', $food_id)
+                ->where('food_id', $food_id)
                 ->first();
         if ($user_to_food) {
             $user_to_food->update([

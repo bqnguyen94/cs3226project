@@ -36,6 +36,8 @@
                     <td>
                         ${{ $user->cart_get_total_price() }}
                     </td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>

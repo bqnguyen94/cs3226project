@@ -54,10 +54,12 @@ class UserController extends Controller
         return redirect()->to('/');
     }
 
-    public function add_to_cart($food_id, $amt) {
+    public function add_to_cart(Request $request) {
         if (Auth::check()) {
             $user = Auth::user();
-            $user->update_cart($food_id, $amt);
+            $food_id = $request->food_id;
+            $user->add_to_cart($food_id);
+            return redirect()->to('/cart');
         }
         return redirect()->to('/');
     }
@@ -65,12 +67,14 @@ class UserController extends Controller
     public function confirm_order(Request $request) {
         if (Auth::check()) {
             $user = Auth::user();
-            $order = $user->cart_to_order($request->location);
-            $deliverer = User::where('id', $order->deliverer_id)->first();
-            return view('order')
-                    ->with('buyer', $user)
-                    ->with('deliverer', $deliverer)
-                    ->with('order', $order);
+            $first_item = DB::table('user_to_foods')
+                    ->where('user_id', $this->id)
+                    ->first();
+            if ($first_item) {
+                $order = $user->cart_to_order($request->location);
+                $deliverer = User::where('id', $order->deliverer_id)->first();
+                return redirect()->to('/order/' . $order->id);
+            }
         }
 
         return redirect()->to('/');

@@ -1,5 +1,9 @@
 @extends('layouts.template')
 @section('main')
+<?php
+$buyer = App\User::where('id', $order->buyer_id)->first();
+$deliverer = App\User::where('id', $order->deliverer_id)->first();
+?>
 <div class="container">
     <center>
         <h3>This is order {{ $order->id }} 's details.</h3>
