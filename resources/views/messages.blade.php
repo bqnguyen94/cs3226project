@@ -12,7 +12,7 @@
                 From: {{ $receiver->name }}
             </div>
             <div id="panel_messages" class="panel panel-default">
-                <div class="panel-body">
+                <div class="panel-body" style="height: 800px;overflow-y: scroll;">
                     <ul class="media-list" id="message-list">
                     @foreach ($messages as $message)
                     <?php
