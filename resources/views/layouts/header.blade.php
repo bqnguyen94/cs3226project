@@ -29,6 +29,7 @@
                         	<ul class="dropdown-menu">
 								<li><a role="presentation" href="{{ route('user.profile') }}">Profile</a></li>
 								<li><a role="presentation" href="/threads">Message</a></li>
+								<li><a role="presentation" href="/cart">Cart</a></li>
 							</ul>
 						</li>
                         <li role="presentation">
