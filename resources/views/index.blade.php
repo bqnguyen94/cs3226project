@@ -30,7 +30,7 @@
                     <img class="third-slide" src="/img/nus-utown-astons.jpg" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption">
-                            <h1>Start Ordering From NUSEats Now!</h1>
+                            <h1>Start Ordering From NUS Food Now!</h1>
                             <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
         <div class="col-md-5 content_form">
             <div class="inner_block">
                 <div class="tag_line">
-                    NUSEats for busy students
+                    NUS Food for busy students
                 </div>
                 <div class="msg">
                     Order food from your favourite local NUS food stall delivered by your fellow NUS friends!

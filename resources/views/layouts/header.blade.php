@@ -12,7 +12,7 @@
 	                <span class="icon-bar"></span>
 	            </button>
 	            <h1 style="display: inline;">
-                    &nbsp;&nbsp;NUS Eat
+                    &nbsp;&nbsp;NUS Food
                 </h1>
             </div>
             <div class="col-md-6 col-xs-6">
