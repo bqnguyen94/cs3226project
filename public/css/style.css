@@ -42,6 +42,28 @@ html, body {
   background-color: #d8192f;
 }
 
+/* For navbar drop down */
+
+.open .dropdown-toggle:hover{
+	color:#d8192f;
+	border:#d8192f;
+	
+}
+
+
+.dropdown-menu li a:hover{
+	color:#d8192f;
+	
+}
+
+.dropdown-menu{
+	
+	box-shadow: none;
+}
+
+
+/* End of navbar dropdown */
+
 .menue {
   text-align: center;
 }

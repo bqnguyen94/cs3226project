@@ -22,9 +22,15 @@
                         <li role="presentation"><a href="{{ route('register') }}">Sign Up</a></li>
                         <li role="presentation"><a href="{{ route('login') }}">Log In</a></li>
                     @elseif (Auth::check())
-                        <li role="presentation">
-                            <a href="{{ route('user.profile') }}">Profile</a>
-                        </li>
+                      
+					
+						<li class="dropdown" role="presentation" >
+							<a role="presentation" class="dropdown-toggle" data-toggle="dropdown">User <span class="caret"></span></a>
+                        	<ul class="dropdown-menu">
+								<li><a role="presentation" href="{{ route('user.profile') }}">Profile</a></li>
+								<li><a role="presentation" href="/threads">Message</a></li>
+							</ul>
+						</li>
                         <li role="presentation">
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
