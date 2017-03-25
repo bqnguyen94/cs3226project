@@ -22,12 +22,12 @@
                         <li role="presentation"><a href="{{ route('register') }}">Sign Up</a></li>
                         <li role="presentation"><a href="{{ route('login') }}">Log In</a></li>
                     @elseif (Auth::check())
-                      
-					
+
+
 						<li class="dropdown" role="presentation" >
 							<a role="presentation" class="dropdown-toggle" data-toggle="dropdown">User <span class="caret"></span></a>
                         	<ul class="dropdown-menu">
-								<li><a role="presentation" href="{{ route('user.profile') }}">Profile</a></li>
+								<li><a href="/profile/<?php echo Auth::user()->id ?>">Profile</a> </li>
 								<li><a role="presentation" href="/threads">Message</a></li>
 								<li><a role="presentation" href="/cart">Cart</a></li>
 							</ul>
