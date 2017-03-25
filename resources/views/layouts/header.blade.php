@@ -21,13 +21,28 @@
                     @if (Auth::guest())
                         <li role="presentation"><a href="{{ route('register') }}">Sign Up</a></li>
                         <li role="presentation"><a href="{{ route('login') }}">Log In</a></li>
+                        <li class="dropdown" id="dropdown_optionsbeforelogin" role="presentation" >
+							            <a role="presentation" class="dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></a>
+							            <ul class="dropdown-menu">
+								            <li><a role="presentation" href="/foods">Menu</a></li>
+								            <li><a role="presentation" href="/orders">Orders</a></li>
+							            </ul>
+						           </li>
                     @elseif (Auth::check())
-						<li class="dropdown" role="presentation" >
+						<li class="dropdown" id="dropdown_user" role="presentation"  >
 							<a role="presentation" class="dropdown-toggle" data-toggle="dropdown">User <span class="caret"></span></a>
                         	<ul class="dropdown-menu">
 								<li><a href="/profile/<?php echo Auth::user()->id ?>">Profile</a> </li>
 								<li><a role="presentation" href="/threads">Message</a></li>
 								<li><a role="presentation" href="/cart">Cart</a></li>
+							</ul>
+						</li>
+             			<li class="dropdown" id="dropdown_options" role="presentation" >
+							<a role="presentation" class="dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a role="presentation" href="/foods">Menu</a></li>
+								<li><a role="presentation" href="/cart">Cart</a></li>
+								<li><a role="presentation" href="/orders">Orders</a></li>
 							</ul>
 						</li>
                         <li role="presentation">
@@ -46,6 +61,7 @@
             </div>
         </div>
     </div>
+<!--
     <div class="container row" style="height: 40px">
     @if (Auth::check())
     <div class="row" >
@@ -54,4 +70,5 @@
     </div>
     @endif
     </div>
+-->
 </div>
