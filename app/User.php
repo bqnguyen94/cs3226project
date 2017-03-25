@@ -50,7 +50,7 @@ class User extends Authenticatable
      *
      * @return Collection
      */
-    private function get_orders() {
+    public function get_orders() {
         $orders = Order::where('buyer_id', $this->id)
                             ->orWhere('deliverer_id', $this->id)
                             ->orderBy('created_at')

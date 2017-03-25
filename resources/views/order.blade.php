@@ -1,7 +1,18 @@
 @extends('layouts.template')
 @section('main')
 <div class="container">
-    <h3>This is order {{ $order->id }} 's details.</h3>
+    <center>
+        <h3>This is order {{ $order->id }} 's details.</h3>
+    </center>
+    <br />
+    <h4>Buyer: {{ $buyer->name }}</h4>
+    @if ($deliverer)
+    <h4>Buyer: {{ $buyer->name }}</h4>
+    @else
+    <h4>Buyer: Not yet!</h4>
+    @endif
+    <h4>Deliver to: {{ $order->deliver_location }}</h4>
+    <br />
     <div class="row">
         <table class="table table-condensed">
             <thead>
@@ -15,7 +26,6 @@
             <tbody>
                 <?php
                 $i = 0;
-                $user = Auth::user();
                 $order_to_foods = $order->get_all_foods_with_details();
                 ?>
                 @foreach ($order_to_foods as $item)
@@ -36,6 +46,8 @@
                     <td>
                         ${{ $order->get_total_food_price() }}
                     </td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>

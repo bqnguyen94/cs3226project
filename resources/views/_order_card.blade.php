@@ -11,10 +11,10 @@
     <!--Card content-->
     <div class="card-block">
         <!--Title-->
-        <h4 class="card-title">{{ $order->id }}</h4>
+        <h4 class="card-title">To: {{ $order->deliver_location }}</h4>
         <!--Text-->
         <p class="card-text">Price: ${{ $order->get_total_food_price() }}</p>
-        <a href="#" class="btn btn-primary">Offer</a>
+        <a href="/order/<?php echo $order->id ?>" class="btn btn-primary">Details</a>
     </div>
     <!--/.Card content-->
 </div>

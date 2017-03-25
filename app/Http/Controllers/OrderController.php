@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use App\User;
 
 class OrderController extends Controller
 {
@@ -31,6 +32,11 @@ class OrderController extends Controller
 
     public function order($id) {
         $order = Order::where('id', $id)->first();
-        return view('order')->with('order', $order);
+        $buyer = User::where('id', $order->buyer_id)->first();
+        $deliverer = User::where('id', $order->deliverer_id)->first();
+        return view('order')
+                ->with('buyer', $buyer)
+                ->with('deliverer', $deliverer)
+                ->with('order', $order);
     }
 }
