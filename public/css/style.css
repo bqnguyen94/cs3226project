@@ -109,18 +109,52 @@ html, body {
   padding: 0;
 }
 
-/* footer */
-.footer {
-  height: 100px;
-  padding: 40px;
-  margin-top: 80px;
-  background-color: #eee;
-  font-size: 14px;
+
+footer{
+ 
+  background: linear-gradient(#eee, #afaaaf);
+  text-align:center;
+  border-radius:20px;
+  font-size:12px;
+  font-family: 'Arvo', serif;
+  text-decoration:none;
+  padding-top:10px;
+  height:45px;
+  
+  
 }
 
-.footer a {
-  color: #d8192f;
+footer ul{
+  display:inline-block;
+  list-style-type: none;
+
 }
+
+footer li{
+  float:left;
+  height:35px;
+  padding: 5px 10px 5px 10px;
+}
+
+footer li a {
+  display:block;
+  color: black;
+  text-decoration: none;
+}
+
+
+
+footer li a:hover{
+  
+  color:red;
+  opacity:0.8;
+}
+
+footer #copyright{
+  margin-top:5px;
+  float:right;
+}
+
 
 /* Media Queries */
 @media (max-width: 680px) {
