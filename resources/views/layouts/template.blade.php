@@ -17,7 +17,7 @@
         <link href="/css/carousel.css" rel="stylesheet">
     </head>
     <body>
-        @include('layouts.header')
+        @include('layouts.header2')
         @yield('main')
         @include('layouts.footer')
     </body>
