@@ -15,10 +15,17 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js"></script>
         <link rel="stylesheet" href="/css/style.css">
         <link href="/css/carousel.css" rel="stylesheet">
+        <script type="text/javascript" src="/js/fade.js"></script>
+        <script type="text/javascript" src="/js/moveUp.js"></script>
     </head>
     <body>
+        <script>
+        	notDisplay();
+        </script>
         @include('layouts.header')
+        <div id="Animate" style="margin-top:20vh">
         @yield('main')
+        </div>
         @include('layouts.footer')
     </body>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
