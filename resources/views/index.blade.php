@@ -4,118 +4,136 @@
 ================================================== -->
 <div class="container-fluid">
     <div class="row outer_block">
+    <div class="col-md-5 content_form" style="margin-bottom:50px;">
+        <div class="inner_block">
+            <div class="tag_line hidden-sm hidden-xs">
+                NUS Food for Busy Students
+            </div>
+            <div class="msg">
+                Order food from your favourite local NUS food stall delivered by your fellow NUS friends!
+            </div>
+            <form>
+                <label >ENTER CANTEEN NAME</label>
+                <div>
+                    <input type="text" autocomplete="off" id="canteen-select-input" placeholder="Science Canteen, UTown..." />
+                    <button class="btn-primary btn" type="submit">Find Food</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
         <div class="col-md-7">
-        <!--sidebar-->
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img class="first-slide" src="/img/nus-sci-ayampenyet.jpg" alt="First slide">
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <h1>Never Queue For The Food You Love!</h1>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+            <!--sidebar-->
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="img img1"></div>
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Never Queue For The Food You Love!</h1>
+                                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <img class="second-slide" src="/img/nus-art-chickenrice.jpg" alt="Second slide">
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <h1>Lecture During Lunch Hour? No Worries!</h1>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                    <div class="item">
+                        <div class="img img2"></div>
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Lecture During Lunch Hour? No Worries!</h1>
+                                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <img class="third-slide" src="/img/nus-utown-astons.jpg" alt="Third slide">
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <h1>Start Ordering From NUS Food Now!</h1>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                    <div class="item">
+                        <div class="img img3"></div>
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Start Ordering From NUS Food Now!</h1>
+                                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-        <div class="col-md-5 content_form">
-            <div class="inner_block">
-                <div class="tag_line">
-                    NUS Food for busy students
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 col-md-offset-3">
+            <!-- picture, comments -->
+            <div class="container hidden-xs hidden-sm" style="height:250px;; width:auto;">
+                <div class="img img4"></div>
+            </div>
+            <h3 style="height:100px;"><span style="display:block; font-weight:bold;">Order</span>
+                <span style="display:block;">Your Food</span></h3>
+                <p style="display:block;">
+                    We support all the canteens in NUS and almost all the stalls in the Canteen! Just choose your canteen and food you want to eat!
+                </p>
+            </div>
+            <div class="col-md-2">
+                <div class="container hidden-xs hidden-sm" style="height:250px; width:auto;">
+                    <div class="img img2"></div>
                 </div>
-                <div class="msg">
-                    Order food from your favourite local NUS food stall delivered by your fellow NUS friends!
+                <h3 style="height:100px;"><span style="display:block; font-weight:bold;">Help</span>
+                    <span style="display:block;">To Deliver</span></h3>
+                    <p style="display:block;">
+                        Students can view the available orders placed by you and help to deliver the food right to your location!
+                    </p>
                 </div>
-                <form>
-                    <label >ENTER CANTEEN NAME</label>
-                    <div>
-                        <input type="text" autocomplete="off" id="canteen-select-input" placeholder="Science Canteen, UTown..." />
-                        <button class="btn-primary btn" type="submit">Find Food</button>
+                <div class="col-md-2">
+                    <div class="container hidden-xs hidden-sm" style="height:250px; width:auto;">
+                        <div class="img img3"></div>
                     </div>
-                </form>
+                    <h3 style="height:100px;"><span style="display:block; font-weight:bold;">Get</span>
+                        <span style="display:block;">Paid For Your Efforts</span></h3>
+                        <p style="display:block;">
+                            Once food has been delivered, verify it on our website and get paid!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="section banner">
+                <div class="container">
+                    <h3>No time to grab a lunch? Ask others for help!</h3>
+                    <a href="foods" class="btn">Get Started</a>
+                </div>
+            </div>
+            <div class="section supporting">
+                <div class="container">
+                    <div class="page-header">
+                        <h3>Newest Food Stalls</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4>
+                                UTown
+                            </h4>
+                            <ul>
+                                <li>Astons</li>
+                                <li>Hwang's Korean Restaurant</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>
+                                The Deck
+                            </h4>
+                            <ul>
+                                <li>Liang Ban Kung Fu</li>
+                                <li>Yong Tau Foo</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>
+                                Yusof-Ishak House
+                            </h4>
+                            <ul>
+                                <li>Starbucks</li>
+                                <li>Old Chang Kee</li>
+                            </ul>
+                        </div>
+                    </div>
 
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-7">
-                <h1>
-                    Order.
-                </h1>
-                <h1>
-                    Help Out.
-                </h1>
-                <h1>
-                    Get Paid.
-                </h1>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="section banner">
-    <div class="container">
-        <h3>No time to grab a lunch? Ask others for help!</h3>
-        <a href="foods" class="btn">Get Started</a>
-    </div>
-</div>
-<div class="section supporting">
-    <div class="container">
-        <div class="page-header">
-            <h3>Newest Food Stalls</h3>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <h4>
-                    UTown
-                </h4>
-                <ul>
-                    <li>Astons</li>
-                    <li>Hwang's Korean Restaurant</li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h4>
-                    The Deck
-                </h4>
-                <ul>
-                    <li>Liang Ban Kung Fu</li>
-                    <li>Yong Tau Foo</li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h4>
-                    Yusof-Ishak House
-                </h4>
-                <ul>
-                    <li>Starbucks</li>
-                    <li>Old Chang Kee</li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
-</div>
-@endsection
+            @endsection
