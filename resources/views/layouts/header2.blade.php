@@ -1,6 +1,6 @@
 <div class="header">
     <nav class="navbar-default" role="navigation"  style="background-color:transparent; border">
-        <div class="container">
+        <div class="container" style="align:right;">
             <div class="navbar-header">
                 <a class="" href="/">
 	                <img alt="Brand" src="/img/logo.png" width="75" height="75">
@@ -18,7 +18,7 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav nav-pills">
+                <ul class="nav nav-pills navbar-right">
                     <li role="presentation" class="active"><a href="/food">Menu</a></li>
                     <li><a role="presentation" href="/orders">Orders</a></li>
                     @if (Auth::guest())
