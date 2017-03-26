@@ -41,7 +41,7 @@
 							<a role="presentation" class="dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a role="presentation" href="/foods">Menu</a></li>
-								<li><a role="presentation" href="/cart">Cart</a></li>
+<!-- Temporary removed in case we missed something <li><a role="presentation" href="/cart">Cart</a></li>-->
 								<li><a role="presentation" href="/orders">Orders</a></li>
 							</ul>
 						</li>
@@ -61,14 +61,17 @@
             </div>
         </div>
     </div>
-<!--
+
     <div class="container row" style="height: 40px">
+<!--
+	
     @if (Auth::check())
     <div class="row" >
     	<div class="col-md-6 menue"><ul><li><a href="/foods">Get Food</a></li></ul></div>
     	<div class="col-md-6 menue"><ul><li><a href="/orders">Get Order</a></li></ul></div>
     </div>
     @endif
-    </div>
 -->
+    </div>
+
 </div>

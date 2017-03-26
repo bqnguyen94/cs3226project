@@ -50,11 +50,27 @@
                     <input id="location" name="location" type="text" class="form-control" placeholder="e.g: PGP Residence 4" required/>
                 </div>
             </div>
-            <center>
+            <center class="cart_buttons">
                 <button id="btn-submit" class="btn btn-success" type="submit">PLACE ORDER</button>
+				<a href="/foods" class="btn btn-success" id="cart_continueshopping">Continue Shopping</a>
+				
             </center>
         {!! Form::close() !!}
     </div>
 </div>
-<br/>
+</br></br>
 @endsection
+
+<style>
+
+	#btn-submit{
+		width:200px;
+		height:65px;
+	}
+	
+	#cart_continueshopping{
+		width:200px;
+		height:65px;
+	}
+
+</style>
