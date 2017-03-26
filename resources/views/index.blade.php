@@ -15,8 +15,10 @@
             <form>
                 <label >ENTER CANTEEN NAME</label>
                 <div>
-                    <input type="text" autocomplete="off" id="canteen-select-input" placeholder="Science Canteen, UTown..." />
-                    <button class="btn-primary btn" type="submit">Find Food</button>
+                    <div style="display:flex;">
+                        <input style="height:69px;" type="text" autocomplete="off" id="canteen-select-input" placeholder="Science Canteen, UTown..." />
+                        <button class="btn btn-lg btn-primary" style="width:150px;" type="submit">Find Food</button>
+                    </div>
                 </div>
             </form>
 
