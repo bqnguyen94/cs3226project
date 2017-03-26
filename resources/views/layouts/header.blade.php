@@ -11,7 +11,7 @@
 	                <span class="icon-bar"></span>
 	                <span class="icon-bar"></span>
 	            </button>
-	            <h1 style="display: inline;">
+	            <h1 class="hidden-xs hidden-sm" style="display: inline;">
                     &nbsp;&nbsp;NUS Food
                 </h1>
             </div>
