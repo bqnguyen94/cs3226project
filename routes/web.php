@@ -22,6 +22,10 @@ Route::get('orders', 'OrderController@orders');
 
 Route::get('order/{id}', 'OrderController@order');
 
+Route::post('order/{id}', 'UserController@accept_offer');
+
+Route::post('makeoffer/{id}', 'UserController@make_offer');
+
 Route::post('foods', 'UserController@add_to_cart');
 
 Route::get('cart', 'UserController@cart');

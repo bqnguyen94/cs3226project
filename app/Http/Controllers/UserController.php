@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Order;
+use App\Offer;
 use App\Food;
 use App\User;
 
@@ -79,5 +80,31 @@ class UserController extends Controller
         }
 
         return redirect()->to('/');
+    }
+
+    public function make_offer($id, Request $request) {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $order = Order::where('id', $id)->first();
+            if ($order && !$order->deliverer_id && $order->buyer_id != $user->id) {
+                $user->make_offer($order->id, $request->amount);
+                return redirect()->back();
+            }
+        }
+    }
+
+    public function accept_offer($id, Request $request) {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $order = Order::where('id', $id)->first();
+            $offer = Offer::where('id', $request->offer_id)->first();
+            if ($order && $offer
+                        && !$order->deliverer_id
+                        && $offer->order_id == $order->id
+                        && $order->buyer_id == $user->id) {
+                $user->accept_offer($offer->id);
+                return redirect()->back();
+            }
+        }
     }
 }

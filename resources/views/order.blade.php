@@ -1,8 +1,10 @@
 @extends('layouts.template')
 @section('main')
 <?php
+$user = Auth::user();
 $buyer = App\User::where('id', $order->buyer_id)->first();
 $deliverer = App\User::where('id', $order->deliverer_id)->first();
+$offers = App\Offer::where('order_id', $order->id)->orderBy('price')->get();
 ?>
 <div class="container">
     <center>
@@ -56,5 +58,57 @@ $deliverer = App\User::where('id', $order->deliverer_id)->first();
             </tbody>
         </table>
     </div>
+    @if ($offers->isNotEmpty())
+    <div class="row">
+        <h4>This order's offers:</h4>
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th class="col-xs-1"></th>
+                    <th class="col-xs-4">Offerer</th>
+                    <th class="col-xs-3">Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $i = 0;
+                ?>
+                @foreach ($offers as $offer)
+                    <?php
+                    $i++;
+                    $offerer = App\User::where('id', $offer->offerer_id)->first();
+                    ?>
+                    @if ($user->id == $offer->offerer_id)
+                    <tr class="highlight">
+                    @else
+                    <tr>
+                    @endif
+                        <td>{{ $i }}</td>
+                        <td>{{ $offerer->name }}</td>
+                        <td>${{ $offer->price }}</td>
+                        @if ($user->id == $order->buyer_id)
+                        <td>
+                            {!! Form::open() !!}
+                                <button name="offer_id" id="btn-submit" type="submit" class="btn btn-success" value="{{ $offer->id }}">Accept Offer</button>
+                            {!! Form::close() !!}
+                        </td>
+                        @endif
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    @endif
+    @if ($user->id != $order->buyer_id)
+    <?php
+    $offer = App\Offer::where('offerer_id', $user->id)->where('order_id', $order->id)->first();
+    ?>
+    {!! Form::open(['url' => '/makeoffer/' . $order->id]) !!}
+        <label for="amount" class="form-control">Make an Offer</label>
+        <input required name="amount" type="number" class="form-control text-center" />
+        <button id="btn-submit" type="submit" class="btn btn-success">Make Offer</button>
+    {!! Form::close() !!}
+    @endif
 </div>
 @endsection
