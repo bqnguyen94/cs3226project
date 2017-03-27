@@ -79,7 +79,7 @@ $offers = App\Offer::where('order_id', $order->id)->orderBy('price')->get();
                     $i++;
                     $offerer = App\User::where('id', $offer->offerer_id)->first();
                     ?>
-                    @if ($user->id == $offer->offerer_id)
+                    @if (Auth::check() && Auth::user()->id == $offer->offerer_id)
                     <tr class="highlight">
                     @else
                     <tr>
@@ -87,12 +87,14 @@ $offers = App\Offer::where('order_id', $order->id)->orderBy('price')->get();
                         <td>{{ $i }}</td>
                         <td>{{ $offerer->name }}</td>
                         <td>${{ $offer->price }}</td>
-                        @if ($user->id == $order->buyer_id)
-                        <td>
-                            {!! Form::open() !!}
-                                <button name="offer_id" id="btn-submit" type="submit" class="btn btn-success" value="{{ $offer->id }}">Accept Offer</button>
-                            {!! Form::close() !!}
-                        </td>
+                        @if (Auth::check() && Auth::user()->id == $order->buyer_id)
+                            <td>
+                                {!! Form::open() !!}
+                                    <button name="offer_id" id="btn-submit" type="submit" class="btn btn-success" value="{{ $offer->id }}">Accept Offer</button>
+                                {!! Form::close() !!}
+                            </td>
+                        @else
+                            <td></td>
                         @endif
                     </tr>
                 @endforeach
@@ -100,7 +102,7 @@ $offers = App\Offer::where('order_id', $order->id)->orderBy('price')->get();
         </table>
     </div>
     @endif
-    @if ($user->id != $order->buyer_id)
+    @if (Auth::check() && Auth::user()->id != $order->buyer_id)
     <?php
     $offer = App\Offer::where('offerer_id', $user->id)->where('order_id', $order->id)->first();
     ?>
