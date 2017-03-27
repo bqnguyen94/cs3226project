@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Order;
 use App\Food;
 use App\User;
@@ -68,7 +69,7 @@ class UserController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $first_item = DB::table('user_to_foods')
-                    ->where('user_id', $this->id)
+                    ->where('user_id', $user->id)
                     ->first();
             if ($first_item) {
                 $order = $user->cart_to_order($request->location);
