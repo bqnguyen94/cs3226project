@@ -11,7 +11,7 @@ $offers = App\Offer::where('order_id', $order->id)->orderBy('price')->get();
         <h3>This is order {{ $order->id }} 's details.</h3>
     </center>
     <br />
-    <h4>Buyer: {{ $buyer->name }}</h4>
+    <h4>Buyer: {{ $buyer->name }} <a href="/chat/<?php echo $buyer->id ?>">Chat</a></h4>
     @if ($deliverer)
     <h4>Deliverer: {{ $buyer->name }}</h4>
     @else
@@ -68,6 +68,7 @@ $offers = App\Offer::where('order_id', $order->id)->orderBy('price')->get();
                     <th class="col-xs-4">Offerer</th>
                     <th class="col-xs-3">Price</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -89,11 +90,15 @@ $offers = App\Offer::where('order_id', $order->id)->orderBy('price')->get();
                         <td>${{ $offer->price }}</td>
                         @if (Auth::check() && Auth::user()->id == $order->buyer_id)
                             <td>
+                                <a href="/chat/<?php echo $offerer_id ?>">Chat</a>
+                            </td>
+                            <td>
                                 {!! Form::open() !!}
                                     <button name="offer_id" id="btn-submit" type="submit" class="btn btn-success" value="{{ $offer->id }}">Accept Offer</button>
                                 {!! Form::close() !!}
                             </td>
                         @else
+                            <td></td>
                             <td></td>
                         @endif
                     </tr>

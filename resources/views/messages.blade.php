@@ -39,10 +39,10 @@
                         <div class="form-group">
                             {{ csrf_field() }}
                             <div class="input-group">
-                                <input id="thread_id" name="thread_id" type="hidden" value="<?php echo $message->thread_id ?>">
+                                <input id="thread_id" name="thread_id" type="hidden" value="<?php echo $thread->id ?>">
                                 <input id="message_input" name="message_input" type="text" class="form-control" placeholder="Enter Message" required/>
                                 <span class="input-group-btn">
-                                    <button class="btn btn-success" id="btn-send-reply" name="thread_id" value="<?php echo $message->thread_id ?>" type="submit">REPLY</button>
+                                    <button class="btn btn-success" id="btn-send-reply" name="thread_id" value="<?php echo $thread->id ?>" type="submit">REPLY</button>
                                 </span>
                             </div>
                         </div>
@@ -55,8 +55,12 @@
 @endsection
 @section('script')
 <script type="text/javascript">
-    var thread_id = {{ $message->thread_id }};
-    var last_time_id = {{ $message->id }};
+    var thread_id = {{ $thread->id }};
+    @if ($messages->first())
+        var last_time_id = {{ $messages->first()->id }};
+    @else
+        var last_time_id = 0;
+    @endif
 </script>
 <script type="text/javascript" src="/js/messages.js"></script>
 @stop

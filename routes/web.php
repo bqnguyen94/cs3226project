@@ -36,6 +36,8 @@ Route::post('cart', 'UserController@confirm_order');
 
 Route::get('threads', 'MessageController@index');
 
+Route::get('chat/{id}', 'MessageController@chatWith');
+
 Route::post('reply', 'MessageController@reply');
 
 Route::get('messages/{id}', 'MessageController@messages');

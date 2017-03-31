@@ -37,15 +37,15 @@ class MessageController extends Controller
     public function chatWith($id) {
         $user = Auth::user();
         $otherUser = User::where('id', $id)->first();
-        if ($otherUser) {
-            return get_or_create_thread($user->id, $otherUser->id);
+        if ($otherUser && $user != $otherUser) {
+            return $this->get_or_create_thread($user->id, $otherUser->id);
         }
         return redirect()->to('/');
     }
 
     public function get_or_create_thread($first_id, $second_id) {
         $thread = Thread::get_thread($first_id, $second_id);
-        return $this->messages($thread->id);
+        return redirect()->to('/messages/' . $thread->id);
     }
 
     public function messages($id) {
@@ -63,6 +63,7 @@ class MessageController extends Controller
         }
         $receiver = User::where('id', $receiver_id)->first();
         return view('messages')
+            ->with('thread', $thread)
             ->with('receiver', $receiver)
             ->with('messages', $thread->get_all_messages()->take(-10));
     }
