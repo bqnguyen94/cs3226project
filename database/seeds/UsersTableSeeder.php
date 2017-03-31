@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@unicorn.com',
             'password' => bcrypt('123456'),
             'role' => User::ROLE_ADMIN,
+            'activated' => true,
         ]);
 
         User::create([
@@ -28,6 +29,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'buyer@unicorn.com',
             'password' => bcrypt('123456'),
             'role' => User::ROLE_USER,
+            'activated' => true,
         ]);
 
         User::create([
@@ -35,6 +37,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'deliverer@unicorn.com',
             'password' => bcrypt('123456'),
             'role' => User::ROLE_USER,
+            'activated' => true,
         ]);
 
         for ($i = 0; $i < $limit; $i++) {
@@ -44,6 +47,7 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('secret'),
                 'remember_token' => str_random(10),
                 'role' => User::ROLE_USER,
+                'activated' => true,
             ]);
         }
     }

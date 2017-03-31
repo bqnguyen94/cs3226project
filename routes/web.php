@@ -14,6 +14,8 @@ Route::get('/', ['as'=>'/', 'uses'=>'HomeController@index']);
 
 Auth::routes();
 
+Route::get('user/activation/{token}', 'Auth\LoginController@activateUser')->name('user.activate');
+
 Route::get('profile/{id}', 'UserController@profile');
 
 Route::get('foods', 'FoodController@foods');

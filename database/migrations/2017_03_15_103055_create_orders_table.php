@@ -19,6 +19,8 @@ class CreateOrdersTable extends Migration
             $table->integer('buyer_id')->unsigned();
             $table->string('deliver_location');
             $table->integer('deliverer_id')->unsigned()->nullable();
+            $table->boolean('is_delivered')->default(false);
+            $table->boolean('is_received')->default(false);
             $table->longText('buyer_feedback')->nullable();
             $table->longText('deliverer_feedback')->nullable();
             $table->tinyInteger('buyer_rates')->nullable();

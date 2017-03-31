@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\ActivationService;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -29,14 +31,17 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/';
 
+    protected $activationService;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ActivationService $activationService)
     {
         $this->middleware('guest');
+        $this->activationService = $activationService;
     }
 
     /**
@@ -49,9 +54,11 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:users|regex:(([a-zA-Z0-9._]+)(@u.nus.edu))',
             'password' => 'required|min:6|confirmed',
-        ]);
+        ], [
+            'email.regex' => 'Please use a valid NUS email address e.g. arron.tan@u.nus.edu'
+    ]);
     }
 
     /**
@@ -62,11 +69,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'role' => User::ROLE_USER,
         ]);
+
+        $this->activationService->sendActivationMail($user);
+        return $user;
     }
 }
