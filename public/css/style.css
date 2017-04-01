@@ -213,3 +213,20 @@ footer #copyright{
     margin-left: 0;
   }
 }
+
+/* chat panel */
+.chatMsg {
+  margin:5px;
+  padding: 5px;
+  padding-left: 15px;
+  border-radius: 10px;
+}
+
+.receiver{
+  background-color: #eb8b96;
+}
+
+.self{
+  background-color: #efefef;
+}
+/* End of chat panel */
