@@ -19,18 +19,29 @@
                     $sender = App\User::where('id', $message->sender_id)->first();
                     ?>
                     <li class="media">
-                        <div class="media-body">
-                            <a class="pull-left" href="">
+                        <div class="media-body row">
+                            <?php if($receiver->name==$sender->name){ ?>
+                            <a class="pull-left col-xs-1" style="min-width: 80px;" href="">
                                 <img class="media-object img-circle" src="https://image.flaticon.com/icons/png/512/78/78373.png" height="60px" width="60px" style="margin-right: 10px"/>
                             </a>
-                            <div class="media-body">
-                                {{ $sender->name }}
+                            <div class="col-xs-8 chatMsg receiver">
+                                {{ $sender->name }}:
                                 <br/>
                                 {{ $message->message }}
                             </div>
+                            <?php }else{ ?>
+                            <div class="col-xs-2"></div>
+                            <div class="col-xs-8 chatMsg self">
+                                {{ $sender->name }}:
+                                <br/>
+                                {{ $message->message }}
+                            </div>
+                            <a class="pull-left col-xs-1" href="">
+                                <img class="media-object img-circle" src="https://image.flaticon.com/icons/png/512/78/78373.png" height="60px" width="60px" style="margin-right: 10px"/>
+                            </a>
+                            <?php } ?>
                         </div>
                     </li>
-                    <hr/>
                     @endforeach
                     </ul>
                 </div>
@@ -55,9 +66,10 @@
 @endsection
 @section('script')
 <script type="text/javascript">
+    var receiverName="<?php echo $receiver->name ?>";
     var thread_id = {{ $thread->id }};
     @if ($messages->first())
-        var last_time_id = {{ $messages->first()->id }};
+       var last_time_id = {{ $messages->last()->id }};
     @else
         var last_time_id = 0;
     @endif
