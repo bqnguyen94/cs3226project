@@ -65,13 +65,28 @@ html, body {
 
 /* End of navbar dropdown */
 
-.menue {
-  text-align: center;
+/*foods panel*/
+.panel-heading img{
+  border-style: solid;
+  border-radius:5px;
+  border-width: 5px;
+  border-color: white;
 }
 
-.menue a{
-  color: black;
+@media screen and (min-width: 768px) {
+	.info{
+	  margin-top: 1%;
+	  margin-left: 7%;
+	}
 }
+
+@media screen and (min-width: 992px) {
+	.info{
+	  margin-top: 1%;
+	  margin-left: 3%;
+	}
+}
+/* End of foods panel*/
 
 /* Jumbotron */
 .jumbotron {
