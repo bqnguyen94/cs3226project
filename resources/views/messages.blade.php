@@ -69,7 +69,7 @@
     var receiverName="<?php echo $receiver->name ?>";
     var thread_id = {{ $thread->id }};
     @if ($messages->first())
-        var last_time_id = {{ $messages->first()->id }};
+       var last_time_id = {{ $messages->last()->id }};
     @else
         var last_time_id = 0;
     @endif
