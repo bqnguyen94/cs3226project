@@ -90,7 +90,7 @@ $offers = App\Offer::where('order_id', $order->id)->orderBy('price')->get();
                         <td>${{ $offer->price }}</td>
                         @if (Auth::check() && Auth::user()->id == $order->buyer_id)
                             <td>
-                                <a href="/chat/<?php echo $offerer_id ?>">Chat</a>
+                                <a href="/chat/<?php echo $offer->offerer_id ?>">Chat</a>
                             </td>
                             <td>
                                 {!! Form::open() !!}
