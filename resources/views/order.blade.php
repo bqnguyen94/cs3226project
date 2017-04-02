@@ -30,6 +30,14 @@
                 <h4>Delivered: Not yet received</h4>
             @endif
         @endif
+        @if(Auth::user()->id == deliverer_id)
+            @if($order->is_delivered)
+                {!! Form::open(['route'=>'confirm.deliver',$Auth::user()->id,$order->id]) !!}
+                {!! Form::close() !!}
+            @else
+                {!! Form::open(['route'=>'unconfirm.deliver',$Auth::user()->id, $order->id]) !!}}
+                {!! Form::close() !!}
+        @endif
         <br/>
         <div class="row">
             <table class="table table-condensed">
