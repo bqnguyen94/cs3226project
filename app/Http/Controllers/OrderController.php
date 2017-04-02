@@ -37,4 +37,22 @@ class OrderController extends Controller
         }
         return view('order')->with('order', $order);
     }
+    
+    public function confirmDeliver(Order $order){
+        //todo
+        //authorization
+        $order->is_delivered = true;
+        $order->save();
+        Session::flash('alert-success','Delivery has been confirmed');
+        return redirect()->route('order',$order->id);
+    }
+
+    public function unconfirmDeliver(Order $order){
+        //todo
+        // authorization
+        $order->is_delivered = false;
+        $order->save();
+        Session::flash('alert-success','Delivery has been unconfirmed');
+        return redirect()->route('order',$order->id);
+    }
 }
