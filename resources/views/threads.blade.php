@@ -7,10 +7,16 @@
 <div class="container">
     <h3>This page shows overview of all messages this user has.</h3>
     <div class="panel-group">
-        <div class="panel panel-default">
-            <div class="panel-heading" data-toggle="collapse" data-target="#panel_threads" style="cursor: pointer">
-                Inbox
-            </div>
+       <div class="panel panel-default">
+		    <ul class="nav nav-tabs">
+				<li><div class="panel-heading" data-toggle="collapse" data-target="#panel_threads" style="cursor: pointer">
+			  Inbox
+			</div> </li>
+			   <li>
+					<a href="/chat/1" id="chatadmin">Message Admin</a>
+				</li>
+			 </ul>
+           
             <div id="panel_threads" class="panel-collapse">
                 <div class="panel-body">
                     <ul class="media-list">
@@ -45,4 +51,5 @@
         </div>
     </div>
 </div>
+
 @endsection

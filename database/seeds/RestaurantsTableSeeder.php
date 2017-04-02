@@ -16,7 +16,8 @@ class RestaurantsTableSeeder extends Seeder
             'Universiy Town',
             'The Deck',
             'Yusof Ishak House',
-            'Biz Canteen'
+            'Biz Canteen',
+            'Science Canteen',
         ];
         $faker = Faker\Factory::create();
 

@@ -7,6 +7,8 @@ use App\Message;
 
 class Thread extends Model
 {
+
+    protected $fillable = ['first_user_id', 'second_user_id'];
     //
     public function get_all_messages() {
         $messages = Message::where('thread_id', $this->id)->get();
@@ -20,11 +22,11 @@ class Thread extends Model
 
     public static function get_thread($first_id, $second_id) {
         $thread = Thread::where('first_user_id', $first_id)
-                        ->andWhere('second_user_id', $second_id)
+                        ->where('second_user_id', $second_id)
                         ->first();
         if (!$thread) {
             $thread = Thread::where('first_user_id', $second_id)
-                            ->andWhere('second_user_id', $first_id)
+                            ->where('second_user_id', $first_id)
                             ->first();
             if (!$thread) {
                 $thread = Thread::create([

@@ -31,7 +31,10 @@ class OrderController extends Controller
     }
 
     public function order($id) {
-        $deliverer = User::where('id', $order->deliverer_id)->first();
+        $order = Order::where('id', $id)->first();
+        if (!$order) {
+            return redirect()->to('/');
+        }
         return view('order')->with('order', $order);
     }
 }

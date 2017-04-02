@@ -29,7 +29,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email','role', 'password',
+        'name', 'email','role', 'password', 'activated',
     ];
 
     /**
@@ -137,5 +137,38 @@ class User extends Authenticatable
                         ->orWhere('second_user_id', $this->id)
                         ->get();
         return $threads;
+    }
+
+    public function make_offer($order_id, $amt) {
+        $order = Order::where('id', $order_id)->first();
+        if ($order) {
+            $offer = Offer::where('order_id', $order_id)
+                    ->where('offerer_id', $this->id)
+                    ->first();
+            if (!$offer) {
+                $offer = Offer::create([
+                    'order_id' => $order_id,
+                    'offerer_id' => $this->id,
+                    'price' => $amt,
+                ]);
+            } else {
+                $offer->price = $amt;
+                $offer->save();
+            }
+        }
+    }
+
+    public function accept_offer($offer_id) {
+        $offer = Offer::where('id', $offer_id)->first();
+        if ($offer) {
+            $order = Order::where('id', $offer->order_id)->first();
+            if ($order && $order->buyer_id == $this->id) {
+                //TODO: plugin paypal here.
+                $order->deliverer_id = $offer->offerer_id;
+                $order->final_price = $offer->price;
+                $order->save();
+                Offer::where('order_id', $order->id)->delete();
+            }
+        }
     }
 }
