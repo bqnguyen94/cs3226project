@@ -45,3 +45,5 @@ Route::get('messages/{id}', 'MessageController@messages');
 Route::post('messages/{id}', 'MessageController@reply');
 
 Route::get('refreshmessages/{id}', 'MessageController@refresh_messages');
+
+Route::get('/contact', function(){return view('contact');});
