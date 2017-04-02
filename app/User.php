@@ -163,7 +163,6 @@ class User extends Authenticatable
         if ($offer) {
             $order = Order::where('id', $offer->order_id)->first();
             if ($order && $order->buyer_id == $this->id) {
-                //TODO: plugin paypal here.
                 $order->deliverer_id = $offer->offerer_id;
                 $order->final_price = $offer->price;
                 $order->save();
