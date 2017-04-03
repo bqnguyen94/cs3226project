@@ -30,6 +30,8 @@ Route::post('order/{order}/confirm-receive',['as'=>'confirm.receive','uses'=>'Or
 
 Route::post('order/{id}', 'UserController@accept_offer');
 
+Route::get('order/{order_id}/confirmed/{offer_id}/', 'UserController@paymentListener');
+
 Route::post('makeoffer/{id}', 'UserController@make_offer');
 
 Route::post('foods', 'UserController@add_to_cart');
