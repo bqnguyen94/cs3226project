@@ -28,6 +28,10 @@ Route::post('order/{order}/confirm-deliver',['as'=>'confirm.deliver','uses'=>'Or
 
 Route::post('order/{order}/confirm-receive',['as'=>'confirm.receive','uses'=>'OrderController@confirmReceive']);
 
+Route::get('order/{order}/buyer-feedback',['as'=>'order.buyer-feedback','uses'=>'OrderController@buyerFeedback']);
+
+Route::post('order/{order}/buyer-feedback-validate',['as'=>'order.buyer-feedback-validate','uses'=>'OrderController@buyerFeedbackValidate']);
+
 Route::post('order/{id}', 'UserController@accept_offer');
 
 Route::get('order/{order_id}/confirmed/{offer_id}/', 'UserController@paymentListener');
