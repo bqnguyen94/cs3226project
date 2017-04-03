@@ -30,10 +30,10 @@
                 <h4>Delivered: Not yet received</h4>
             @endif
         @endif
-        
+
         @if(Auth::user()->id == $order->deliverer_id)
             @if($order->is_delivered)
-                     <h4>Delivery has already been confirmed</h4>
+                <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true" disabled>Delivery has already been confirmed</a>
             @else
                 {!! Form::open(['route'=>['confirm.deliver',$order]]) !!}
                      <button id="btn-submit" type="submit" class="btn btn-success">Confirm delivery</button>
