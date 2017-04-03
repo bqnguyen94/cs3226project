@@ -93,8 +93,10 @@ class User extends Authenticatable
                     'food_id' => $food_id,
                 ]);
         } else {
-            $user_to_food->food_amount = $user_to_food->food_amount + 1;
-            $user_to_food->save();
+            DB::table('user_to_foods')
+                    ->where('user_id', $this->id)
+                    ->where('food_id', $food_id)
+                    ->update(['food_amount' => $user_to_food->food_amount + 1]);
         }
     }
 
