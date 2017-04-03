@@ -11,9 +11,24 @@
             <h3>This is order {{ $order->id }} 's details.</h3>
         </center>
         <br/>
-        <h4>Buyer: {{ $buyer->name }} <a href="/chat/<?php echo $buyer->id ?>">Chat</a></h4>
+        <div class="row">
+            <h4 class="col-sm-2">
+                Buyer:
+            </h4>
+            <h4 class="col-sm-4">
+                {{ $buyer->name }} <a href="/chat/<?php echo $buyer->id ?>">Chat</a>
+            </h4>
+        </div>
+        
         @if ($deliverer)
-            <h4>Deliverer: {{ $buyer->name }}</h4>
+            <div class="row">
+                <h4 class="col-sm-2">
+                    Deliverer:
+                </h4>
+                <h4 class="col-sm-4">
+                    {{ $deliverer->name }}
+                </h4>
+            </div>
         @else
             <h4>Deliverer: Not yet!</h4>
         @endif
@@ -38,7 +53,7 @@
                 </a>
             @else
                 {!! Form::open(['route'=>['confirm.deliver',$order]]) !!}
-                     <button id="btn-submit" type="submit" class="btn btn-success">Confirm delivery</button>
+                <button id="btn-submit" type="submit" class="btn btn-success">Confirm delivery</button>
                 {!! Form::close() !!}
             @endif
         @endif
@@ -183,23 +198,23 @@
 //						$temp = $offer->price;
 //						echo '<input type="hidden" name="amount" value="' . $temp . '">';
 
-						?>
+?>
 
-						<input type="hidden" name="currency_code" value="SGD">
-						<input type="hidden" name="button_subtype" value="services">
-						<input type="hidden" name="no_note" value="1">
-						<input type="hidden" name="no_shipping" value="1">
-						<input type="hidden" name="rm" value="1">
+        <input type="hidden" name="currency_code" value="SGD">
+        <input type="hidden" name="button_subtype" value="services">
+        <input type="hidden" name="no_note" value="1">
+        <input type="hidden" name="no_shipping" value="1">
+        <input type="hidden" name="rm" value="1">
 
-						 page redirection using paypal here
-						<input type="hidden" name="return" value="http://139.59.103.42/orders">
-						<input type="hidden" name="cancel_return" value="http://139.59.103.42/foods">
-
-
-						<input type="hidden" name="bn" value="PP-BuyNowBF:btn_paynowCC_LG.gif:NonHosted">
+         page redirection using paypal here
+        <input type="hidden" name="return" value="http://139.59.103.42/orders">
+        <input type="hidden" name="cancel_return" value="http://139.59.103.42/foods">
 
 
-						<input id="paypal" type="image" src="https://www.sandbox.paypal.com/en_GB/SG/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_paynowCC_LG.gif:NonHosted">
 
-						<img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-						</form>-->
+
+        <input id="paypal" type="image" src="https://www.sandbox.paypal.com/en_GB/SG/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+
+        <img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+        </form>-->
