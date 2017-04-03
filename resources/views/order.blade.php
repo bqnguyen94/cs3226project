@@ -37,6 +37,7 @@
             @else
                 {!! Form::open(['route'=>'unconfirm.deliver',$order]) !!}}
                 {!! Form::close() !!}
+            @endif
         @endif
         <br/>
         <div class="row">
