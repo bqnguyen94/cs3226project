@@ -240,18 +240,26 @@
             $offer = App\Offer::where('offerer_id', $user->id)->where('order_id', $order->id)->first();
             ?>
             {!! Form::open(['url' => '/makeoffer/' . $order->id]) !!}
-            <label for="amount" class="form-control">Make an Offer</label>
-            <input required name="amount" type="number" class="form-control text-center"/>
-            <button id="btn-submit" type="submit" class="btn btn-success">Make Offer</button>
-            {!! Form::close() !!}
-        @endif
-    </div>
-@endsection
+            
+            <div class="row">
+                {!! Form::label('amount', 'Make an Offer',['class'=>'col-sm-2 control-label']) !!}
+                <div class="col-sm-4">
+                    {!! Form::number('amount',NULL,['class'=>'form-control text-center']) !!}
+                </div>
+                <div class="col-sm-3">
+                    <button id="btn-submit" type="submit" class="btn btn-success">
+                        Make Offer
+                    </button>
+                </div>
+                {!! Form::close() !!}
+                @endif
+            </div>
+        @endsection
 
 
 
 
-<!--
+        <!--
 
 								<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
 						<input type="hidden" name="cmd" value="_xclick">
@@ -260,27 +268,27 @@
 						<input type="hidden" name="item_name" value="Total Amount">
 
 						<?php
-//
-//						$temp = $offer->price;
-//						echo '<input type="hidden" name="amount" value="' . $temp . '">';
+        //
+        //						$temp = $offer->price;
+        //						echo '<input type="hidden" name="amount" value="' . $temp . '">';
 
-?>
+        ?>
 
-        <input type="hidden" name="currency_code" value="SGD">
-        <input type="hidden" name="button_subtype" value="services">
-        <input type="hidden" name="no_note" value="1">
-        <input type="hidden" name="no_shipping" value="1">
-        <input type="hidden" name="rm" value="1">
+                <input type="hidden" name="currency_code" value="SGD">
+                <input type="hidden" name="button_subtype" value="services">
+                <input type="hidden" name="no_note" value="1">
+                <input type="hidden" name="no_shipping" value="1">
+                <input type="hidden" name="rm" value="1">
 
-         page redirection using paypal here
-        <input type="hidden" name="return" value="http://139.59.103.42/orders">
-        <input type="hidden" name="cancel_return" value="http://139.59.103.42/foods">
-
-
-        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_paynowCC_LG.gif:NonHosted">
+                 page redirection using paypal here
+                <input type="hidden" name="return" value="http://139.59.103.42/orders">
+                <input type="hidden" name="cancel_return" value="http://139.59.103.42/foods">
 
 
-        <input id="paypal" type="image" src="https://www.sandbox.paypal.com/en_GB/SG/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_paynowCC_LG.gif:NonHosted">
 
-        <img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-        </form>-->
+
+                <input id="paypal" type="image" src="https://www.sandbox.paypal.com/en_GB/SG/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+
+                <img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+                </form>-->
