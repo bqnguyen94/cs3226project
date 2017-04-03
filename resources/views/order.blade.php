@@ -242,7 +242,10 @@
             {!! Form::open(['url' => '/makeoffer/' . $order->id]) !!}
 
             <div class="row">
-                {!! Form::label('amount', 'Make an Offer',['class'=>'col-sm-2 control-label','style'=>'vertical-align: middle;']) !!}
+                <div class="col-sm-2">
+                    <br>
+                    {!! Form::label('amount', 'Make an Offer',['class'=>'control-label']) !!}
+                </div>
                 <div class="col-sm-4">
                     {!! Form::number('amount',NULL,['class'=>'form-control text-center']) !!}
                 </div>
