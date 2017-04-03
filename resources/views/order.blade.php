@@ -33,7 +33,9 @@
 
         @if(Auth::user()->id == $order->deliverer_id)
             @if($order->is_delivered)
-                <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true" disabled>Delivery has already been confirmed</a>
+                <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true" disabled>
+                    Delivery has already been confirmed
+                </a>
             @else
                 {!! Form::open(['route'=>['confirm.deliver',$order]]) !!}
                      <button id="btn-submit" type="submit" class="btn btn-success">Confirm delivery</button>
@@ -43,7 +45,9 @@
 
         @if(Auth::user()->id == $order->buyer_id)
             @if($order->is_received)
-                <h4>Food has already been received</h4>
+                <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true" disabled>
+                    Food has already been received
+                </a>
             @else
                 {!! Form::open(['route'=>['confirm.receive',$order]]) !!}
                 <button id="btn-submit" type="submit" class="btn btn-success">Confirm receiving of food</button>
