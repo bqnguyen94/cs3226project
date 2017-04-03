@@ -113,7 +113,7 @@ $offers = App\Offer::where('order_id', $order->id)->orderBy('price')->get();
     ?>
     {!! Form::open(['url' => '/makeoffer/' . $order->id]) !!}
         <label for="amount" class="form-control">Make an Offer</label>
-        <input required name="amount" type="number" class="form-control text-center" />
+        <input required name="amount" type="number" step="0.1" class="form-control text-center" />
         <button id="btn-submit" type="submit" class="btn btn-success">Make Offer</button>
     {!! Form::close() !!}
     @endif
