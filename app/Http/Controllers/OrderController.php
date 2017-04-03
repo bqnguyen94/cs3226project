@@ -43,7 +43,7 @@ class OrderController extends Controller
 
     public function confirmDeliver(Order $order)
     {
-        if (!$order->is_delivered && Auth::user()->id==$order->deliverer_id) {
+        if (!$order->is_delivered && Auth::user()->id==$order->deliverer_id && $order->deliverer_id) {
             $order->is_delivered = true;
             $order->save();
             Session::flash('alert-success','Delivery has been confirmed');
@@ -56,7 +56,7 @@ class OrderController extends Controller
 
     public function confirmReceive(Order $order)
     {
-        if (!$order->is_received && Auth::user()->id==$order->buyer_id) {
+        if (!$order->is_received && Auth::user()->id==$order->buyer_id && $order->deliverer_id) {
             $order->is_received = true;
             $order->save();
             Session::flash('alert-success','Receiving of food has been confirmed');
