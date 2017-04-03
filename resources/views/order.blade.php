@@ -33,7 +33,7 @@
         @if(Auth::user()->id == $order->deliverer_id)
             @if($order->is_delivered)
                 {!! Form::open(['route'=>['unconfirm.deliver',$order]]) !!}
-                     <button id="btn-submit" type="submit" class="btn btn-success">Confirm delivery</button>
+                     <button id="btn-submit" type="submit" class="btn btn-success">unconfirm delivery</button>
                 {!! Form::close() !!}
             @else
                 {!! Form::open(['route'=>['confirm.deliver',$order]]) !!}
