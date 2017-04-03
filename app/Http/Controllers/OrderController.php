@@ -54,6 +54,6 @@ class OrderController extends Controller
         $order->is_delivered = false;
         $order->save();
         Session::flash('alert-success','Delivery has been unconfirmed');
-        return redirect()->route('order',$order->id);
+        return redirect()->to('/order/'.$order->id);
     }
 }
