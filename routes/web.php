@@ -32,6 +32,11 @@ Route::get('order/{order}/buyer-feedback',['as'=>'order.buyer-feedback','uses'=>
 
 Route::post('order/{order}/buyer-feedback-validate',['as'=>'order.buyer-feedback-validate','uses'=>'OrderController@buyerFeedbackValidate']);
 
+Route::get('order/{order}/deliverer-feedback',['as'=>'order.deliverer-feedback','uses'=>'OrderController@delivererFeedback']);
+
+Route::post('order/{order}/deliverer-feedback-validate',['as'=>'order.deliverer-feedback-validate','uses'=>'OrderController@delivererFeedbackValidate']);
+
+
 Route::post('order/{id}', 'UserController@accept_offer');
 
 Route::get('order/{order_id}/confirmed/{offer_id}/', 'UserController@paymentListener');
