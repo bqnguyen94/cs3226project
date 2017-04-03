@@ -45,7 +45,7 @@ class OrderController extends Controller
     {
         //todo
         //authorization
-        if (!$order->is_delivered && Auth::user()->id==$order->deliverer()->id) {
+        if (!$order->is_delivered && Auth::user()->id==$order->deliverer_id) {
             $order->is_delivered = true;
             $order->save();
             Session::flash('alert-success','Delivery has been confirmed');
