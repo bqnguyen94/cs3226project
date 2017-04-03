@@ -43,14 +43,25 @@ class OrderController extends Controller
 
     public function confirmDeliver(Order $order)
     {
-        //todo
-        //authorization
         if (!$order->is_delivered && Auth::user()->id==$order->deliverer_id) {
             $order->is_delivered = true;
             $order->save();
             Session::flash('alert-success','Delivery has been confirmed');
         } else {
             Session::flash('alert-danger', 'Delivery has already been confirmed');
+        }
+
+        return redirect()->to('/order/' . $order->id);
+    }
+
+    public function confirmReceive(Order $order)
+    {
+        if (!$order->is_received && Auth::user()->id==$order->buyer_id) {
+            $order->is_received = true;
+            $order->save();
+            Session::flash('alert-success','Receiving of food has been confirmed');
+        } else {
+            Session::flash('alert-danger', 'Food has already been received');
         }
 
         return redirect()->to('/order/' . $order->id);
