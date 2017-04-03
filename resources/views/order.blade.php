@@ -31,7 +31,7 @@
             @endif
         @endif
 
-        @if(Auth::user()->id == $order->deliverer_id)
+        @if(Auth::user()->id == $order->deliverer_id && $order->buyer_id)
             @if($order->is_delivered)
                 <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true" disabled>
                     Delivery has already been confirmed
@@ -43,7 +43,15 @@
             @endif
         @endif
 
-        @if(Auth::user()->id == $order->buyer_id)
+        @if($order->buyer_feedback)
+            <h4>Buyer Feedback: {{$order->buyer_feedback}}</h4>
+        @endif
+
+        @if($order->deliverer_feedback)
+            <h4>Buyer Feedback: {{$order->deliverer_feedback}}</h4>
+        @endif
+
+        @if(Auth::user()->id == $order->buyer_id && $order->deliverer_id)
             @if($order->is_received)
                 <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true" disabled>
                     Food has already been received
