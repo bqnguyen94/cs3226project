@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
+use Srmklive\PayPal\Services\AdaptivePayments;
+
 class OrderController extends Controller
 {
     /**
@@ -17,7 +19,7 @@ class OrderController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -43,27 +45,33 @@ class OrderController extends Controller
 
     public function confirmDeliver(Order $order)
     {
-        if (!$order->is_delivered && Auth::user()->id == $order->deliverer_id && $order->deliverer_id) {
+        if ($order && !$order->is_delivered && Auth::user()->id==$order->deliverer_id) {
             $order->is_delivered = true;
             $order->save();
+            if ($order->is_received) {
+                $this->payDeliverer($order);
+            }
             Session::flash('alert-success', 'Delivery has been confirmed');
             return redirect()->route('order.deliverer-feedback', $order);
         } else {
-            Session::flash('alert-danger', 'Delivery has already been confirmed');
-            return redirect()->to('/order/' . $order->id);
+            Session::flash('alert-danger', 'Ops something wrong happened!');
+            return redirect()->to('/');
         }
     }
 
     public function confirmReceive(Order $order)
     {
-        if (!$order->is_received && Auth::user()->id == $order->buyer_id && $order->deliverer_id) {
+        if ($order && !$order->is_received && Auth::user()->id==$order->buyer_id) {
             $order->is_received = true;
             $order->save();
+            if ($order->is_delivered) {
+                $this->payDeliverer($order);
+            }
             Session::flash('alert-success', 'Receiving of food has been confirmed');
             return redirect()->route('order.buyer-feedback', $order);
         } else {
-            Session::flash('alert-danger', 'Food has already been received');
-            return redirect()->to('/order/' . $order->id);
+            Session::flash('alert-danger', 'Ops something wrong happened!');
+            return redirect()->to('/');
         }
     }
 
@@ -128,5 +136,13 @@ class OrderController extends Controller
         }
         Session::flash('alert-danger', 'This is not allowed');
         return redirect()->to('/order/' . $order->id);
+    }
+
+    private function payDeliverer(Order $order) {
+        $deliverer = User::where('id', $order->deliverer_id)->first();
+        if ($deliverer) {
+            $deliverer->balance = $deliverer->balance + $order->final_price;
+            $deliverer->save();
+        }
     }
 }

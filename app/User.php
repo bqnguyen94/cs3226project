@@ -53,7 +53,7 @@ class User extends Authenticatable
     public function get_orders() {
         $orders = Order::where('buyer_id', $this->id)
                             ->orWhere('deliverer_id', $this->id)
-                            ->orderBy('created_at')
+                            ->orderByDesc('created_at')
                             ->get();
         return $orders;
     }
@@ -106,9 +106,10 @@ class User extends Authenticatable
                 ->where('food_id', $food_id)
                 ->first();
         if ($user_to_food) {
-            $user_to_food->update([
-                'food_amount' => $amt
-            ]);
+            DB::table('user_to_foods')
+                    ->where('user_id', $this->id)
+                    ->where('food_id', $food_id)
+                    ->update(['food_amount' => $amt]);
         }
     }
 

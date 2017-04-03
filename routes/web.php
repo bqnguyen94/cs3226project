@@ -14,6 +14,12 @@ Route::get('/', ['as'=>'/', 'uses'=>'HomeController@index']);
 
 Auth::routes();
 
+Route::get('payouts', 'UserController@adminGetDelivererPayouts');
+
+Route::get('payouts/pay/{id}', 'UserController@adminMakePaymentToUser');
+
+//Route::get('payouts/pay', 'UserController@adminMakePaymentToUsers');
+
 Route::get('user/activation/{token}', 'Auth\LoginController@activateUser')->name('user.activate');
 
 Route::get('profile/{id}', 'UserController@profile');
@@ -35,7 +41,6 @@ Route::post('order/{order}/buyer-feedback-validate',['as'=>'order.buyer-feedback
 Route::get('order/{order}/deliverer-feedback',['as'=>'order.deliverer-feedback','uses'=>'OrderController@delivererFeedback']);
 
 Route::post('order/{order}/deliverer-feedback-validate',['as'=>'order.deliverer-feedback-validate','uses'=>'OrderController@delivererFeedbackValidate']);
-
 
 Route::post('order/{id}', 'UserController@accept_offer');
 
