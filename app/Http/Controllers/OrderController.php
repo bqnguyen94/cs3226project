@@ -28,32 +28,43 @@ class OrderController extends Controller
     {
         $orders = Order::all();
         return view('orders')
-                ->with('orders', $orders);
+            ->with('orders', $orders);
     }
 
-    public function order($id) {
+    public function order($id)
+    {
         $order = Order::where('id', $id)->first();
         if (!$order) {
             return redirect()->to('/');
         }
         return view('order')->with('order', $order);
     }
-    
-    public function confirmDeliver(Order $order){
+
+    public function confirmDeliver(Order $order)
+    {
         //todo
         //authorization
-        $order->is_delivered = true;
-        $order->save();
-        Session::flash('alert-success','Delivery has been confirmed');
-        return redirect()->to('/order/'.$order->id);
+        if (!$order->is_delivered && Auth::user()->id==$order->deliverer()->id) {
+            $order->is_delivered = true;
+            $order->save();
+            Session::flash('alert-success','Delivery has been confirmed');
+        } else {
+            Session::flash('alert-danger', 'Delivery has already been confirmed');
+        }
+
+        return redirect()->to('/order/' . $order->id);
     }
 
-    public function unconfirmDeliver(Order $order){
-        //todo
-        // authorization
-        $order->is_delivered = false;
-        $order->save();
-        Session::flash('alert-success','Delivery has been unconfirmed');
-        return redirect()->to('/order/'.$order->id);
+    public function unconfirmDeliver(Order $order)
+    {
+        //this is to unconfirm delivery, but is not used
+        //Provided in case needed
+        if(false) {
+            $order->is_delivered = false;
+            $order->save();
+            Session::flash('alert-success', 'Delivery has been unconfirmed');
+        }
+        Session::flash('alert-danger', 'This is not allowed');
+        return redirect()->to('/order/' . $order->id);
     }
 }

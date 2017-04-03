@@ -26,8 +26,6 @@ Route::get('order/{id}', 'OrderController@order');
 
 Route::post('order/{order}/confirm-deliver',['as'=>'confirm.deliver','uses'=>'OrderController@confirmDeliver']);
 
-Route::post('order/{order}/unconfirm-deliver',['as'=>'unconfirm.deliver','uses'=>'OrderController@unconfirmDeliver']);
-
 Route::post('order/{id}', 'UserController@accept_offer');
 
 Route::post('makeoffer/{id}', 'UserController@make_offer');
