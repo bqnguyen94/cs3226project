@@ -19,7 +19,7 @@
                 {{ $buyer->name }} <a href="/chat/<?php echo $buyer->id ?>">Chat</a>
             </h4>
         </div>
-        
+
         @if ($deliverer)
             <div class="row">
                 <h4 class="col-sm-2">
@@ -30,32 +30,76 @@
                 </h4>
             </div>
         @else
-            <h4>Deliverer: Not yet!</h4>
+            <div class="row">
+                <h4 class="col-sm-2">
+                    Deliverer:
+                </h4>
+                <h4 class="col-sm-4">
+                    Not Yet!
+                </h4>
+            </div>
         @endif
-        <h4>Deliver to: {{ $order->deliver_location }}</h4>
+        <div class="row">
+            <h4 class="col-sm-2">
+                Deliver to:
+            </h4>
+            <h4 class="col-sm-4">
+                {{ $order->deliver_location }}
+            </h4>
+        </div>
         @if($order->deliverer_id)
             @if($order->is_delivered)
-                <h4>Delivered: Already delivered</h4>
+                <div class="row">
+                    <h4 class="col-sm-2">
+                        Delivery Status:
+                    </h4>
+                    <h4 class="col-sm-4">
+                        Already Delivered
+                    </h4>
+                </div>
             @else
-                <h4>Delivered: Not yet delivered</h4>
+                <div class="row">
+                    <h4 class="col-sm-2">
+                        Delivery Status:
+                    </h4>
+                    <h4 class="col-sm-4">
+                        Not Yet Delivered
+                    </h4>
+                </div>
             @endif
             @if($order->is_received)
-                <h4>Received: Already received</h4>
+                <div class="row">
+                    <h4 class="col-sm-2">
+                        Receiving Status:
+                    </h4>
+                    <h4 class="col-sm-4">
+                        Already Received
+                    </h4>
+                </div>
             @else
-                <h4>Received: Not yet received</h4>
+                <div class="row">
+                    <h4 class="col-sm-2">
+                        Receiving Status:
+                    </h4>
+                    <h4 class="col-sm-4">
+                        Not Yet Received
+                    </h4>
+                </div>
             @endif
         @endif
 
         @if(Auth::user()->id == $order->deliverer_id && $order->buyer_id)
+            <div class="col-sm-2">
             @if($order->is_delivered)
                 <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true" disabled>
-                    Delivery has already been confirmed
+                    Delivery confirmed
                 </a>
             @else
                 {!! Form::open(['route'=>['confirm.deliver',$order]]) !!}
                 <button id="btn-submit" type="submit" class="btn btn-success">Confirm delivery</button>
                 {!! Form::close() !!}
             @endif
+            </div>
         @endif
 
         @if($order->buyer_feedback)
