@@ -106,7 +106,7 @@ class UserController extends Controller
                         && $order->buyer_id == $user->id) {
                 $this->processPayment($order, $offer);
 
-                return redirect()->back();
+                //return redirect()->back();
             }
         }
     }
@@ -114,7 +114,7 @@ class UserController extends Controller
     private function processPayment($order, $offer) {
         $params = array(
             'cancelUrl'=>'http://project.dev:8000/',
-            'returnUrl'=>'http://project.dev:8000/order/' . $order->id,
+            'returnUrl'=>'http://project.dev:8000/order/' . $order->id . '/confirmed/' . $offer->id . '/',
             'amount' =>  $offer->price,
             'currency' => 'SGD'
         );
@@ -129,9 +129,7 @@ class UserController extends Controller
         $gateway->setTestMode(true);
 
         $response = $gateway->purchase($params)->send();
-        if ($response->isSuccessful()) {
-            Auth::user()->accept_offer($offer->id);
-        } elseif ($response->isRedirect()) {
+        if ($response->isRedirect()) {
             $response->redirect();
         } else {
             // payment failed: display message to customer
@@ -139,22 +137,27 @@ class UserController extends Controller
         }
     }
 
-    private function paymentListener() {
-        $gateway = Omnipay::create('PayPal_Express');
-        $gateway->setUsername('jhcs_api1.hotmail.sg');
-        $gateway->setPassword('7JU76R46GVAW6WSN');
-        $gateway->setSignature('AFcWxV21C7fd0v3bYYYRCpSSRl31AJgctxh96ZgCbsyH1uePbINrbSNd');
-        $gateway->setTestMode(true);
+    public function paymentListener($order_id, $offer_id) {
+        $order = Order::where('id', $order_id)->first();
+        $offer = Offer::where('id', $offer_id)->first();
+        if ($order && $offer) {
+            $gateway = Omnipay::create('PayPal_Express');
+            $gateway->setUsername('jhcs_api1.hotmail.sg');
+            $gateway->setPassword('7JU76R46GVAW6WSN');
+            $gateway->setSignature('AFcWxV21C7fd0v3bYYYRCpSSRl31AJgctxh96ZgCbsyH1uePbINrbSNd');
+            $gateway->setTestMode(true);
 
-        $params = Session::get('params');
-        $response = $gateway->completePurchase($params)->send();
-        $paypalResponse = $response->getData(); // this is the raw response object
+            $params = Session::get('params');
+            $response = $gateway->completePurchase($params)->send();
+            $paypalResponse = $response->getData(); // this is the raw response object
 
-        if(isset($paypalResponse['PAYMENTINFO_0_ACK']) && $paypalResponse['PAYMENTINFO_0_ACK'] === 'Success') {
-            Session::flash('success', 'Payment is successful!');
-        } else {
-            Session::flash('error', 'Payment is unsuccessful!');
+            if(isset($paypalResponse['PAYMENTINFO_0_ACK']) && $paypalResponse['PAYMENTINFO_0_ACK'] === 'Success') {
+                Auth::user()->accept_offer($offer->id);
+                Session::flash('alert-success', 'Payment is successful!');
+            } else {
+                Session::flash('alert-error', 'Payment is unsuccessful!');
+            }
+            return redirect()->to('/order/' . $order->id);
         }
-        return redirect()->to('/order/' . $order->id);
     }
 }
