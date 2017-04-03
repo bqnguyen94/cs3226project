@@ -85,48 +85,64 @@
         @endif
 
         @if($order->buyer_id)
-            @if($order->is_received)
-                <div class="row">
+            <div class="row">
+                @if($order->is_received)
                     <h4 class="col-sm-2">
                         Receiving Status:
                     </h4>
                     <h4 class="col-sm-4">
                         Already Received
                     </h4>
-                </div>
-            @else
-                <div class="row">
+                @else
                     <h4 class="col-sm-2">
                         Receiving Status:
                     </h4>
                     <h4 class="col-sm-4">
                         Not Yet Received
                     </h4>
-                </div>
-            @endif
+                @endif
+                @if(Auth::user()->id == $order->buyer_id && $order->deliverer_id)
+                    <div class="col-sm-2">
+                        @if($order->is_received)
+                            <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true"
+                               disabled>
+                                Food has already been received
+                            </a>
+                        @else
+                            {!! Form::open(['route'=>['confirm.receive',$order]]) !!}
+                            <button id="btn-submit" type="submit" class="btn btn-success">
+                                Confirm receiving of food
+                            </button>
+                            {!! Form::close() !!}
+                        @endif
+                    </div>
+                @endif
+            </div>
         @endif
-
 
 
         @if($order->buyer_feedback)
-            <h4>Buyer Feedback: {{$order->buyer_feedback}}</h4>
+            <div class="row">
+                <h4 class="col-sm-2">
+                    Buyer Feedback:
+                </h4>
+                <h4 class="col-sm-6">
+                    {{$order->buyer_feedback}}
+                </h4>
+            </div>
         @endif
 
         @if($order->deliverer_feedback)
-            <h4>Buyer Feedback: {{$order->deliverer_feedback}}</h4>
+            <div class="row">
+                <h4 class="col-sm-2">
+                    Deliverer Feedback:
+                </h4>
+                <h4 class="col-sm-6">
+                    {{$order->deliverer_feedback}}
+                </h4>
+            </div>
         @endif
 
-        @if(Auth::user()->id == $order->buyer_id && $order->deliverer_id)
-            @if($order->is_received)
-                <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true" disabled>
-                    Food has already been received
-                </a>
-            @else
-                {!! Form::open(['route'=>['confirm.receive',$order]]) !!}
-                <button id="btn-submit" type="submit" class="btn btn-success">Confirm receiving of food</button>
-                {!! Form::close() !!}
-            @endif
-        @endif
 
         <br/>
         <div class="row">
