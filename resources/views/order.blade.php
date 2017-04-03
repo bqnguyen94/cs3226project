@@ -47,26 +47,44 @@
                 {{ $order->deliver_location }}
             </h4>
         </div>
+
         @if($order->deliverer_id)
-            @if($order->is_delivered)
-                <div class="row">
+            <div class="row">
+                @if($order->is_delivered)
                     <h4 class="col-sm-2">
                         Delivery Status:
                     </h4>
                     <h4 class="col-sm-4">
                         Already Delivered
                     </h4>
-                </div>
-            @else
-                <div class="row">
+                @else
                     <h4 class="col-sm-2">
                         Delivery Status:
                     </h4>
                     <h4 class="col-sm-4">
                         Not Yet Delivered
                     </h4>
-                </div>
-            @endif
+                @endif
+                @if(Auth::user()->id == $order->deliverer_id && $order->buyer_id)
+                    <div class="col-sm-2">
+                        @if($order->is_delivered)
+                            <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true"
+                               disabled>
+                                Delivery confirmed
+                            </a>
+                        @else
+                            {!! Form::open(['route'=>['confirm.deliver',$order]]) !!}
+                            <button id="btn-submit" type="submit" class="btn btn-success">
+                                Confirm delivery
+                            </button>
+                            {!! Form::close() !!}
+                        @endif
+                    </div>
+                @endif
+            </div>
+        @endif
+
+        @if($order->buyer_id)
             @if($order->is_received)
                 <div class="row">
                     <h4 class="col-sm-2">
@@ -88,19 +106,7 @@
             @endif
         @endif
 
-        @if(Auth::user()->id == $order->deliverer_id && $order->buyer_id)
-            <div class="col-sm-2">
-            @if($order->is_delivered)
-                <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true" disabled>
-                    Delivery confirmed
-                </a>
-            @else
-                {!! Form::open(['route'=>['confirm.deliver',$order]]) !!}
-                <button id="btn-submit" type="submit" class="btn btn-success">Confirm delivery</button>
-                {!! Form::close() !!}
-            @endif
-            </div>
-        @endif
+
 
         @if($order->buyer_feedback)
             <h4>Buyer Feedback: {{$order->buyer_feedback}}</h4>
