@@ -47,11 +47,11 @@ class OrderController extends Controller
             $order->is_delivered = true;
             $order->save();
             Session::flash('alert-success', 'Delivery has been confirmed');
+            return redirect()->route('order.deliverer-feedback', $order);
         } else {
             Session::flash('alert-danger', 'Delivery has already been confirmed');
+            return redirect()->to('/order/' . $order->id);
         }
-
-        return redirect()->to('/order/' . $order->id);
     }
 
     public function confirmReceive(Order $order)
@@ -90,6 +90,32 @@ class OrderController extends Controller
             return redirect()->to('/order/'.$order->id);
         }
     }
+
+
+    public function delivererFeedback(Order $order)
+    {
+        if (Auth::user()->id == $order->deliverer_id) {
+            return view('order.deliverer-feedback',compact('order'));
+        } else {
+            return redirect()->to('/');
+        }
+    }
+
+    public function delivererFeedbackValidate(Request $request, Order $order){
+        if(Auth::user()->id == $order->deliverer_id && !$order->deliverer_feedback){
+            $this->validate($request,[
+                'deliverer_feedback'=>'string|max:3000'
+            ]);
+            $order->deliverer_feedback = $request->input('deliverer_feedback');
+            $order->save();
+            Session::flash('alert-success', 'Feedback successfully saved');
+            return redirect()->to('/order/'.$order->id);
+        }else{
+            Session::flash('alert-danger', 'This action can\'t be performed');
+            return redirect()->to('/order/'.$order->id);
+        }
+    }
+
 
     public function unconfirmDeliver(Order $order)
     {
