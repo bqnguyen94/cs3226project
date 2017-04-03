@@ -12,32 +12,6 @@
         </center>
         <br/>
         <h4>Buyer: {{ $buyer->name }} <a href="/chat/<?php echo $buyer->id ?>">Chat</a></h4>
-        @if ($deliverer)
-            <h4>Deliverer: {{ $buyer->name }}</h4>
-        @else
-            <h4>Deliverer: Not yet!</h4>
-        @endif
-        <h4>Deliver to: {{ $order->deliver_location }}</h4>
-        @if($order->deliverer_id)
-            @if($order->is_delivered)
-                <h4>Delivered: Already delivered</h4>
-            @else
-                <h4>Delivered: Not yet delivered</h4>
-            @endif
-            @if($order->is_received)
-                <h4>Delivered: Already received</h4>
-            @else
-                <h4>Delivered: Not yet received</h4>
-            @endif
-        @endif
-        @if(Auth::user()->id == deliverer_id)
-            @if($order->is_delivered)
-                {!! Form::open(['route'=>'confirm.deliver',$order]) !!}
-                {!! Form::close() !!}
-            @else
-                {!! Form::open(['route'=>'unconfirm.deliver',$order]) !!}}
-                {!! Form::close() !!}
-        @endif
         <br/>
         <div class="row">
             <table class="table table-condensed">
