@@ -25,9 +25,9 @@
                 <h4>Delivered: Not yet delivered</h4>
             @endif
             @if($order->is_received)
-                <h4>Delivered: Already received</h4>
+                <h4>Received: Already received</h4>
             @else
-                <h4>Delivered: Not yet received</h4>
+                <h4>Received: Not yet received</h4>
             @endif
         @endif
 
