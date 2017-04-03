@@ -47,11 +47,11 @@ class OrderController extends Controller
             $order->is_delivered = true;
             $order->save();
             Session::flash('alert-success', 'Delivery has been confirmed');
+            return redirect()->route('order.deliverer-feedback', $order);
         } else {
             Session::flash('alert-danger', 'Delivery has already been confirmed');
+            return redirect()->to('/order/' . $order->id);
         }
-
-        return redirect()->to('/order/' . $order->id);
     }
 
     public function confirmReceive(Order $order)
