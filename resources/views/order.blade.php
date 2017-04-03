@@ -18,7 +18,7 @@
             <h4>Deliverer: Not yet!</h4>
         @endif
         <h4>Deliver to: {{ $order->deliver_location }}</h4>
-        @if($order->deliverer_id == Auth::user()->id)
+        @if($order->deliverer_id)
             @if($order->is_delivered)
                 <h4>Delivered: Already delivered</h4>
             @else
