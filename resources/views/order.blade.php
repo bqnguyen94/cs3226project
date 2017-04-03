@@ -30,6 +30,7 @@
                 <h4>Delivered: Not yet received</h4>
             @endif
         @endif
+
         @if(Auth::user()->id == $order->deliverer_id)
             @if($order->is_delivered)
                      <h4>Delivery has already been confirmed</h4>
@@ -39,6 +40,17 @@
                 {!! Form::close() !!}
             @endif
         @endif
+
+        @if(Auth::user()->id == $order->buyer_id)
+            @if($order->is_received)
+                <h4>Delivery has already been received</h4>
+            @else
+                {!! Form::open(['route'=>['confirm.receive',$order]]) !!}
+                <button id="btn-submit" type="submit" class="btn btn-success">Confirm receiving of food</button>
+                {!! Form::close() !!}
+            @endif
+        @endif
+
         <br/>
         <div class="row">
             <table class="table table-condensed">
