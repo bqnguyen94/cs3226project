@@ -11,57 +11,138 @@
             <h3>This is order {{ $order->id }} 's details.</h3>
         </center>
         <br/>
-        <h4>Buyer: {{ $buyer->name }} <a href="/chat/<?php echo $buyer->id ?>">Chat</a></h4>
+        <div class="row">
+            <h4 class="col-sm-2">
+                Buyer:
+            </h4>
+            <h4 class="col-sm-4">
+                {{ $buyer->name }} <a href="/chat/<?php echo $buyer->id ?>">Chat</a>
+            </h4>
+        </div>
+
         @if ($deliverer)
-            <h4>Deliverer: {{ $buyer->name }}</h4>
+            <div class="row">
+                <h4 class="col-sm-2">
+                    Deliverer:
+                </h4>
+                <h4 class="col-sm-4">
+                    {{ $deliverer->name }}
+                </h4>
+            </div>
         @else
-            <h4>Deliverer: Not yet!</h4>
+            <div class="row">
+                <h4 class="col-sm-2">
+                    Deliverer:
+                </h4>
+                <h4 class="col-sm-4">
+                    Not Yet!
+                </h4>
+            </div>
         @endif
-        <h4>Deliver to: {{ $order->deliver_location }}</h4>
+        <div class="row">
+            <h4 class="col-sm-2">
+                Deliver to:
+            </h4>
+            <h4 class="col-sm-4">
+                {{ $order->deliver_location }}
+            </h4>
+        </div>
+
         @if($order->deliverer_id)
-            @if($order->is_delivered)
-                <h4>Delivered: Already delivered</h4>
-            @else
-                <h4>Delivered: Not yet delivered</h4>
-            @endif
-            @if($order->is_received)
-                <h4>Received: Already received</h4>
-            @else
-                <h4>Received: Not yet received</h4>
-            @endif
+            <div class="row">
+                @if($order->is_delivered)
+                    <h4 class="col-sm-2">
+                        Delivery Status:
+                    </h4>
+                    <h4 class="col-sm-4">
+                        Already Delivered
+                    </h4>
+                @else
+                    <h4 class="col-sm-2">
+                        Delivery Status:
+                    </h4>
+                    <h4 class="col-sm-4">
+                        Not Yet Delivered
+                    </h4>
+                @endif
+                @if(Auth::user()->id == $order->deliverer_id && $order->buyer_id)
+                    <div class="col-sm-2">
+                        @if($order->is_delivered)
+                            <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true"
+                               disabled>
+                                Delivery confirmed
+                            </a>
+                        @else
+                            {!! Form::open(['route'=>['confirm.deliver',$order]]) !!}
+                            <button id="btn-submit" type="submit" class="btn btn-success">
+                                Confirm delivery
+                            </button>
+                            {!! Form::close() !!}
+                        @endif
+                    </div>
+                @endif
+            </div>
         @endif
 
-        @if(Auth::user()->id == $order->deliverer_id && $order->buyer_id)
-            @if($order->is_delivered)
-                <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true" disabled>
-                    Delivery has already been confirmed
-                </a>
-            @else
-                {!! Form::open(['route'=>['confirm.deliver',$order]]) !!}
-                     <button id="btn-submit" type="submit" class="btn btn-success">Confirm delivery</button>
-                {!! Form::close() !!}
-            @endif
+        @if($order->buyer_id)
+            <div class="row">
+                @if($order->is_received)
+                    <h4 class="col-sm-2">
+                        Receiving Status:
+                    </h4>
+                    <h4 class="col-sm-4">
+                        Already Received
+                    </h4>
+                @else
+                    <h4 class="col-sm-2">
+                        Receiving Status:
+                    </h4>
+                    <h4 class="col-sm-4">
+                        Not Yet Received
+                    </h4>
+                @endif
+                @if(Auth::user()->id == $order->buyer_id && $order->deliverer_id)
+                    <div class="col-sm-2">
+                        @if($order->is_received)
+                            <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true"
+                               disabled>
+                                Food has already been received
+                            </a>
+                        @else
+                            {!! Form::open(['route'=>['confirm.receive',$order]]) !!}
+                            <button id="btn-submit" type="submit" class="btn btn-success">
+                                Confirm receiving of food
+                            </button>
+                            {!! Form::close() !!}
+                        @endif
+                    </div>
+                @endif
+            </div>
         @endif
+
 
         @if($order->buyer_feedback)
-            <h4>Buyer Feedback: {{$order->buyer_feedback}}</h4>
+            <div class="row">
+                <h4 class="col-sm-2">
+                    Buyer Feedback:
+                </h4>
+                <h4 class="col-sm-6">
+                    {{$order->buyer_feedback}}
+                </h4>
+            </div>
         @endif
 
         @if($order->deliverer_feedback)
-            <h4>Buyer Feedback: {{$order->deliverer_feedback}}</h4>
+            <div class="row">
+                <h4 class="col-sm-2">
+                    Deliverer Feedback:
+                </h4>
+                <h4 class="col-sm-6">
+                    {{$order->deliverer_feedback}}
+                </h4>
+            </div>
         @endif
 
-        @if(Auth::user()->id == $order->buyer_id && $order->deliverer_id)
-            @if($order->is_received)
-                <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true" disabled>
-                    Food has already been received
-                </a>
-            @else
-                {!! Form::open(['route'=>['confirm.receive',$order]]) !!}
-                <button id="btn-submit" type="submit" class="btn btn-success">Confirm receiving of food</button>
-                {!! Form::close() !!}
-            @endif
-        @endif
 
         <br/>
         <div class="row">
@@ -159,18 +240,29 @@
             $offer = App\Offer::where('offerer_id', $user->id)->where('order_id', $order->id)->first();
             ?>
             {!! Form::open(['url' => '/makeoffer/' . $order->id]) !!}
-            <label for="amount" class="form-control">Make an Offer</label>
-            <input required name="amount" type="number" class="form-control text-center"/>
-            <button id="btn-submit" type="submit" class="btn btn-success">Make Offer</button>
-            {!! Form::close() !!}
-        @endif
-    </div>
-@endsection
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <br>
+                    {!! Form::label('amount', 'Make an Offer',['class'=>'control-label']) !!}
+                </div>
+                <div class="col-sm-4">
+                    {!! Form::number('amount',NULL,['class'=>'form-control text-center']) !!}
+                </div>
+                <div class="col-sm-3">
+                    <button id="btn-submit" type="submit" class="btn btn-success">
+                        Make Offer
+                    </button>
+                </div>
+                {!! Form::close() !!}
+                @endif
+            </div>
+        @endsection
 
 
 
 
-<!--
+        <!--
 
 								<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
 						<input type="hidden" name="cmd" value="_xclick">
@@ -179,27 +271,27 @@
 						<input type="hidden" name="item_name" value="Total Amount">
 
 						<?php
-//
-//						$temp = $offer->price;
-//						echo '<input type="hidden" name="amount" value="' . $temp . '">';
+        //
+        //						$temp = $offer->price;
+        //						echo '<input type="hidden" name="amount" value="' . $temp . '">';
 
-						?>
+        ?>
 
-						<input type="hidden" name="currency_code" value="SGD">
-						<input type="hidden" name="button_subtype" value="services">
-						<input type="hidden" name="no_note" value="1">
-						<input type="hidden" name="no_shipping" value="1">
-						<input type="hidden" name="rm" value="1">
+                <input type="hidden" name="currency_code" value="SGD">
+                <input type="hidden" name="button_subtype" value="services">
+                <input type="hidden" name="no_note" value="1">
+                <input type="hidden" name="no_shipping" value="1">
+                <input type="hidden" name="rm" value="1">
 
-						 page redirection using paypal here
-						<input type="hidden" name="return" value="http://139.59.103.42/orders">
-						<input type="hidden" name="cancel_return" value="http://139.59.103.42/foods">
-
-
-						<input type="hidden" name="bn" value="PP-BuyNowBF:btn_paynowCC_LG.gif:NonHosted">
+                 page redirection using paypal here
+                <input type="hidden" name="return" value="http://139.59.103.42/orders">
+                <input type="hidden" name="cancel_return" value="http://139.59.103.42/foods">
 
 
-						<input id="paypal" type="image" src="https://www.sandbox.paypal.com/en_GB/SG/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_paynowCC_LG.gif:NonHosted">
 
-						<img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-						</form>-->
+
+                <input id="paypal" type="image" src="https://www.sandbox.paypal.com/en_GB/SG/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+
+                <img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+                </form>-->
