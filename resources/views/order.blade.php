@@ -30,7 +30,7 @@
                 <h4>Delivered: Not yet received</h4>
             @endif
         @endif
-        @if(Auth::user()->id == deliverer_id)
+        @if(Auth::user()->id == $order->deliverer_id)
             @if($order->is_delivered)
                 {!! Form::open(['route'=>'confirm.deliver',$order]) !!}
                 {!! Form::close() !!}
