@@ -240,9 +240,9 @@
             $offer = App\Offer::where('offerer_id', $user->id)->where('order_id', $order->id)->first();
             ?>
             {!! Form::open(['url' => '/makeoffer/' . $order->id]) !!}
-            
+
             <div class="row">
-                {!! Form::label('amount', 'Make an Offer',['class'=>'col-sm-2 control-label']) !!}
+                {!! Form::label('amount', 'Make an Offer',['class'=>'col-sm-2 control-label','style'=>'font-size:20']) !!}
                 <div class="col-sm-4">
                     {!! Form::number('amount',NULL,['class'=>'form-control text-center']) !!}
                 </div>
