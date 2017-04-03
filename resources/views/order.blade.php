@@ -43,7 +43,7 @@
 
         @if(Auth::user()->id == $order->buyer_id)
             @if($order->is_received)
-                <h4>Delivery has already been received</h4>
+                <h4>Food has already been received</h4>
             @else
                 {!! Form::open(['route'=>['confirm.receive',$order]]) !!}
                 <button id="btn-submit" type="submit" class="btn btn-success">Confirm receiving of food</button>
