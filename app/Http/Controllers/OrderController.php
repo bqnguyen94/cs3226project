@@ -70,10 +70,14 @@ class OrderController extends Controller
     public function buyerFeedback(Order $order)
     {
         if (Auth::user()->id == $order->buyer_id) {
-            return view('order.buyerfeedback');
+            return view('order.buyer-feedback');
         } else {
             return redirect()->to('/');
         }
+    }
+
+    public function buyerFeedbackValidate(Order $order){
+        
     }
 
     public function unconfirmDeliver(Order $order)

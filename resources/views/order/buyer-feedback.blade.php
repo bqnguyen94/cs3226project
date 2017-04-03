@@ -7,7 +7,7 @@
     $offers = App\Offer::where('order_id', $order->id)->orderBy('price')->get();
     ?>
     <div class="container">
-        {!! Form::open(['route'=>['order.buyerfeedback',$order],'class'=>'form-horizontal']) !!}
+        {!! Form::open(['route'=>['order.buyer-feedback-validate',$order],'class'=>'form-horizontal']) !!}
         <div class="panel panel-default">
             <div class="panel-heading">
                 What is your feedback for order {{$order->id}}?
