@@ -43,6 +43,14 @@
             @endif
         @endif
 
+        @if($order->buyer_feedback)
+            <h4>Buyer Feedback: {{$order->buyer_feedback}}</h4>
+        @endif
+
+        @if($order->deliverer_feedback)
+            <h4>Buyer Feedback: {{$order->deliverer_feedback}}</h4>
+        @endif
+
         @if(Auth::user()->id == $order->buyer_id && $order->deliverer_id)
             @if($order->is_received)
                 <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true" disabled>
