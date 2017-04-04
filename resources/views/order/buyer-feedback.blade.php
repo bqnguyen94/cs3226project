@@ -20,6 +20,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    {!! Form::label('buyer_rating','Rate the Deliverer',['class'=>'col-sm-2 control-label']) !!}
+                    <div class="col-sm-5">
+                        {!! Form::text('buyer_rating',5,['class'=>'rating','id'=>'input-id','data-size'=>'lg'])!!}
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="col-sm-offset-5 col-sm-2">
                         <button id="btn-submit" type="submit" class="btn btn-success">
                             Submit feedback
