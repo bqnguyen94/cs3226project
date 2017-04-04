@@ -87,7 +87,8 @@ class OrderController extends Controller
     public function buyerFeedbackValidate(Request $request, Order $order){
         if(Auth::user()->id == $order->buyer_id && !$order->buyer_feedback){
             $this->validate($request,[
-                'buyer_feedback'=>'string|max:3000'
+                'buyer_feedback'=>'string|max:3000',
+                'buyer_rating'=>'integer|min:0|max:5'
             ]);
             $order->buyer_feedback = $request->input('buyer_feedback');
             $order->save();
