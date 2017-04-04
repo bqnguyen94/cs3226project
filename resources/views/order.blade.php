@@ -16,14 +16,17 @@
             <h4 class="col-sm-2">
                 Buyer:
             </h4>
-            <h4 class="col-sm-4">
+            <h4 class="col-sm-3">
                 <a href="/profile/<?php echo $buyer->id ?>">
                     {{ $buyer->name }}
-                </a>
-                <a href="/chat/<?php echo $buyer->id ?>">
+                </a><br>
+               <a href="/chat/<?php echo $buyer->id ?>" class="btn btn-success">
                     Chat
                 </a>
             </h4>
+			
+			 
+			
         </div>
 
         @if ($deliverer)
@@ -233,7 +236,21 @@
                                 @endif
                                 <td>{{ $i }}</td>
                                 <td><a href="/profile/<?php echo $offerer->id ?>">{{ $offerer->name }}</a></td>
-                                <td>${{ $offer->price }}</td>
+								<?php 
+						
+									$temp = $offer->price;
+									$period = strpos($temp, ".");
+									$length = strlen($temp);
+									$temp2 =  $length-$period-1;
+									if( $temp2 == 1){
+										echo '<td>$' . $temp . '0</td>';
+									}else if($period == null) {
+										echo '<td>$' . $temp . '.00</td>';
+									}else{
+										echo '<td>$' . $temp . '</td>';
+									}
+								?>
+								
                                 @if (Auth::check() && Auth::user()->id == $order->buyer_id)
                                     <td>
                                         <a href="/chat/<?php echo $offer->offerer_id ?>">Chat</a>
@@ -276,7 +293,7 @@
                     {!! Form::label('amount', 'Make an Offer',['class'=>'control-label']) !!}
                 </div>
                 <div class="col-sm-4">
-                    {!! Form::number('amount',NULL,['class'=>'form-control text-center','required','step'=>'0.10']) !!}
+                    {!! Form::number('amount',"NULL",['class'=>'form-control text-center','required','step'=>'0.10']) !!}
                 </div>
                 <div class="col-sm-3">
                     <button id="btn-submit" type="submit" class="btn btn-success">
