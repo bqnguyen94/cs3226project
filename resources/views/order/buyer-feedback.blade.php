@@ -22,7 +22,7 @@
                 <div class="form-group">
                     {!! Form::label('buyer_rating','Rate the Deliverer',['class'=>'col-sm-2 control-label']) !!}
                     <div class="col-sm-5">
-                        {!! Form::text('buyer_rating',5,['class'=>'rating','id'=>'input-id','data-size'=>'lg'])!!}
+                        {!! Form::text('buyer_rating',5,['class'=>'rating','id'=>'input-id'])!!}
                     </div>
                 </div>
                 <div class="form-group">
