@@ -77,20 +77,22 @@ class OrderController extends Controller
 
     public function buyerFeedback(Order $order)
     {
-        if (Auth::user()->id == $order->buyer_id) {
+        if (Auth::user()->id == $order->buyer_id && !$order->buyer_feedback && !$order->buyer_rating) {
             return view('order.buyer-feedback',compact('order'));
         } else {
+            Session::flash('alert-danger', 'This action can\'t be performed');
             return redirect()->to('/');
         }
     }
 
     public function buyerFeedbackValidate(Request $request, Order $order){
-        if(Auth::user()->id == $order->buyer_id && !$order->buyer_feedback){
+        if(Auth::user()->id == $order->buyer_id && !$order->buyer_feedback && !$order->buyer_rating){
             $this->validate($request,[
                 'buyer_feedback'=>'string|max:3000',
-                'buyer_rating'=>'integer|min:0|max:5'
+                'buyer_rating'=>'integer|min:1|max:5'
             ]);
             $order->buyer_feedback = $request->input('buyer_feedback');
+            $order->buyer_rating = $request->input('buyer_rating');
             $order->save();
             Session::flash('alert-success', 'Feedback successfully saved');
             return redirect()->to('/order/'.$order->id);
@@ -103,19 +105,22 @@ class OrderController extends Controller
 
     public function delivererFeedback(Order $order)
     {
-        if (Auth::user()->id == $order->deliverer_id) {
+        if (Auth::user()->id == $order->deliverer_id && !$order->deliverer_feedback && !$order->deliverer_rating) {
             return view('order.deliverer-feedback',compact('order'));
         } else {
+            Session::flash('alert-danger', 'This action can\'t be performed');
             return redirect()->to('/');
         }
     }
 
     public function delivererFeedbackValidate(Request $request, Order $order){
-        if(Auth::user()->id == $order->deliverer_id && !$order->deliverer_feedback){
+        if(Auth::user()->id == $order->deliverer_id && !$order->deliverer_feedback && !$order->deliverer_rating){
             $this->validate($request,[
-                'deliverer_feedback'=>'string|max:3000'
+                'deliverer_feedback'=>'string|max:3000',
+                'deliverer_rating'=>'integer|min:1|max:5'
             ]);
             $order->deliverer_feedback = $request->input('deliverer_feedback');
+            $order->deliverer_rating = $request->input('deliverer_rating');
             $order->save();
             Session::flash('alert-success', 'Feedback successfully saved');
             return redirect()->to('/order/'.$order->id);
