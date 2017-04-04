@@ -173,7 +173,21 @@
                     <tr>
                         <td>{{ $i }}</td>
                         <td>{{ $item['food']->name }}</td>
-                        <td>${{ $item['food']->price }}</td>
+						<?php 
+						
+						$temp = $item['food']-> price;
+						$period = strpos($temp, ".");
+						$length = strlen($temp);
+						$temp2 =  $length-$period-1;
+						if( $temp2 == 1){
+							echo '<td>$' . $temp . '0</td>';
+						}else if($period == null) {
+							echo '<td>$' . $temp . '.00</td>';
+						}else{
+							echo '<td>$' . $temp . '</td>';
+						}
+						?>
+						
                         <td>{{ $item['amount'] }}</td>
                     </tr>
                 @endforeach
