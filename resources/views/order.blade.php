@@ -11,12 +11,18 @@
             <h3>This is order {{ $order->id }} 's details.</h3>
         </center>
         <br/>
+
         <div class="row">
             <h4 class="col-sm-2">
                 Buyer:
             </h4>
             <h4 class="col-sm-4">
-                {{ $buyer->name }} <a href="/chat/<?php echo $buyer->id ?>">Chat</a>
+                <a href="/profile/<?php echo $buyer->id ?>">
+                    {{ $buyer->name }}
+                </a>
+                <a href="/chat/<?php echo $buyer->id ?>">
+                    Chat
+                </a>
             </h4>
         </div>
 
@@ -144,7 +150,6 @@
         @endif
 
 
-
         <br/>
         <div class="row">
             <table class="table table-condensed">
@@ -213,7 +218,7 @@
                             <tr>
                                 @endif
                                 <td>{{ $i }}</td>
-                                <td>{{ $offerer->name }}</td>
+                                <td><a href="/profile/<?php echo $offerer->id ?>">{{ $offerer->name }}</a></td>
                                 <td>${{ $offer->price }}</td>
                                 @if (Auth::check() && Auth::user()->id == $order->buyer_id)
                                     <td>
@@ -236,19 +241,28 @@
                 </table>
             </div>
         @endif
-        @if (Auth::check() && Auth::user()->id != $order->buyer_id)
+        @if (Auth::check() && Auth::user()->id != $order->buyer_id && !$order->deliverer_id)
             <?php
             $offer = App\Offer::where('offerer_id', $user->id)->where('order_id', $order->id)->first();
             ?>
             {!! Form::open(['url' => '/makeoffer/' . $order->id]) !!}
 
+            <!--
+            <div class="row">
+                <div class="col-sm-2">
+                    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1"
+                         height="1">
+                    </form>
+                </div>
+            </div>
+            -->
             <div class="row">
                 <div class="col-sm-2">
                     <br>
                     {!! Form::label('amount', 'Make an Offer',['class'=>'control-label']) !!}
                 </div>
                 <div class="col-sm-4">
-                    {!! Form::number('amount',NULL,['class'=>'form-control text-center']) !!}
+                    {!! Form::number('amount',NULL,['class'=>'form-control text-center','required','step'=>'0.10']) !!}
                 </div>
                 <div class="col-sm-3">
                     <button id="btn-submit" type="submit" class="btn btn-success">
