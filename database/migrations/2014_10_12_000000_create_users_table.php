@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->tinyInteger('role');
             $table->boolean('activated')->default(false);
+            $table->float('balance', 5, 2)->unsigned()->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

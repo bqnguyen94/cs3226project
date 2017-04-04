@@ -186,6 +186,8 @@ return [
          * Omnipay
          */
         Ignited\LaravelOmnipay\LaravelOmnipayServiceProvider::class,
+
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class,
     ],
 
     /*
@@ -237,6 +239,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Omnipay' => Ignited\LaravelOmnipay\Facades\OmnipayFacade::class,
+        'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
     ],
 
 ];
