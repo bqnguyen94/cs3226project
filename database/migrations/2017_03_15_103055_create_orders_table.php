@@ -23,6 +23,8 @@ class CreateOrdersTable extends Migration
             $table->boolean('is_received')->default(false);
             $table->longText('buyer_feedback')->nullable();
             $table->longText('deliverer_feedback')->nullable();
+            $table->tinyInteger('buyer_rating')->nullable();
+            $table->tinyInteger('deliverer_rating')->nullable();
             $table->tinyInteger('buyer_rates')->nullable();
             $table->tinyInteger('deliverer_rates')->nullable();
             $table->foreign('buyer_id')->references('id')->on('users')->onDelete('cascade');

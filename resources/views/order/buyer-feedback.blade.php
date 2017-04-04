@@ -22,7 +22,7 @@
                 <div class="form-group">
                     {!! Form::label('buyer_rating','Rate the Deliverer',['class'=>'col-sm-2 control-label']) !!}
                     <div class="col-sm-5">
-                        {!! Form::text('buyer_rating',5,['class'=>'rating','id'=>'input-id','data-show-clear'=>false,'data-show-caption'=>false,'data-step'=>"1.0"])!!}
+                        {!! Form::text('buyer_rating',5,['class'=>'rating','id'=>'input-1-sm','data-show-clear'=>false,'data-show-caption'=>false,'data-step'=>"1.0"])!!}
                     </div>
                 </div>
                 <div class="form-group">
