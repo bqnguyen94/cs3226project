@@ -25,6 +25,22 @@ class UsersTableSeeder extends Seeder
         ]);
 
         User::create([
+            'name' => 'Admin 2',
+            'email' => 'admin2@unicorn.com',
+            'password' => bcrypt('123456'),
+            'role' => User::ROLE_ADMIN,
+            'activated' => true,
+        ]);
+
+        User::create([
+            'name' => 'Admin 3',
+            'email' => 'admin3@unicorn.com',
+            'password' => bcrypt('123456'),
+            'role' => User::ROLE_ADMIN,
+            'activated' => true,
+        ]);
+
+        User::create([
             'name' => 'Test Buyer',
             'email' => 'buyer@unicorn.com',
             'password' => bcrypt('123456'),
