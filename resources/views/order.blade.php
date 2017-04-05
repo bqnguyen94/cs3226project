@@ -19,14 +19,14 @@
             <h4 class="col-sm-3">
                 <a href="/profile/<?php echo $buyer->id ?>">
                     {{ $buyer->name }}
-                </a><br>
-               <a href="/chat/<?php echo $buyer->id ?>" class="btn btn-success">
+                </a>
+
+            </h4>
+            <div class="col-sm-2">
+                <a href="/chat/<?php echo $buyer->id ?>" class="btn btn-success">
                     Chat
                 </a>
-            </h4>
-			
-			 
-			
+            </div>
         </div>
 
         @if ($deliverer)
