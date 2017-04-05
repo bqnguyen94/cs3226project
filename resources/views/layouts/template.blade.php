@@ -15,6 +15,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js"></script>
         <link rel="stylesheet" href="/css/style.css">
         <link href="/css/carousel.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
         <script type="text/javascript" src="/js/fade.js"></script>
         <script type="text/javascript" src="/js/moveUp.js"></script>
     </head>

@@ -14,6 +14,9 @@ Route::get('/', ['as'=>'/', 'uses'=>'HomeController@index']);
 
 Auth::routes();
 
+Route::get('/fuzzy', 'FoodController@fuzzy');
+//Route::get('fuzzy/{query}', 'FoodController@fuzzy');
+
 Route::get('user/activation/{token}', 'Auth\LoginController@activateUser')->name('user.activate');
 
 Route::get('profile/{id}', 'UserController@profile');

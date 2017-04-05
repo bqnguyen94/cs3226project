@@ -5,6 +5,16 @@ html, body {
   font-size: 16px;
 }
 
+.suggestions:hover {
+    background-color: #ccc;
+}
+
+.suggestion-box {
+  border: 1px solid #ccc;
+  margin-top : -1px;
+  margin-right: 1px;
+}
+
 .container {
   max-width: 940px;
   margin: 0 auto;
