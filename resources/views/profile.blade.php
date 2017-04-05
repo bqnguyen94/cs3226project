@@ -122,9 +122,10 @@
             <thead>
                 <tr>
                     <th class="col-xs-1"></th>
-                    <th class="col-xs-4">Date</th>
-                    <th class="col-xs-3">Price</th>
+                    <th class="col-xs-3">Date</th>
+                    <th class="col-xs-1">Price</th>
                     <th class="col-xs-4">Buyer</th>
+                    <th class="col-xs-3">Rating</th>
                 </tr>
             </thead>
             <tbody>
@@ -141,6 +142,12 @@
                             <td>{{ $order->created_at }}</td>
                             <td>${{ $price }}</td>
                             <td><a href="/profile/<?php echo $buyer->id ?>">{{ $buyer->name }}</a></td>
+                            <td>
+                                {!! Form::text('buyer_rating',$order->buyer_rating,
+            ['class'=>'rating',
+            'data-show-clear'=>false,'data-show-caption'=>false,
+            'data-readonly'=>true,'data-size'=>'xs'])!!}
+                            </td>
                         </tr>
                     @endif
                 @endforeach
