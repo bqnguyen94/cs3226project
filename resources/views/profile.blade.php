@@ -20,6 +20,7 @@
     {!! Form::open(["method"=>"get"]) !!}
     <div class="row">
         <br>
+        <br>
         {!! Form::label('deliverer_rating','Overall Rating as a Buyer',['class'=>'col-sm-2 control-label']) !!}
         <div class="col-sm-3">
             {!! Form::text('deliverer_rating',$total,
@@ -51,6 +52,7 @@
     {!! Form::open(["method"=>"get"]) !!}
     <div class="row">
         <br>
+        <br>
         {!! Form::label('buyer_rating','Overall Rating as a Deliverer',['class'=>'col-sm-2 control-label']) !!}
         <div class="col-sm-3">
             {!! Form::text('buyer_rating',$total,
@@ -75,9 +77,10 @@
             <thead>
                 <tr>
                     <th class="col-xs-1"></th>
-                    <th class="col-xs-4">Date</th>
-                    <th class="col-xs-3">Price</th>
+                    <th class="col-xs-3">Date</th>
+                    <th class="col-xs-1">Price</th>
                     <th class="col-xs-4">Deliverer</th>
+                    <th class="col-xs-3">Rating</th>
                 </tr>
             </thead>
             <tbody>
@@ -98,6 +101,12 @@
                             @else
                             <td>No Deliverer</td>
                             @endif
+                            <td>
+                                {!! Form::text('deliverer_rating',$order->deliverer_rating,
+            ['class'=>'rating',
+            'data-show-clear'=>false,'data-show-caption'=>false,
+            'data-readonly'=>true,'data-size'=>'xs'])!!}
+                            </td>
                         </tr>
                     @endif
                 @endforeach
