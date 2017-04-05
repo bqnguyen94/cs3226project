@@ -63,14 +63,14 @@
                     <h4 class="col-sm-2">
                         Delivery Status:
                     </h4>
-                    <h4 class="col-sm-4">
+                    <h4 class="col-sm-3">
                         Already Delivered
                     </h4>
                 @else
                     <h4 class="col-sm-2">
                         Delivery Status:
                     </h4>
-                    <h4 class="col-sm-4">
+                    <h4 class="col-sm-3">
                         Not Yet Delivered
                     </h4>
                 @endif
@@ -99,14 +99,14 @@
                     <h4 class="col-sm-2">
                         Receiving Status:
                     </h4>
-                    <h4 class="col-sm-4">
+                    <h4 class="col-sm-3">
                         Already Received
                     </h4>
                 @else
                     <h4 class="col-sm-2">
                         Receiving Status:
                     </h4>
-                    <h4 class="col-sm-4">
+                    <h4 class="col-sm-3">
                         Not Yet Received
                     </h4>
                 @endif
