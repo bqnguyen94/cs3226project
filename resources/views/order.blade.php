@@ -138,6 +138,15 @@
                 <h4 class="col-sm-6">
                     {{$order->buyer_feedback}}
                 </h4>
+                <h4 class="col-sm-2">
+                    Buyer Rating:
+                </h4>
+                <h4 class="col-sm-4">
+                    {!! Form::text('buyer_rating',$order->buyer_rating,
+            ['class'=>'rating',
+            'data-show-clear'=>false,'data-show-caption'=>false,
+            'data-readonly'=>true,'data-size'=>'xs'])!!}
+                </h4>
             </div>
         @endif
 
@@ -146,8 +155,17 @@
                 <h4 class="col-sm-2">
                     Deliverer Feedback:
                 </h4>
-                <h4 class="col-sm-6">
+                <h4 class="col-sm-4">
                     {{$order->deliverer_feedback}}
+                </h4>
+                <h4 class="col-sm-2">
+                    Deliverer Rating:
+                </h4>
+                <h4 class="col-sm-4">
+                    {!! Form::text('deliverer_rating',$order->deliverer_rating,
+            ['class'=>'rating',
+            'data-show-clear'=>false,'data-show-caption'=>false,
+            'data-readonly'=>true,'data-size'=>'xs'])!!}
                 </h4>
             </div>
         @endif
