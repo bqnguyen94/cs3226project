@@ -18,7 +18,7 @@
                     <th class="col-xs-4">Item name</th>
                     <th class="col-xs-1">Price</th>
                     <th class="col-xs-1">Amount</th>
-					<th class="col-xs-1">Delete</th>
+					
                 </tr>
             </thead>
             <tbody id="cart_tbody">
@@ -47,8 +47,8 @@
 						}
 						?>
 
-                        <td><img src="img/icons/minus2.png"> {{ $cart_item['amount'] }} <img src="img/icons/plus2.png"></td>
-						<td><img src="img/icons/close2.png"></td>
+                        <td>{{ $cart_item['amount'] }} </td>
+						
                     </tr>
                 @endforeach
 
