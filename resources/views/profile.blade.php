@@ -13,7 +13,9 @@
             $total += $order->deliverer_rating;
         }
     }
-    $total = ($total/1.0)/$i;
+    if($i!=0){
+        $total = ($total/1.0)/$i;
+    }
     ?>
     {!! Form::open(["method"=>"get"]) !!}
     <div class="row">
@@ -42,7 +44,9 @@
             $total += $order->buyer_rating;
         }
     }
-    $total = ($total/1.0)/$i;
+    if($i!=0){
+        $total = ($total/1.0)/$i;
+    }
     ?>
     {!! Form::open(["method"=>"get"]) !!}
     <div class="row">
