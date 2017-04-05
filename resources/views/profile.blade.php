@@ -49,7 +49,6 @@
         $total = ($total/1.0)/$i;
     }
     ?>
-    {!! Form::open(["method"=>"get"]) !!}
     <div class="row">
         <br>
         <br>
@@ -67,7 +66,6 @@
             </h4>
         </div>
     </div>
-    {!! Form::close() !!}
 </div>
 <br/>
 <div class="container">
