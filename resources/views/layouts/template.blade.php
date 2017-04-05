@@ -14,21 +14,35 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js"></script>
         <link rel="stylesheet" href="/css/style.css">
+        <link href="{{asset("/css/star-rating.css")}}" media="all" rel="stylesheet" type="text/css"/>
         <link href="/css/carousel.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
         <script type="text/javascript" src="/js/fade.js"></script>
         <script type="text/javascript" src="/js/moveUp.js"></script>
+        <script type="text/javascript" src="{{asset("/js/star-rating.js")}}"></script>
     </head>
     <body>
         <script>
         	notDisplay();
         </script>
         @include('layouts.header')
+        @if (Session::has('error'))
+            <div class="alert alert-danger alert-dismissable fade in" role="alert" align="center">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>{{ Session::get('error') }}</strong>
+            </div>
+        @elseif (Session::has('alert-success'))
+            <div class="alert alert-success alert-dismissable fade in" role="alert" align="center">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>{{ Session::get('alert-success') }}</strong>
+            </div>
+		@endif
         <div id="Animate" style="margin-top:20vh">
         @yield('main')
         </div>
         @include('layouts.footer')
     </body>
+    <script src="{{asset("js/master.js")}}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     @yield('script')
 </html>

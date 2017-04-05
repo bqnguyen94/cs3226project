@@ -34,7 +34,19 @@
                     <tr class="cart_trow">
                         <td>{{ $i }}</td>
                         <td>{{ $cart_item['food']->name }}</td>
-                        <td>${{ $cart_item['food']->price }}</td>
+                        <?php 
+						
+						$temp = $cart_item['food']-> price;
+						$period = strpos($temp, ".");
+						$length = strlen($temp);
+						$temp2 =  $length-$period-1;
+						if( $temp2 == 1){
+							echo '<td>$' . $temp . '0</td>';
+						}else {
+							echo '<td>$' . $temp . '</td>';
+						}
+						?>
+
                         <td><img src="img/icons/minus2.png"> {{ $cart_item['amount'] }} <img src="img/icons/plus2.png"></td>
 						<td><img src="img/icons/close2.png"></td>
                     </tr>

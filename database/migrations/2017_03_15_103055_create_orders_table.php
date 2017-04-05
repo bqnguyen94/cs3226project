@@ -15,7 +15,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('final_price')->unsigned()->nullable();
+            $table->float('final_price', 5, 2)->unsigned()->nullable();
             $table->integer('buyer_id')->unsigned();
             $table->string('deliver_location');
             $table->integer('deliverer_id')->unsigned()->nullable();
@@ -23,6 +23,8 @@ class CreateOrdersTable extends Migration
             $table->boolean('is_received')->default(false);
             $table->longText('buyer_feedback')->nullable();
             $table->longText('deliverer_feedback')->nullable();
+            $table->tinyInteger('buyer_rating')->nullable();
+            $table->tinyInteger('deliverer_rating')->nullable();
             $table->tinyInteger('buyer_rates')->nullable();
             $table->tinyInteger('deliverer_rates')->nullable();
             $table->foreign('buyer_id')->references('id')->on('users')->onDelete('cascade');

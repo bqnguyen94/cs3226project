@@ -28,7 +28,7 @@
                         $price = $order->get_total_food_price();
                         ?>
                         <tr>
-                            <td>{{ $i }}</td>
+                            <td><a href="/order/<?php echo $order->id ?>">{{ $i }}</a></td>
                             <td>{{ $order->created_at }}</td>
                             <td>${{ $price }}</td>
                             @if ($deliverer)
@@ -66,7 +66,7 @@
                         $price = $order->get_total_food_price();
                         ?>
                         <tr>
-                            <td>{{ $i }}</td>
+                            <td><a href="/order/<?php echo $order->id ?>">{{ $i }}</a></td>
                             <td>{{ $order->created_at }}</td>
                             <td>${{ $price }}</td>
                             <td><a href="/profile/<?php echo $buyer->id ?>">{{ $buyer->name }}</a></td>

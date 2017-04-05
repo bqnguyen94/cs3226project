@@ -4,17 +4,17 @@
 
 
 <head>
-	<link href="https://fonts.googleapis.com/css?family=Acme|Belleza|Vollkorn" rel="stylesheet"> 
-	
+	<link href="https://fonts.googleapis.com/css?family=Acme|Belleza|Vollkorn" rel="stylesheet">
+
 </head>
 <body>
 <div id="menu_heading_background" class="col-xs-12">
 
 	 <p id="menu_heading" >Menu</p>
-			
+
 </div>
-	
-	
+
+
 <div class="container">
     <h1>Choose the Location:</h1>
     <div class="row">
@@ -36,20 +36,20 @@
 	    		<div id="collapse1" class="panel-collapse collapse">
 	    			<?php $hasRes=false; ?>
 	      			@foreach ($restaurants as $restaurant)
-            		<?php 
+            		<?php
             			if($restaurant->location=="Universiv Town"){
             				$hasRes=true;
-            		?>		
+            		?>
             				@include('_restaurant_panel')
-            		<?php  
+            		<?php
             			}
             		?>
         			@endforeach
-        			<?php 
+        			<?php
         			if($hasRes==false){
         			?>
         				<h5>&nbsp;&nbsp;&nbsp;&nbsp;No restaurant available yet!</h5>
-        			<?php 
+        			<?php
         			}
         			 ?>
 	    		</div>
@@ -73,22 +73,22 @@
 	    		<div id="collapse2" class="panel-collapse collapse">
 	    			<?php $hasRes=false; ?>
 	    			@foreach ($restaurants as $restaurant)
-            		<?php 
+            		<?php
             			if($restaurant->location=="The Deck"){
             				$hasRes=true;
             		?>
             				@include('_restaurant_panel')
-            		<?php  
+            		<?php
             			}
             		?>
         			@endforeach
-        			<?php 
+        			<?php
         			if($hasRes==false){
         			?>
-        				<h5>&nbsp;&nbsp;&nbsp;&nbsp;No restaurant available yet!</h5>	
-        			<?php 
+        				<h5>&nbsp;&nbsp;&nbsp;&nbsp;No restaurant available yet!</h5>
+        			<?php
         			}
-        			 ?>	
+        			 ?>
 	    		</div>
 	  		</div>
 		</div>
@@ -110,20 +110,20 @@
 	    		<div id="collapse3" class="panel-collapse collapse">
 	    			<?php $hasRes=false; ?>
 	      			@foreach ($restaurants as $restaurant)
-            		<?php 
+            		<?php
             			if($restaurant->location=="Biz Canteen"){
             				$hasRes=true;
-            		?>		
+            		?>
             				@include('_restaurant_panel')
-            		<?php  
+            		<?php
             			}
             		?>
         			@endforeach
-        			<?php 
+        			<?php
         			if($hasRes==false){
         			?>
-        				<h5>&nbsp;&nbsp;&nbsp;&nbsp;No restaurant available yet!</h5>	
-        			<?php 
+        				<h5>&nbsp;&nbsp;&nbsp;&nbsp;No restaurant available yet!</h5>
+        			<?php
         			}
         			 ?>
 	    		</div>
@@ -147,20 +147,20 @@
 	    		<div id="collapse4" class="panel-collapse collapse">
 	    			<?php $hasRes=false; ?>
 	      			@foreach ($restaurants as $restaurant)
-            		<?php 
+            		<?php
             			if($restaurant->location=="Yusof Ishak House"){
             				$hasRes=true;
-            		?>		
+            		?>
             				@include('_restaurant_panel')
-            		<?php  
+            		<?php
             			}
             		?>
         			@endforeach
-        			<?php 
+        			<?php
         			if($hasRes==false){
         			?>
-        				<h5>&nbsp;&nbsp;&nbsp;&nbsp;No restaurant available yet!</h5>	
-        			<?php 
+        				<h5>&nbsp;&nbsp;&nbsp;&nbsp;No restaurant available yet!</h5>
+        			<?php
         			}
         			 ?>
 	    		</div>
@@ -184,20 +184,20 @@
 	    		<div id="collapse5" class="panel-collapse collapse">
 	    			<?php $hasRes=false; ?>
 	      			@foreach ($restaurants as $restaurant)
-            		<?php 
+            		<?php
             			if($restaurant->location=="Science Canteen"){
             				$hasRes=true;
-            		?>		
+            		?>
             				@include('_restaurant_panel')
-            		<?php  
+            		<?php
             			}
             		?>
         			@endforeach
-        			<?php 
+        			<?php
         			if($hasRes==false){
         			?>
-        				<h5>&nbsp;&nbsp;&nbsp;&nbsp;No restaurant available yet!</h5>	
-        			<?php 
+        				<h5>&nbsp;&nbsp;&nbsp;&nbsp;No restaurant available yet!</h5>
+        			<?php
         			}
         			 ?>
 	    		</div>
@@ -206,10 +206,22 @@
     </div>
 </div>
 @endsection
-	
+@section('script')
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-96827928-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+@stop
+
 <style>
 	#menu_heading_background{
-				
+
 		background-image:url("http://139.59.104.3/img/banner/banner_menu2.png");
 		width:100%;
 		max-height:140px;
@@ -217,9 +229,9 @@
 		margin-bottom:40px;
 	}
 
-	
+
 	#menu_heading{
-		
+
 		padding-top:20px;
 		text-align:50%;
 		font-size:48px;
@@ -228,9 +240,9 @@
 		font-weight:900;
 		font-family:'Belleza', sans-serif;
 		text-shadow:2px 2px black;
-		
-		
-		
+
+
+
 	}
 
 </style>

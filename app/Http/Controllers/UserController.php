@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Srmklive\PayPal\Services\AdaptivePayments;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Omnipay\Omnipay;
+use Illuminate\Support\Facades\Session;
 use App\Order;
 use App\Offer;
 use App\Food;
@@ -41,7 +45,7 @@ class UserController extends Controller
                     ->with('target', $target)
                     ->with('users', $users)
                     ->with('foods', $foods)
-                    ->with('orders', $user->get_orders());
+                    ->with('orders', $target->get_orders());
         }
         return redirect()->to('/');
     }
@@ -102,9 +106,123 @@ class UserController extends Controller
                         && !$order->deliverer_id
                         && $offer->order_id == $order->id
                         && $order->buyer_id == $user->id) {
-                $user->accept_offer($offer->id);
-                return redirect()->back();
+                $this->processPayment($order, $offer);
+
+                //return redirect()->back();
             }
         }
     }
+
+    private function processPayment($order, $offer) {
+        $params = array(
+            'cancelUrl'=>'http://project.dev:8000/',
+            'returnUrl'=>'http://project.dev:8000/order/' . $order->id . '/confirmed/' . $offer->id . '/',
+            'amount' =>  $offer->price,
+            'currency' => 'SGD'
+        );
+
+        Session::put('params', $params);
+        Session::save();
+
+        $gateway = Omnipay::create('PayPal_Express');
+        $gateway->setUsername('jhcs_api1.hotmail.sg');
+        $gateway->setPassword('C7PFEQSUMAQLAKKP');
+        $gateway->setSignature('AFcWxV21C7fd0v3bYYYRCpSSRl31AbJBDMUQ2rqLv4jFxGAqS.eqn5g2');
+        $gateway->setTestMode(true);
+
+        $response = $gateway->purchase($params)->send();
+        if ($response->isRedirect()) {
+            $response->redirect();
+        } else {
+            // payment failed: display message to customer
+            echo $response->getMessage();
+        }
+    }
+
+    public function paymentListener($order_id, $offer_id) {
+        $order = Order::where('id', $order_id)->first();
+        $offer = Offer::where('id', $offer_id)->first();
+        if ($order && $offer) {
+            $gateway = Omnipay::create('PayPal_Express');
+            $gateway->setUsername('jhcs_api1.hotmail.sg');
+            $gateway->setPassword('7JU76R46GVAW6WSN');
+            $gateway->setSignature('AFcWxV21C7fd0v3bYYYRCpSSRl31AJgctxh96ZgCbsyH1uePbINrbSNd');
+            $gateway->setTestMode(true);
+
+            $params = Session::get('params');
+            $response = $gateway->completePurchase($params)->send();
+            $paypalResponse = $response->getData(); // this is the raw response object
+
+            if(isset($paypalResponse['PAYMENTINFO_0_ACK']) && $paypalResponse['PAYMENTINFO_0_ACK'] === 'Success') {
+                Auth::user()->accept_offer($offer->id);
+                Session::flash('alert-success', 'Payment is successful!');
+            } else {
+                Session::flash('alert-error', 'Payment is unsuccessful!');
+            }
+            return redirect()->to('/order/' . $order->id);
+        }
+    }
+
+    public function adminGetDelivererPayouts() {
+        if (Auth::check()) {
+            $user = Auth::user();
+            if ($user->role == User::ROLE_ADMIN) {
+                $users = User::where('balance', '<>', 0)->get();
+                return view('payouts')->with('users', $users);
+            }
+        }
+        Session::flash('alert-error', 'You are not allowed to see this!');
+        return redirect()->to('/');
+    }
+
+    public function adminMakePaymentToUser($id) {
+        if (Auth::check()) {
+            $user = Auth::user();
+            if ($user->role == User::ROLE_ADMIN) {
+                $target = User::where('id', $id)->first();
+                $target->balance = 0;
+                $target->save();
+                Session::flash('alert-success', 'Paid ' . $target->name . '!');
+                return redirect()->back();
+            }
+        }
+        Session::flash('alert-error', 'You are not allowed to see this!');
+        return redirect()->to('/');
+    }
+/*
+    public function adminMakePaymentToUsers() {
+        if (Auth::check()) {
+            $user = Auth::user();
+            if ($user->role == User::ROLE_ADMIN) {
+                $targets = User::where('balance', '<>', 0)->get();
+                $this->handlePayment($targets);
+            }
+        }
+        Session::flash('alert-error', 'You are not allowed to see this!');
+        return redirect()->to('/');
+    }
+
+    private function handlePayment($targets) {
+        $provider = new AdaptivePayments;
+        $receivers = [];
+        $isPrimary = true;
+        foreach ($targets as $target) {
+            $receiver[] = [
+                'email' => $target->email,
+                'amount' => $target->balance,
+                'primary' => true,
+            ];
+        }
+        $data = [
+            'receivers'  => $receivers,
+            'payer' => 'SENDER', // (Optional) Describes who pays PayPal fees. Allowed values are: 'SENDER', 'PRIMARYRECEIVER', 'EACHRECEIVER' (Default), 'SECONDARYONLY'
+            'return_url' => url('adminpayment/success/'),
+            'cancel_url' => url('/'),
+        ];
+        $response = $provider->createPayRequest($data);
+        $redirect_url = $provider->getRedirectUrl('approved', $response['payKey']);
+
+        return redirect($redirect_url);
+    }
+*/
 }

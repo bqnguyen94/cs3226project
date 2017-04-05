@@ -13,7 +13,21 @@
         <!--Title-->
         <h4 class="card-title">{{ $food->name }}</h4>
         <!--Text-->
-        <p class="card-text">Price: {{ $food->price }}</p>
+        <p class="card-text">Price: 
+			<?php 
+						
+						$temp = $food-> price;
+						$period = strpos($temp, ".");
+						$length = strlen($temp);
+						$temp2 =  $length-$period-1;
+						if( $temp2 == 1){
+							echo '$' . $temp . '0';
+						}else {
+							echo '$' . $temp;
+						}
+			?>
+			
+		</p>
         {!! Form::open() !!}
         <input id="food_id" name="food_id" type="hidden" value="<?php echo $food->id ?>">
         <button id="btn-submit" class="btn btn-success" type="submit">ADD TO CART</button>
