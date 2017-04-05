@@ -16,7 +16,7 @@
             <h4 class="col-sm-2">
                 Buyer:
             </h4>
-            <h4 class="col-sm-3">
+            <h4 class="col-sm-4">
                 <a href="/profile/<?php echo $buyer->id ?>">
                     {{ $buyer->name }}
                 </a>
@@ -63,14 +63,14 @@
                     <h4 class="col-sm-2">
                         Delivery Status:
                     </h4>
-                    <h4 class="col-sm-3">
+                    <h4 class="col-sm-4">
                         Already Delivered
                     </h4>
                 @else
                     <h4 class="col-sm-2">
                         Delivery Status:
                     </h4>
-                    <h4 class="col-sm-3">
+                    <h4 class="col-sm-4">
                         Not Yet Delivered
                     </h4>
                 @endif
@@ -99,14 +99,14 @@
                     <h4 class="col-sm-2">
                         Receiving Status:
                     </h4>
-                    <h4 class="col-sm-3">
+                    <h4 class="col-sm-4">
                         Already Received
                     </h4>
                 @else
                     <h4 class="col-sm-2">
                         Receiving Status:
                     </h4>
-                    <h4 class="col-sm-3">
+                    <h4 class="col-sm-4">
                         Not Yet Received
                     </h4>
                 @endif
