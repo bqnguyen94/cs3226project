@@ -81,8 +81,9 @@
                 </div>
             </div>
             <center class="cart_buttons">
+				<a href="/foods" class="btn btn-success" id="cart_continueshopping">Return to Food Menu</a>
 				<button id="btn-submit" class="btn btn-success" type="submit">PLACE ORDER</button>
-				<a href="/foods" class="btn btn-success" id="cart_continueshopping">Continue Shopping</a>
+				
             </center>
         {!! Form::close() !!}
     </div>
