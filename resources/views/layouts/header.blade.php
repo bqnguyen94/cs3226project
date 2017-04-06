@@ -22,28 +22,16 @@
                        
 					<li role="presentation"><a href="/foods">Menu</a></li>
 					<li role="presentation"><a href="/orders">Orders</a></li>
+					<li role="presentation" style="float:right"><a href="{{ route('login') }}">Log In</a></li>
 					<li role="presentation" style="float:right"><a href="{{ route('register') }}">Sign Up</a></li>
-                    <li role="presentation" style="float:right"><a href="{{ route('login') }}">Log In</a></li>
-							         
-						           </li>
+                    		         
+						           
                     @elseif (Auth::check())
-						<li class="dropdown" id="dropdown_user" role="presentation"  >
-							<a role="presentation" class="dropdown-toggle" data-toggle="dropdown">User <span class="caret"></span></a>
-                        	<ul class="dropdown-menu">
-								<li><a href="/profile/<?php echo Auth::user()->id ?>">Profile</a> </li>
-								<li><a role="presentation" href="/threads">Message</a></li>
-								<li><a role="presentation" href="/cart">Cart</a></li>
-							</ul>
-						</li>
-             			<li class="dropdown" id="dropdown_options" role="presentation" >
-							<a role="presentation" class="dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a role="presentation" href="/foods">Menu</a></li>
-<!-- Temporary removed in case we missed something <li><a role="presentation" href="/cart">Cart</a></li>-->
-								<li><a role="presentation" href="/orders">Orders</a></li>
-							</ul>
-						</li>
-                        <li role="presentation">
+				
+				    <li role="presentation"><a href="/foods">Menu</a></li>
+					<li role="presentation"><a href="/orders">Orders</a></li>
+					
+					<li role="presentation" style="float:right">
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
@@ -53,7 +41,17 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>
-                        </li>
+                    </li>
+				<li class="dropdown" id="dropdown_user" role="presentation" style="float:right" >
+							<a role="presentation" class="dropdown-toggle" data-toggle="dropdown">User <span class="caret"></span></a>
+                        	<ul class="dropdown-menu">
+								<li><a href="/profile/<?php echo Auth::user()->id ?>">Profile</a> </li>
+								<li><a role="presentation" href="/threads">Message</a></li>
+								<li><a role="presentation" href="/cart">Cart</a></li>
+							</ul>
+					</li>
+				
+					
                     @endif
                 </ul>
             </div>
