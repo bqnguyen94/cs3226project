@@ -24,7 +24,14 @@
         <script>
         	notDisplay();
         </script>
-        @include('layouts.header')
+
+        <div class="hidden-md hidden-lg">
+            @include('layouts.headerForMobile')
+        </div>
+        <div class="hidden-sm hidden-xs">
+            @include('layouts.header')
+        </div>
+
         @if (Session::has('error'))
             <div class="alert alert-danger alert-dismissable fade in" role="alert" align="center">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
