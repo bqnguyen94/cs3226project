@@ -10,6 +10,13 @@ html, body {
   margin: 0 auto;
 }
 
+/*spacing*/
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
 /* Header */
 .header {
   padding: 40px;
@@ -164,6 +171,7 @@ footer{
   font-family: 'Arvo', serif;
   text-decoration:none;
   padding-top:10px;
+  margin-top:15px;
   height:45px;
 
 

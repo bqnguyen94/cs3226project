@@ -13,16 +13,16 @@
         <br/>
 
         <div class="row">
-            <h4 class="col-sm-2">
+            <h4 class="col-sm-2 vcenter">
                 Buyer:
             </h4>
-            <h4 class="col-sm-4">
+            <h4 class="col-sm-4 vcenter">
                 <a href="/profile/<?php echo $buyer->id ?>">
                     {{ $buyer->name }}
                 </a>
 
             </h4>
-            <div class="col-sm-2">
+            <div class="col-sm-2 vcenter">
                 <a href="/chat/<?php echo $buyer->id ?>" class="btn btn-success">
                     Chat
                 </a>
