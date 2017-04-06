@@ -22,21 +22,24 @@ html, body {
 }
 
 .nav-pills li a {
-  background-color: white;
-  color: #d8192f;
+  
   border: 1px solid #d8192f;
   border-radius: 4px;
   margin-left: 10px;
   width: 120px;
   text-align: center;
+	
+  background-color:#d8192f;
+  color: white;
 }
 
 .nav-pills li.active a,
 .nav-pills li a:hover,
 .section .btn:hover {
-  background-color:#d8192f;
+  
   box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
-  color: white;
+  background-color: white;
+  color: #d8192f;
 }
 
 .nav-pills li.active a:hover {
