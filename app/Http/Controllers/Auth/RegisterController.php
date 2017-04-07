@@ -54,11 +54,17 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users|regex:(([a-zA-Z0-9._]+)(@u.nus.edu))',
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                'unique:users',
+                'regex:(([a-zA-Z._]+)(@u.nus.edu|@comp.nus.edu.sg|@nus.edu.sg))',
+            ],
             'password' => 'required|min:6|confirmed',
         ], [
-            'email.regex' => 'Please use a valid NUS email address e.g. arron.tan@u.nus.edu'
-    ]);
+            'email.regex' => 'Please use a valid NUS email address in the user-friendly format e.g. arron.tan@u.nus.edu instead of e0123456@u.nus.edu'
+        ]);
     }
 
     /**
