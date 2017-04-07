@@ -147,8 +147,8 @@ class UserController extends Controller
 
     private function processPayment($order, $offer) {
         $params = array(
-            'cancelUrl'=>'http://project.dev:8000/',
-            'returnUrl'=>'http://project.dev:8000/order/' . $order->id . '/confirmed/' . $offer->id . '/',
+            'cancelUrl'=>'https://nusfood.com/',
+            'returnUrl'=>'https://nusfood.com/order/' . $order->id . '/confirmed/' . $offer->id . '/',
             'amount' =>  $offer->price,
             'currency' => 'SGD'
         );
@@ -158,9 +158,9 @@ class UserController extends Controller
 
         $gateway = Omnipay::create('PayPal_Express');
         $gateway->setUsername('jhcs_api1.hotmail.sg');
-        $gateway->setPassword('C7PFEQSUMAQLAKKP');
-        $gateway->setSignature('AFcWxV21C7fd0v3bYYYRCpSSRl31AbJBDMUQ2rqLv4jFxGAqS.eqn5g2');
-        $gateway->setTestMode(true);
+        $gateway->setPassword('VG4ESKFEJ4SLNUL4');
+        $gateway->setSignature('AFcWxV21C7fd0v3bYYYRCpSSRl31APrilmu6WQdlaXAQvK6TlJEB-AfH');
+        //$gateway->setTestMode(true);
 
         $response = $gateway->purchase($params)->send();
         if ($response->isRedirect()) {
@@ -177,9 +177,9 @@ class UserController extends Controller
         if ($order && $offer) {
             $gateway = Omnipay::create('PayPal_Express');
             $gateway->setUsername('jhcs_api1.hotmail.sg');
-            $gateway->setPassword('7JU76R46GVAW6WSN');
-            $gateway->setSignature('AFcWxV21C7fd0v3bYYYRCpSSRl31AJgctxh96ZgCbsyH1uePbINrbSNd');
-            $gateway->setTestMode(true);
+            $gateway->setPassword('VG4ESKFEJ4SLNUL4');
+            $gateway->setSignature('AFcWxV21C7fd0v3bYYYRCpSSRl31APrilmu6WQdlaXAQvK6TlJEB-AfH');
+            //$gateway->setTestMode(true);
 
             $params = Session::get('params');
             $response = $gateway->completePurchase($params)->send();
