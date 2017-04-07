@@ -86,10 +86,10 @@
         <div class="page-header">
             <h3>Newest Food Stalls</h3>
         </div>
-        <div class="row">
+        <div class="row index_newestfoodstalls">
             <div class="col-md-4">
                 <h4>
-                    UTown
+                    <a href="/foods#menu_ut">UTown</a>
                 </h4>
                 <ul>
                     <li>Astons</li>
@@ -98,7 +98,7 @@
             </div>
             <div class="col-md-4">
                 <h4>
-                    The Deck
+					<a href="/foods#menu_deck">The Deck</a>
                 </h4>
                 <ul>
                     <li>Liang Ban Kung Fu</li>
@@ -107,7 +107,8 @@
             </div>
             <div class="col-md-4">
                 <h4>
-                    Yusof-Ishak House
+					<a href="/foods#menu_yih">Yusof-Ishak House</a>
+                   
                 </h4>
                 <ul>
                     <li>Starbucks</li>
@@ -119,6 +120,17 @@
     </div>
 </div>
 @endsection
+<style>
+
+	div.index_newestfoodstalls div h4 a{
+	
+	font-style:none;
+	color:#e40c25;
+}
+
+
+</style>
+
 @section('script')
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
