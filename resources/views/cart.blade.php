@@ -18,7 +18,7 @@
                     <th class="col-xs-4">Item name</th>
                     <th class="col-xs-1">Price</th>
                     <th class="col-xs-1">Amount</th>
-					
+					<th></th>
                 </tr>
             </thead>
             <tbody id="cart_tbody">
@@ -34,8 +34,8 @@
                     <tr class="cart_trow">
                         <td>{{ $i }}</td>
                         <td>{{ $cart_item['food']->name }}</td>
-                        <?php 
-						
+                        <?php
+
 						$temp = $cart_item['food']-> price;
 						$period = strpos($temp, ".");
 						$length = strlen($temp);
@@ -48,7 +48,14 @@
 						?>
 
                         <td>{{ $cart_item['amount'] }} </td>
-						
+						<td>
+							{!! Form::open(['route' => 'cart.delete']) !!}
+							<button name="food_id" id="btn-submit" type="submit" class="btn btn-success" value="<?php echo $cart_item['food_id'] ?>">
+	                            Remove
+	                        </button>
+							{!! Form::close() !!}
+						</td>
+
                     </tr>
                 @endforeach
 
@@ -57,6 +64,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
+						<td></td>
                 </tr>
                 <tr id="cart_lastrow">
                     <td>
@@ -67,9 +75,17 @@
                     </td>
                     <td></td>
                     <td></td>
+					<td></td>
                 </tr>
             </tbody>
         </table>
+		{!! Form::open(['route' => 'cart.clear']) !!}
+		<center>
+			<button name="food_id" id="btn-submit" type="submit" class="btn btn-danger">
+				Clear Cart
+			</button>
+		</center>
+		{!! Form::close() !!}
     </div>
 
     <div class="row">
@@ -81,9 +97,9 @@
                 </div>
             </div>
             <center class="cart_buttons">
-				<a href="/foods" class="btn btn-success" id="cart_continueshopping">Return to Food Menu</a>
+				<a href="/foods" class="btn btn-info" id="cart_continueshopping">Return to Food Menu</a>
 				<button id="btn-submit" class="btn btn-success" type="submit">PLACE ORDER</button>
-				
+
             </center>
         {!! Form::close() !!}
     </div>

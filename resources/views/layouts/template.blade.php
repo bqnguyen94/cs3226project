@@ -33,15 +33,19 @@
         </div>
 
         @if (Session::has('error'))
+        <div class="container">
             <div class="alert alert-danger alert-dismissable fade in" role="alert" align="center">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <strong>{{ Session::get('error') }}</strong>
             </div>
+        </div>
         @elseif (Session::has('alert-success'))
+        <div class="container">
             <div class="alert alert-success alert-dismissable fade in" role="alert" align="center">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <strong>{{ Session::get('alert-success') }}</strong>
             </div>
+        </div>
 		@endif
         <div id="Animate" style="margin-top:20vh">
         @yield('main')

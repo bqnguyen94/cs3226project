@@ -50,6 +50,22 @@ class UserController extends Controller
         return redirect()->to('/');
     }
 
+    public function updatePaypal($id, Request $request) {
+        if (Auth::check() && Auth::user()->id == $id) {
+            if ($request->paypal) {
+                $this->validate($request, [
+                    'paypal' => 'email',
+                ]);
+                Auth::user()->paypal = $request->paypal;
+            } else {
+                Auth::user()->paypal = null;
+            }
+            Auth::user()->save();
+            Session::flash('alert-success', 'Your Paypal account is successfully updated!');
+        }
+        return redirect()->back();
+    }
+
     public function cart() {
         if (Auth::check()) {
             $user = Auth::user();
@@ -68,6 +84,22 @@ class UserController extends Controller
             return redirect()->to('/cart');
         }
         return redirect()->to('/');
+    }
+
+    public function delete_from_cart(Request $request) {
+        if (Auth::check() && $request->food_id) {
+            Auth::user()->delete_from_cart($request->food_id);
+            Session::flash('alert-success', 'Item is removed from your cart.');
+        }
+        return redirect()->back();
+    }
+
+    public function clear_cart(Request $request) {
+        if (Auth::check()) {
+            Auth::user()->clear_cart();
+            Session::flash('alert-success', 'Your cart has been cleared.');
+        }
+        return redirect()->back();
     }
 
     public function confirm_order(Request $request) {

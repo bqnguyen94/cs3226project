@@ -24,6 +24,8 @@ Route::get('user/activation/{token}', 'Auth\LoginController@activateUser')->name
 
 Route::get('profile/{id}', 'UserController@profile');
 
+Route::post('profile/{id}', 'UserController@updatePaypal');
+
 Route::get('foods', 'FoodController@foods');
 
 Route::get('orders', 'OrderController@orders');
@@ -53,6 +55,16 @@ Route::post('foods', 'UserController@add_to_cart');
 Route::get('cart', 'UserController@cart');
 
 Route::post('cart', 'UserController@confirm_order');
+
+Route::post('/cart/delete', [
+    'as' => 'cart.delete',
+    'uses' => 'UserController@delete_from_cart',
+    ]);
+
+Route::post('/cart/clear', [
+    'as' => 'cart.clear',
+    'uses' => 'UserController@clear_cart',
+    ]);
 
 Route::get('threads', 'MessageController@index');
 

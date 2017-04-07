@@ -108,7 +108,7 @@
             <div class="col-md-4">
                 <h4>
 					<a href="/foods#menu_yih">Yusof-Ishak House</a>
-                   
+
                 </h4>
                 <ul>
                     <li>Starbucks</li>
@@ -123,7 +123,7 @@
 <style>
 
 	div.index_newestfoodstalls div h4 a{
-	
+
 	font-style:none;
 	color:#e40c25;
 }

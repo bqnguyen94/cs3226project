@@ -67,7 +67,7 @@
 				        		<a >The Deck</a>
 				      		</h4>
 				    	</div>
-						
+
 			    	</div>
 	    		</div>
 	    		<div id="collapse2" class="panel-collapse collapse">
