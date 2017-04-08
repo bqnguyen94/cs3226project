@@ -15,22 +15,22 @@
                     &nbsp;&nbsp;NUS Food
                 </h1>
             </div><br>
-            <div class="col-md-12 col-xs-12" style="background-color:#d8192f; margin-top:50px; ">
+            <div class="col-md-12 col-xs-12">
                 <ul class="nav nav-pills">
                     <li role="presentation" ><a href="/">Home</a></li>
                     @if (Auth::guest())
-                       
+
 					<li role="presentation"><a href="/foods">Menu</a></li>
 					<li role="presentation"><a href="/orders">Orders</a></li>
 					<li role="presentation" style="float:right"><a href="{{ route('login') }}">Log In</a></li>
 					<li role="presentation" style="float:right"><a href="{{ route('register') }}">Sign Up</a></li>
-                    		         
-						           
+
+
                     @elseif (Auth::check())
-				
+
 				    <li role="presentation"><a href="/foods">Menu</a></li>
 					<li role="presentation"><a href="/orders">Orders</a></li>
-					
+
 					<li role="presentation" style="float:right">
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
@@ -46,12 +46,12 @@
 							<a role="presentation" class="dropdown-toggle" data-toggle="dropdown">User <span class="caret"></span></a>
                         	<ul class="dropdown-menu">
 								<li><a href="/profile/<?php echo Auth::user()->id ?>">Profile</a> </li>
-								<li><a role="presentation" href="/threads">Message</a></li>
+								<li><a role="presentation" href="/threads">Messages <span class="label label-danger label-as-badge">{{ App\Thread::get_total_unread(Auth::user()->id) }}</span></a></li>
 								<li><a role="presentation" href="/cart">Cart</a></li>
 							</ul>
 					</li>
-				
-					
+
+
                     @endif
                 </ul>
             </div>
@@ -60,7 +60,7 @@
 
     <div class="container row" style="height: 40px">
 <!--
-	
+
     @if (Auth::check())
     <div class="row" >
     	<div class="col-md-6 menue"><ul><li><a href="/foods">Get Food</a></li></ul></div>

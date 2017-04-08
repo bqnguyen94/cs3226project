@@ -2,10 +2,10 @@
 @section('main')
 <!-- Carousel
 ================================================== -->
+<!--
 <div class="container-fluid">
     <div class="row outer_block">
         <div class="col-md-7">
-        <!--sidebar-->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
@@ -58,6 +58,7 @@
         </div>
     </div>
 </div>
+-->
 <div class="jumbotron">
     <div class="container">
         <div class="row">

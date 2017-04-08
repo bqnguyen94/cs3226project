@@ -43,7 +43,7 @@
                         <div class="collapse navbar-collapse" id="user_collapse">
                             <ul class="nav navbar-nav">
                                 <li><a href="/profile/<?php echo Auth::user()->id ?>">Profile</a> </li>
-                                <li><a role="presentation" href="/threads">Message</a></li>
+                                <li><a role="presentation" href="/threads">Messages <span class="label label-danger label-as-badge">{{ App\Thread::get_total_unread(Auth::user()->id) }}</span></a></li>
                                 <li><a role="presentation" href="/cart">Cart</a></li>
                             </ul>
                         </div>
