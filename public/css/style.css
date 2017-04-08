@@ -245,3 +245,38 @@ footer #copyright{
   background-color: #efefef;
 }
 /* End of chat panel */
+
+/*vertical navbar*/
+.outerVN{
+    list-style-type: none;
+    width: 18%;
+    background-color: white;
+    position: fixed;
+    height: 90%;
+    overflow: auto;
+    z-index: 100;
+}
+
+.verticalNav{
+    list-style-type: none;
+    margin-left: 1%;
+    margin-top: 1%;
+    padding-left: 1.5%;
+    width: 17%;
+    background-color: #7b0b0a;
+    position: fixed;
+    height: 90%;
+    overflow: auto;
+    border-radius: 10px;
+}
+
+.verticalNav h3{
+  color: white;
+}
+.verticalNav h4{
+  color: white;
+}
+.verticalNav h5{
+  color: white;
+}
+/*End of vertical navbar*/

@@ -1,5 +1,5 @@
 
-<div class="footer navbar-static-bottom">
+<div id="ft" class="footer navbar-static-bottom">
 <footer>
 @yield('link')
   <ul>

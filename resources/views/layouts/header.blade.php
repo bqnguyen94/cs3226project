@@ -1,4 +1,29 @@
-<div class="header">
+<div id="vn" class="outerVN">
+    <div  class="verticalNav">
+            <br>
+            <h3>NUSFood Guideline:</h3>
+            <br>
+            <h4>To Order</h4>
+            <h4>1. Menu</h4>
+            <h5>    add dish to cart</h5>
+            <h4>2. Cart</h4>
+            <h5>    place order,or continue shopping</h5>
+            <h4>3. Order</h4>
+            <h5>    accept price</h5>
+            <h4>4. Set order as received</h4>
+            <br>
+            <h4>To deliver</h4>
+            <h4>1. Orders</h4>
+            <h5>    choose one order to make a deliver</h5>
+            <h4>2. Make an offer</h4>
+            <h5>    Price your own deliver</h5>
+            <h4>3. Chat with buyer</h4>
+            <h5>    show message bar</h5>
+            <h4>4. Send and confirm food sent</h4>
+    </div>
+</div>
+
+<div id="hd" class="header">
     <div class="container">
         <div class="row">
             <div class="navbar-header col-md-4 col-xs-4">
