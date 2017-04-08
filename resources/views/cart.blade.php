@@ -18,6 +18,7 @@
                     <th class="col-xs-4">Item name</th>
                     <th class="col-xs-1">Price</th>
                     <th class="col-xs-1">Amount</th>
+					 <th class="col-xs-1"></th>
 					<th></th>
                 </tr>
             </thead>
@@ -50,12 +51,14 @@
                         <td>{{ $cart_item['amount'] }} </td>
 						<td>
 							{!! Form::open(['route' => 'cart.delete']) !!}
-							<button name="food_id" id="btn-submit" type="submit" class="btn btn-success" value="<?php echo $cart_item['food_id'] ?>">
-	                            Remove
-	                        </button>
+							<button name="food_id" id="btn-submit" type="submit" class="btn btn-default btn-lg" value="<?php echo $cart_item['food_id'] ?>">
+							  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+							</button>
 							{!! Form::close() !!}
+							
+							
 						</td>
-
+						<td></td>
                     </tr>
                 @endforeach
 
@@ -64,6 +67,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
+						<td></td>
 						<td></td>
                 </tr>
                 <tr id="cart_lastrow">
@@ -76,16 +80,28 @@
                     <td></td>
                     <td></td>
 					<td></td>
+					<td></td>
                 </tr>
+				
+				     <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+					<td>{!! Form::open(['route' => 'cart.clear']) !!}
+						<center>
+							<button name="food_id" id="btn-submit" type="submit" class="btn btn-danger glyphicon glyphicon-trash">
+								Clear Cart
+							</button>
+
+
+						</center>
+						{!! Form::close() !!}</td>
+						 <td></td>
+                	</tr>
             </tbody>
         </table>
-		{!! Form::open(['route' => 'cart.clear']) !!}
-		<center>
-			<button name="food_id" id="btn-submit" type="submit" class="btn btn-danger">
-				Clear Cart
-			</button>
-		</center>
-		{!! Form::close() !!}
+		
     </div>
 
     <div class="row">
@@ -116,7 +132,7 @@
 		background-repeat:no-repeat;
 */
 
-		background-image:url("http://139.59.104.3/img/banner/banner2.png");
+		background-image:url("/img/banner/banner2.png");
 		width:100%;
 		max-height:140px;
 		min-height:105px;
