@@ -90,7 +90,7 @@
                     <td></td>
 					<td>{!! Form::open(['route' => 'cart.clear']) !!}
 						<center>
-							<button name="food_id" id="cart_clearcart" type="submit" class="btn btn-default glyphicon glyphicon-trash">
+							<button name="food_id" id="cart_clearcart" type="submit" class="btn btn-info glyphicon glyphicon-trash">
 								Clear Cart 
 							</button>
 
@@ -113,8 +113,8 @@
                 </div>
             </div>
             <center class="cart_buttons">
-				<a href="/foods" class="btn btn-default btn-lg" id="cart_continueshopping">Return to Food Menu</a>
-				<button id="btn-submit" class="btn btn-default btn-lg" type="submit">PLACE ORDER</button>
+				<a href="/foods" class="btn btn-info btn-lg" id="cart_continueshopping">Return to Food Menu</a>
+				<button id="btn-submit" class="btn btn-info btn-lg" type="submit">PLACE ORDER</button>
 
             </center>
         {!! Form::close() !!}
@@ -126,11 +126,6 @@
 <style>
 
 	#cart_heading_background{
-
-/*
-		background-size:contain;
-		background-repeat:no-repeat;
-*/
 
 		background-image:url("/img/banner/banner2.png");
 		width:100%;
@@ -158,16 +153,8 @@
 	#cart_thead{
 
 		font-size:20px;
-/*		color:#e40c25;*/
 		font-family: 'Belleza', sans-serif;
 		font-weight:bold;
-
-
-	}
-
-	#cart_tbody{
-
-/*		color:#e40c25;*/
 
 	}
 
