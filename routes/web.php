@@ -78,8 +78,6 @@ Route::post('messages/{id}', 'MessageController@reply');
 
 Route::get('refreshmessages/{id}', 'MessageController@refresh_messages');
 
-Route::get('/contact', function(){return view('contact');});
-
 Route::get('/about', function(){return view('about');});
 
 Route::get('/help', function(){return view('help');});
