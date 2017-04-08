@@ -3,7 +3,7 @@
         <div class="row">
             <div class="navbar-header col-md-4 col-xs-4">
 	            <a class="" href="/">
-	                <img alt="Brand" src="/img/logo.png" width="75" height="75">
+	                <img alt="Brand" src="/img/logo.jpg" width="75" height="75">
 	            </a>
 	            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
 	                <span class="sr-only">Toggle navigation</span>
