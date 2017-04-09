@@ -218,31 +218,3 @@
 
 </script>
 @stop
-
-<style>
-	#menu_heading_background{
-
-		background-image:url("http://139.59.104.3/img/banner/banner_menu2.png");
-		width:100%;
-		max-height:140px;
-		min-height:105px;
-		margin-bottom:40px;
-	}
-
-
-	#menu_heading{
-
-		padding-top:20px;
-		text-align:50%;
-		font-size:48px;
-		text-align:center;
-		color:white;
-		font-weight:900;
-		font-family:'Belleza', sans-serif;
-		text-shadow:2px 2px black;
-
-
-
-	}
-
-</style>
