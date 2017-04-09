@@ -59,14 +59,25 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-8 col-md-offset-4 col-xs-12">
+                                <button type="submit" class="btn btn-primary col-md-8 col-xs-10">
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
+
+                        <div class="form-group">
+                            <div class="col-xs-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <a href="{{ route('password.request') }}">Forgot Your Password?</a>
+                                        <br>
+                                        <a href="{{ route('register') }}">Does not have an account?</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+
                             </div>
                         </div>
                     </form>
@@ -74,5 +85,13 @@
             </div>
         </div>
     </div>
+
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+
 </div>
 @endsection

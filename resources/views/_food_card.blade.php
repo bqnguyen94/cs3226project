@@ -1,10 +1,7 @@
-<div class="card col-lg-3 col-md-3 col-xs-5 col-lg-offset-1 col-md-offset-1 col-xs-offset-1" style="margin-top: 30px">
+<div class="card col-lg-3 col-md-3 col-xs-10 col-lg-offset-1 col-md-offset-1 col-xs-offset-1" style="margin-top: 30px">
     <!--Card image-->
     <div class="view overlay hm-white-slight">
-        <img src="<?php echo $food->image ?>" class="img-fluid" alt="food">
-        <a href="#">
-            <div class="mask waves-effect waves-light"></div>
-        </a>
+        <img src="<?php echo $food->image ?>" class="img-fluid" alt="food" >
     </div>
     <!--/.Card image-->
 
