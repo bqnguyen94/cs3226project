@@ -177,9 +177,11 @@
                 <thead>
                 <tr>
                     <th class="col-xs-1"></th>
-                    <th class="col-xs-3">Item name</th>
-                    <th class="col-xs-2">Price</th>
-                    <th class="col-xs-2">Amount</th>
+                    <th class="col-xs-2">Item name</th>
+                    <th class="col-xs-2">Location</th>
+                    <th class="col-xs-2">Restaurant</th>
+                    <th class="col-xs-1">Price</th>
+                    <th class="col-xs-1">Amount</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -195,7 +197,11 @@
                         <td>{{ $i }}</td>
                         <td>{{ $item['food']->name }}</td>
 						<?php 
-						
+						$res_id=$item['food']-> restaurant_id;
+                        $res=App\Restaurant::where('id', $res_id)->first();
+                        echo '<td>' . $res-> location . '</td>';
+                        echo '<td>' . $res-> name . '</td>';
+
 						$temp = $item['food']-> price;
 						$period = strpos($temp, ".");
 						$length = strlen($temp);
