@@ -17,6 +17,8 @@ class CreateThreadsTable extends Migration
             $table->increments('id');
             $table->integer('first_user_id')->unsigned();
             $table->integer('second_user_id')->unsigned();
+            $table->integer('first_user_last_read')->unsigned()->default(0);
+            $table->integer('second_user_last_read')->unsigned()->default(0);
             $table->foreign('first_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('second_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

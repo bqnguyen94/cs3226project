@@ -31,7 +31,7 @@
 <style>
 	#order_heading_background{
 				
-		background-image:url("http://139.59.104.3/img/banner/banner_order.png");
+		background-image:url("/img/banner/banner_order.png");
 		width:100%;
 		max-height:140px;
 		min-height:105px;

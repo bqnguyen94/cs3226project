@@ -18,7 +18,8 @@
                     <th class="col-xs-4">Item name</th>
                     <th class="col-xs-1">Price</th>
                     <th class="col-xs-1">Amount</th>
-					<th></th>
+					 <th class="col-xs-1"></th>
+					
                 </tr>
             </thead>
             <tbody id="cart_tbody">
@@ -50,12 +51,14 @@
                         <td>{{ $cart_item['amount'] }} </td>
 						<td>
 							{!! Form::open(['route' => 'cart.delete']) !!}
-							<button name="food_id" id="btn-submit" type="submit" class="btn btn-success" value="<?php echo $cart_item['food_id'] ?>">
-	                            Remove
-	                        </button>
+							<button name="food_id" id="btn-submit" type="submit" class="btn btn-danger" value="<?php echo $cart_item['food_id'] ?>" style="width:24px;height:24px;padding:1px 1px 1px 1px; margin:1px 1px 1px 20px;">
+							  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+							</button>
 							{!! Form::close() !!}
+							
+							
 						</td>
-
+						
                     </tr>
                 @endforeach
 
@@ -65,6 +68,7 @@
                         <td></td>
                         <td></td>
 						<td></td>
+						
                 </tr>
                 <tr id="cart_lastrow">
                     <td>
@@ -76,16 +80,28 @@
                     <td></td>
                     <td></td>
 					<td></td>
+					
                 </tr>
+				
+				     <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+					<td>{!! Form::open(['route' => 'cart.clear']) !!}
+						<center>
+							<button name="food_id" id="cart_clearcart" type="submit" class="btn btn-danger glyphicon glyphicon-trash">
+								Clear Cart 
+							</button>
+
+
+						</center>
+						{!! Form::close() !!}</td>
+						 
+                	</tr>
             </tbody>
         </table>
-		{!! Form::open(['route' => 'cart.clear']) !!}
-		<center>
-			<button name="food_id" id="btn-submit" type="submit" class="btn btn-danger">
-				Clear Cart
-			</button>
-		</center>
-		{!! Form::close() !!}
+		
     </div>
 
     <div class="row">
@@ -97,8 +113,8 @@
                 </div>
             </div>
             <center class="cart_buttons">
-				<a href="/foods" class="btn btn-info" id="cart_continueshopping">Return to Food Menu</a>
-				<button id="btn-submit" class="btn btn-success" type="submit">PLACE ORDER</button>
+				<a href="/foods" class="btn btn-primary btn-lg" id="cart_continueshopping">Return to Food Menu</a>
+				<button id="btn-submit" class="btn btn-primary btn-lg" type="submit">PLACE ORDER</button>
 
             </center>
         {!! Form::close() !!}
@@ -111,12 +127,7 @@
 
 	#cart_heading_background{
 
-/*
-		background-size:contain;
-		background-repeat:no-repeat;
-*/
-
-		background-image:url("http://139.59.104.3/img/banner/banner2.png");
+		background-image:url("/img/banner/banner2.png");
 		width:100%;
 		max-height:140px;
 		min-height:105px;
@@ -142,16 +153,8 @@
 	#cart_thead{
 
 		font-size:20px;
-/*		color:#e40c25;*/
 		font-family: 'Belleza', sans-serif;
 		font-weight:bold;
-
-
-	}
-
-	#cart_tbody{
-
-/*		color:#e40c25;*/
 
 	}
 
@@ -177,12 +180,13 @@
 		width:200px;
 		height:65px;
 	}
-
-	#cart_cancel{
-		padding-top:20px;
-		width:200px;
-		height:65px;
-		font-size:16px;
+	
+	#cart_clearcart{
+		width:150px;
+		height:50px;
+		padding:1px 1px 1px 1px; 
+		margin:1px 1px 1px 20px;
+		
 	}
-
+	
 </style>

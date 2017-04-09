@@ -20,11 +20,10 @@
                 <a href="/profile/<?php echo $buyer->id ?>">
                     {{ $buyer->name }}
                 </a>
-
             </h4>
             <div class="col-sm-2 vcenter">
-                <a href="/chat/<?php echo $buyer->id ?>" class="btn btn-success">
-                    Chat
+               <a href="/chat/<?php echo $buyer->id ?>">
+                    <img style="width:120px;height:35px;margin:0px 5px 5px 0px;box-shadow: 2px 2px 2px #888888;" src="/img/icons/chatwithbuyer.jpg">
                 </a>
             </div>
         </div>
@@ -176,10 +175,12 @@
             <table class="table table-condensed">
                 <thead>
                 <tr>
-                    <th class="col-xs-1"></th>
-                    <th class="col-xs-3">Item name</th>
-                    <th class="col-xs-2">Price</th>
-                    <th class="col-xs-2">Amount</th>
+                    <th class="col-xs-1 hidden-xs"></th>
+                    <th class="col-xs-2">Item name</th>
+                    <th class="col-xs-2">Location</th>
+                    <th class="col-xs-2">Restaurant</th>
+                    <th class="col-xs-1">Price</th>
+                    <th class="col-xs-1">Amount</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -192,21 +193,16 @@
                     $i++;
                     ?>
                     <tr>
-                        <td>{{ $i }}</td>
+                        <td class="hidden-xs">{{ $i }}</td>
                         <td>{{ $item['food']->name }}</td>
 						<?php 
-						
-						$temp = $item['food']-> price;
-						$period = strpos($temp, ".");
-						$length = strlen($temp);
-						$temp2 =  $length-$period-1;
-						if( $temp2 == 1){
-							echo '<td>$' . $temp . '0</td>';
-						}else if($period == null) {
-							echo '<td>$' . $temp . '.00</td>';
-						}else{
-							echo '<td>$' . $temp . '</td>';
-						}
+						$res_id=$item['food']-> restaurant_id;
+                        $res=App\Restaurant::where('id', $res_id)->first();
+                        echo '<td>' . $res-> location . '</td>';
+                        echo '<td>' . $res-> name . '</td>';
+
+						$price = $item['food']-> price;
+						echo '<td>$' . number_format($price,2) . '</td>';
 						?>
 						
                         <td>{{ $item['amount'] }}</td>
@@ -250,28 +246,18 @@
                         @if (Auth::check() && Auth::user()->id == $offer->offerer_id)
                             <tr class="highlight">
                         @else
-                            <tr>
+                            <tr >
                                 @endif
-                                <td>{{ $i }}</td>
-                                <td><a href="/profile/<?php echo $offerer->id ?>">{{ $offerer->name }}</a></td>
+                                <td >{{ $i }}</td>
+                                <td><a href="/profile/<?php echo $offerer->id ?>">{{ $offerer->name }}</a>  <a href="/chat/<?php echo $offer->offerer_id ?>"><img src="/img/icons/chat.jpg" style="width:80px;height:35px;margin:0px 5px 5px 40px;box-shadow: 2px 2px 2px #888888;"></a></td>
 								<?php 
-						
-									$temp = $offer->price;
-									$period = strpos($temp, ".");
-									$length = strlen($temp);
-									$temp2 =  $length-$period-1;
-									if( $temp2 == 1){
-										echo '<td>$' . $temp . '0</td>';
-									}else if($period == null) {
-										echo '<td>$' . $temp . '.00</td>';
-									}else{
-										echo '<td>$' . $temp . '</td>';
-									}
+									$price = $offer->price;
+									echo '<td>$' . number_format($price,2) . '</td>';
 								?>
 								
                                 @if (Auth::check() && Auth::user()->id == $order->buyer_id)
                                     <td>
-                                        <a href="/chat/<?php echo $offer->offerer_id ?>">Chat</a>
+                                       
                                     </td>
                                     <td>
                                         {!! Form::open() !!}
