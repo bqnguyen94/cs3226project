@@ -90,7 +90,7 @@
                     <td></td>
 					<td>{!! Form::open(['route' => 'cart.clear']) !!}
 						<center>
-							<button name="food_id" id="cart_clearcart" type="submit" class="btn btn-info glyphicon glyphicon-trash">
+							<button name="food_id" id="cart_clearcart" type="submit" class="btn btn-danger glyphicon glyphicon-trash">
 								Clear Cart 
 							</button>
 
@@ -113,8 +113,8 @@
                 </div>
             </div>
             <center class="cart_buttons">
-				<a href="/foods" class="btn btn-info btn-lg" id="cart_continueshopping">Return to Food Menu</a>
-				<button id="btn-submit" class="btn btn-info btn-lg" type="submit">PLACE ORDER</button>
+				<a href="/foods" class="btn btn-primary btn-lg" id="cart_continueshopping">Return to Food Menu</a>
+				<button id="btn-submit" class="btn btn-primary btn-lg" type="submit">PLACE ORDER</button>
 
             </center>
         {!! Form::close() !!}
