@@ -134,10 +134,14 @@ class UserController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $order = Order::where('id', $id)->first();
-            if ($order && !$order->deliverer_id && $order->buyer_id != $user->id) {
+            if ($order && !$order->deliverer_id && $order->buyer_id != $user->id
+                    && $request->amount <= 1000 && $request->amount >= 0) {
                 $user->make_offer($order->id, $request->amount);
-                return redirect()->back();
+                Session::flash('alert-success', 'Offer made!');
+            } else {
+                Session::flash('alert-error', 'You are not allowed to do that!');
             }
+            return redirect()->back();
         }
     }
 

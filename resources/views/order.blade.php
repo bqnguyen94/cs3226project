@@ -302,7 +302,7 @@
                     {!! Form::label('amount', 'Make an Offer',['class'=>'control-label']) !!}
                 </div>
                 <div class="col-sm-4">
-                    {!! Form::number('amount',"NULL",['class'=>'form-control text-center','required','step'=>'0.10']) !!}
+                    {!! Form::number('amount',"NULL",['class'=>'form-control text-center','required','step'=>'0.10', 'min' => 0, 'max' => 1000]) !!}
                 </div>
                 <div class="col-sm-3">
                     <button id="btn-submit" type="submit" class="btn btn-success">
