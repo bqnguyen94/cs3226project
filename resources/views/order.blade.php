@@ -176,7 +176,7 @@
             <table class="table table-condensed">
                 <thead>
                 <tr>
-                    <th class="col-xs-1"></th>
+                    <th class="col-xs-1 hidden-xs"></th>
                     <th class="col-xs-2">Item name</th>
                     <th class="col-xs-2">Location</th>
                     <th class="col-xs-2">Restaurant</th>
@@ -194,7 +194,7 @@
                     $i++;
                     ?>
                     <tr>
-                        <td>{{ $i }}</td>
+                        <td class="hidden-xs">{{ $i }}</td>
                         <td>{{ $item['food']->name }}</td>
 						<?php 
 						$res_id=$item['food']-> restaurant_id;
