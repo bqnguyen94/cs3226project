@@ -118,6 +118,18 @@ class UserController extends Controller
         return redirect()->to('/');
     }
 
+    public function cancel_order($id) {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $order = Order::where('id', $id)->first();
+            if ($order && $user->id == $order->buyer_id) {
+                $order->delete();
+                Session::flash('alert-success', 'Order is cancelled.');
+            }
+            return redirect()->to('/');
+        }
+    }
+
     public function make_offer($id, Request $request) {
         if (Auth::check()) {
             $user = Auth::user();

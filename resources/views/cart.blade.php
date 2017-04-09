@@ -19,7 +19,7 @@
                     <th class="col-xs-1">Price</th>
                     <th class="col-xs-1">Amount</th>
 					 <th class="col-xs-1"></th>
-					
+
                 </tr>
             </thead>
             <tbody id="cart_tbody">
@@ -35,19 +35,7 @@
                     <tr class="cart_trow">
                         <td>{{ $i }}</td>
                         <td>{{ $cart_item['food']->name }}</td>
-                        <?php
-
-						$temp = $cart_item['food']-> price;
-						$period = strpos($temp, ".");
-						$length = strlen($temp);
-						$temp2 =  $length-$period-1;
-						if( $temp2 == 1){
-							echo '<td>$' . $temp . '0</td>';
-						}else {
-							echo '<td>$' . $temp . '</td>';
-						}
-						?>
-
+						<td>${{ number_format($cart_item['food']->price, 2) }}</td>
                         <td>{{ $cart_item['amount'] }} </td>
 						<td>
 							{!! Form::open(['route' => 'cart.delete']) !!}
@@ -55,10 +43,8 @@
 							  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 							</button>
 							{!! Form::close() !!}
-							
-							
 						</td>
-						
+
                     </tr>
                 @endforeach
 
@@ -68,7 +54,7 @@
                         <td></td>
                         <td></td>
 						<td></td>
-						
+
                 </tr>
                 <tr id="cart_lastrow">
                     <td>
@@ -80,9 +66,9 @@
                     <td></td>
                     <td></td>
 					<td></td>
-					
+
                 </tr>
-				
+
 				     <tr>
                     <td></td>
                     <td></td>
@@ -91,17 +77,17 @@
 					<td>{!! Form::open(['route' => 'cart.clear']) !!}
 						<center>
 							<button name="food_id" id="cart_clearcart" type="submit" class="btn btn-danger glyphicon glyphicon-trash">
-								Clear Cart 
+								Clear Cart
 							</button>
 
 
 						</center>
 						{!! Form::close() !!}</td>
-						 
+
                 	</tr>
             </tbody>
         </table>
-		
+
     </div>
 
     <div class="row">
@@ -114,7 +100,7 @@
             </div>
             <center class="cart_buttons">
 				<a href="/foods" class="btn btn-primary btn-lg" id="cart_continueshopping">Return to Food Menu</a>
-				<button id="btn-submit" class="btn btn-primary btn-lg" type="submit">PLACE ORDER</button>
+				<button id="btn-submit" class="btn btn-success btn-lg" type="submit">PLACE ORDER</button>
 
             </center>
         {!! Form::close() !!}
@@ -180,13 +166,13 @@
 		width:200px;
 		height:65px;
 	}
-	
+
 	#cart_clearcart{
 		width:150px;
 		height:50px;
-		padding:1px 1px 1px 1px; 
+		padding:1px 1px 1px 1px;
 		margin:1px 1px 1px 20px;
-		
+
 	}
-	
+
 </style>

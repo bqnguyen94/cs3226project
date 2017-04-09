@@ -195,7 +195,7 @@
                     <tr>
                         <td class="hidden-xs">{{ $i }}</td>
                         <td>{{ $item['food']->name }}</td>
-						<?php 
+						<?php
 						$res_id=$item['food']-> restaurant_id;
                         $res=App\Restaurant::where('id', $res_id)->first();
                         echo '<td>' . $res-> location . '</td>';
@@ -204,7 +204,7 @@
 						$price = $item['food']-> price;
 						echo '<td>$' . number_format($price,2) . '</td>';
 						?>
-						
+
                         <td>{{ $item['amount'] }}</td>
                     </tr>
                 @endforeach
@@ -250,14 +250,14 @@
                                 @endif
                                 <td >{{ $i }}</td>
                                 <td><a href="/profile/<?php echo $offerer->id ?>">{{ $offerer->name }}</a>  <a href="/chat/<?php echo $offer->offerer_id ?>"><img src="/img/icons/chat.jpg" style="width:80px;height:35px;margin:0px 5px 5px 40px;box-shadow: 2px 2px 2px #888888;"></a></td>
-								<?php 
+								<?php
 									$price = $offer->price;
 									echo '<td>$' . number_format($price,2) . '</td>';
 								?>
-								
+
                                 @if (Auth::check() && Auth::user()->id == $order->buyer_id)
                                     <td>
-                                       
+
                                     </td>
                                     <td>
                                         {!! Form::open() !!}
@@ -275,6 +275,11 @@
                     </tbody>
                 </table>
             </div>
+        @endif
+        @if (Auth::check() && Auth::user()->id == $order->buyer_id && !$order->deliverer_id)
+            <center>
+                <a href="/order/<?php echo $order->id ?>/delete" class="btn btn-danger">Cancel Order</a>
+            </center>
         @endif
         @if (Auth::check() && Auth::user()->id != $order->buyer_id && !$order->deliverer_id)
             <?php
