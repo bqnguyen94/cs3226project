@@ -280,3 +280,12 @@ footer #copyright{
   color: white;
 }
 /*End of vertical navbar*/
+
+/*Slight amendment to index */
+div.index_newestfoodstalls div h4 a{
+
+	font-style:none;
+	color:#e40c25;
+}
+
+/*Slight amendment to index */
