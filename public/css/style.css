@@ -289,3 +289,64 @@ div.index_newestfoodstalls div h4 a{
 }
 
 /*Slight amendment to index */
+
+/* Cart */
+#cart_thead{
+
+	font-size:20px;
+	font-family: 'Belleza', sans-serif;
+	font-weight:bold;
+
+}
+
+.cart_trow td{
+
+	border-bottom:1pt solid #f2f2f2;
+
+}
+
+#cart_lastrow td{
+
+	border-top:1pt solid #cccccc;
+	border-bottom:1pt solid #cccccc;
+
+}
+
+#btn-submit{
+	width:200px;
+	height:65px;
+}
+
+#cart_continueshopping{
+	width:200px;
+	height:65px;
+}
+
+#cart_clearcart{
+	width:150px;
+	height:50px;
+	padding:1px 1px 1px 1px;
+	margin:1px 1px 1px 20px;
+
+}
+
+/* End of Cart */
+
+/* Message */
+#message_warning{
+	
+	font-family: 'Open Sans', sans-serif;
+	width:250px;
+	margin-right:30px;
+	float:right;
+	
+}
+	
+#message_warning p, #message_warning:hover, #message_warning{
+	
+	font-size: 14px;
+	opacity:0.7;
+	
+}
+
+/* End of style code for message */
