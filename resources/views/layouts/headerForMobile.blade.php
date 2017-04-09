@@ -20,20 +20,11 @@
 
             <ul class="nav navbar-nav">
                 <li role="presentation" class="active"><a href="/">Home</a></li>
+                <li><a role="presentation" href="/foods">Menu</a></li>
+                <li><a role="presentation" href="/orders">Orders</a></li>
                 @if (Auth::guest())
                     <li role="presentation"><a href="{{ route('register') }}">Sign Up</a></li>
                     <li role="presentation"><a href="{{ route('login') }}">Log In</a></li>
-                    <li role="presentation">
-                        <a class="collapsed" data-toggle="collapse" data-target="#option">
-                            Option <span class="caret"></span>
-                        </a>
-                        <div class="collapse navbar-collapse" id="option">
-                            <ul class="nav navbar-nav">
-                                <li><a role="presentation" href="/foods">Menu</a></li>
-                                <li><a role="presentation" href="/orders">Orders</a></li>
-                            </ul>
-                        </div>
-                    </li>
 
                 @elseif (Auth::check())
                     <li role="presentation">
@@ -45,31 +36,21 @@
                                 <li><a href="/profile/<?php echo Auth::user()->id ?>">Profile</a> </li>
                                 <li><a role="presentation" href="/threads">Messages <span class="label label-danger label-as-badge">{{ App\Thread::get_total_unread(Auth::user()->id) }}</span></a></li>
                                 <li><a role="presentation" href="/cart">Cart</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li role="presentation">
-                        <a class="collapsed" data-toggle="collapse" data-target="#option_collapse">
-                            Option <span class="caret"></span>
-                        </a>
-                        <div class="collapse navbar-collapse" id="option_collapse">
-                            <ul class="nav navbar-nav">
-                                <li><a role="presentation" href="/foods">Menu</a></li>
-                                <li><a role="presentation" href="/orders">Orders</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li role="presentation">
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
+                                <li role="presentation">
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
+                                        Logout
+                                    </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
+
                 @endif
             </ul>
 
