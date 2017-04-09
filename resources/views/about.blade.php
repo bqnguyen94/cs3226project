@@ -1,4 +1,27 @@
 @extends('layouts.template')
+
+	<style>
+	
+	body{
+			background-image: url('/img/profile_background.jpg');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-position: right bottom; 
+			
+		}
+		
+	p{
+		word-spacing:0.30em;
+		 line-height: 150%;
+		
+		}
+	
+	.about{
+		background-color: rgba(242, 254, 251, 0.75);
+		
+		}
+	</style>
+
 @section('main')
 
 <div class="container">
@@ -25,24 +48,3 @@
 </div>
 @endsection
 	
-	<style>
-	
-	body{
-			background-image: url('/img/profile_background.jpg');
-			background-repeat: no-repeat;
-			background-attachment: fixed;
-			background-position: right bottom; 
-			
-		}
-		
-	p{
-		word-spacing:0.30em;
-		 line-height: 150%;
-		
-		}
-	
-	.about{
-		background-color: rgba(242, 254, 251, 0.75);
-		
-		}
-	</style>

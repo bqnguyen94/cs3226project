@@ -1,4 +1,46 @@
 @extends('layouts.template')
+
+
+<style>
+
+div section img{
+	max-height:360px;
+	max-width:450px;
+	border: 1px solid black;
+	margin-left:100px;
+	margin-top:50px;
+	margin-bottom:50px;
+	
+}
+	
+body{
+			background-image: url('/img/profile_background.jpg');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-position: right bottom; 
+			
+		}
+		
+p{
+		word-spacing:0.30em;
+		 line-height: 150%;
+		
+		}
+	
+.help{
+		background-color: rgba(242, 254, 251, 0.75);
+		
+}
+	
+div.help_section section{
+	
+	margin 50px 50px 50px 50px;
+	padding-left:100px;
+}
+
+</style>
+
+
 @section('main')
 
 <div class="help container">
@@ -92,42 +134,3 @@
 </div>
 
 @endsection
-
-<style>
-
-div section img{
-	max-height:360px;
-	max-width:450px;
-	border: 1px solid black;
-	margin-left:100px;
-	margin-top:50px;
-	margin-bottom:50px;
-	
-}
-	
-body{
-			background-image: url('/img/profile_background.jpg');
-			background-repeat: no-repeat;
-			background-attachment: fixed;
-			background-position: right bottom; 
-			
-		}
-		
-p{
-		word-spacing:0.30em;
-		 line-height: 150%;
-		
-		}
-	
-.help{
-		background-color: rgba(242, 254, 251, 0.75);
-		
-}
-	
-div.help_section section{
-	
-	margin 50px 50px 50px 50px;
-	padding-left:100px;
-}
-
-</style>
