@@ -201,17 +201,8 @@
                         echo '<td>' . $res-> location . '</td>';
                         echo '<td>' . $res-> name . '</td>';
 
-						$temp = $item['food']-> price;
-						$period = strpos($temp, ".");
-						$length = strlen($temp);
-						$temp2 =  $length-$period-1;
-						if( $temp2 == 1){
-							echo '<td>$' . $temp . '0</td>';
-						}else if($period == null) {
-							echo '<td>$' . $temp . '.00</td>';
-						}else{
-							echo '<td>$' . $temp . '</td>';
-						}
+						$price = $item['food']-> price;
+						echo '<td>$' . number_format($price,2) . '</td>';
 						?>
 						
                         <td>{{ $item['amount'] }}</td>
@@ -260,18 +251,8 @@
                                 <td >{{ $i }}</td>
                                 <td><a href="/profile/<?php echo $offerer->id ?>">{{ $offerer->name }}</a>  <a href="/chat/<?php echo $offer->offerer_id ?>"><img src="/img/icons/chat.jpg" style="width:80px;height:35px;margin:0px 5px 5px 40px;box-shadow: 2px 2px 2px #888888;"></a></td>
 								<?php 
-						
-									$temp = $offer->price;
-									$period = strpos($temp, ".");
-									$length = strlen($temp);
-									$temp2 =  $length-$period-1;
-									if( $temp2 == 1){
-										echo '<td>$' . $temp . '0</td>';
-									}else if($period == null) {
-										echo '<td>$' . $temp . '.00</td>';
-									}else{
-										echo '<td>$' . $temp . '</td>';
-									}
+									$price = $offer->price;
+									echo '<td>$' . number_format($price,2) . '</td>';
 								?>
 								
                                 @if (Auth::check() && Auth::user()->id == $order->buyer_id)
