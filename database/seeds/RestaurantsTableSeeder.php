@@ -32,5 +32,20 @@ class RestaurantsTableSeeder extends Seeder
             ]);
         }
 
+        Restaurant::insert([
+            'name' => "Hwang's Korean Restaurant",
+            'location' => "The Terrace NUS Business Canteen"
+        ]);
+
+        Restaurant::insert([
+            'name' => "Ayam Penyet",
+            'location' => "Frontier, Faculty of Science"
+        ]);
+
+        Restaurant::insert([
+            'name' => "West Twin Bar, Western Food",
+            'location' => "Frontier, Faculty of Science"
+        ]);
+
     }
 }
