@@ -15,18 +15,9 @@
         <!--Text-->
         <p class="card-text">Price:
 			<?php
-
-						$temp = $food-> price;
-						$period = strpos($temp, ".");
-						$length = strlen($temp);
-						$temp2 =  $length-$period-1;
-						if( $temp2 == 1){
-							echo '$' . $temp . '0';
-						}else {
-							echo '$' . $temp;
-						}
+				$price = $food-> price;
+				echo '$' . number_format($price, 2);
 			?>
-
 		</p>
         {!! Form::open() !!}
         <input id="food_id" name="food_id" type="hidden" value="<?php echo $food->id ?>">
