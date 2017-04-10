@@ -19,11 +19,11 @@ function refreshOffers() {
         for (var i = 0; i < jsonLength; i++) {
             var html = "";
             var result = jsonData.results[i];
-            html += '<tr><td>' + (i + 1) + '</td><td><a href="/profile/' + result.offerer_id + '">' + result.offerer_name + '</a> <a href="/chat/' + result.offerer_id + '"><img src="/img/icons/chatwithdeliverer.jpg" style="width:130px;height:35px;box-shadow: 2px 2px 2px #888888;"></a></td><td>$' + parseFloat(result.price).toFixed(2) + '</td><td></td>';
+            html += '<tr><td>' + (i + 1) + '</td><td><a href="/profile/' + result.offerer_id + '">' + result.offerer_name + '</a></td><td><a href="/chat/' + result.offerer_id + '"><img src="/img/icons/chatwithdeliverer.jpg" style="width:130px;height:35px;box-shadow: 2px 2px 2px #888888;"></a></td><td>$' + parseFloat(result.price).toFixed(2) + '</td><td></td>';
             if (!isBuyer) {
                 html += '<td></td></tr>';
             } else {
-                html += '<td><form method="POST" action="' + window.location.hostname + '/order/' + orderId + '" accept-charset="UTF-8"><input name="_token" type="hidden" value="' + token + '"><button name="offer_id" id="btn-submit" type="submit" class="btn btn-success"value="' + result.offer_id + '">Accept Offer</button></form></td></tr>';
+                html += '<td><form method="POST" action="' + window.location.hostname + '/order/' + orderId + '" accept-charset="UTF-8"><input name="_token" type="hidden" value="' + token + '"><button name="offer_id" id="btn-submit" type="submit" class="btn btn-success ao" value="' + result.offer_id + '">Accept Offer</button></form></td></tr>';
             }
             $('#offer_table tbody').append(function() {
                 return $(html).hide().fadeIn();
