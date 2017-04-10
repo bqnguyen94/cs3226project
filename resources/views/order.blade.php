@@ -22,7 +22,7 @@
                 </a>
             </h4>
             <div class="col-sm-2 vcenter">
-               <a href="/chat/<?php echo $buyer->id ?>">
+                <a href="/chat/<?php echo $buyer->id ?>">
                     <img style="width:120px;height:35px;margin:0px 5px 5px 0px;box-shadow: 2px 2px 2px #888888;" src="/img/icons/chatwithbuyer.jpg">
                 </a>
             </div>
@@ -33,9 +33,16 @@
                 <h4 class="col-sm-2">
                     Deliverer:
                 </h4>
-                <h4 class="col-sm-4">
-                    {{ $deliverer->name }}
+                <h4 class="col-sm-4 vcenter">
+                    <a href="/profile/<?php echo $deliverer->id ?>">
+                        {{ $deliverer->name }}
+                    </a>
                 </h4>
+                <div class="col-sm-2 vcenter">
+                    <a href="/chat/<?php echo $deliverer->id ?>">
+                        <img style="width:120px;height:35px;margin:0px 5px 5px 0px;box-shadow: 2px 2px 2px #888888;" src="/img/icons/chatwithbuyer.jpg">
+                    </a>
+                </div>
             </div>
         @else
             <div class="row">
@@ -215,6 +222,8 @@
                     <td>
                         ${{ $order->get_total_food_price() }}
                     </td>
+                    <td></td>
+                    <td></td>
                     <td></td>
                     <td></td>
                 </tr>

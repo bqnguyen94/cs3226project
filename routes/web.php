@@ -60,6 +60,8 @@ Route::get('cart', 'UserController@cart');
 
 Route::post('cart', 'UserController@confirm_order');
 
+Route::post('/cart/update', 'UserController@update_cart');
+
 Route::post('/cart/delete', [
     'as' => 'cart.delete',
     'uses' => 'UserController@delete_from_cart',

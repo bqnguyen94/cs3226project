@@ -1,4 +1,7 @@
 @extends('layouts.template')
+@section('link')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@stop
 @section('main')
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Acme|Belleza|Vollkorn" rel="stylesheet">
@@ -17,7 +20,7 @@
                     <th class="col-xs-1"></th>
                     <th class="col-xs-4">Item name</th>
                     <th class="col-xs-1">Price</th>
-                    <th class="col-xs-1">Amount</th>
+                    <th class="col-xs-1"><center>Amount</center></th>
 					 <th class="col-xs-1"></th>
 
                 </tr>
@@ -36,13 +39,19 @@
                         <td>{{ $i }}</td>
                         <td>{{ $cart_item['food']->name }}</td>
 						<td>${{ number_format($cart_item['food']->price, 2) }}</td>
-                        <td>{{ $cart_item['amount'] }} </td>
+                        <td>
+							<center>
+								<span id="{{ $cart_item['food_id'] }}" class="amount-btn" aria-hidden="true" style="cursor: pointer; color: red;">+</span> <a style="text-decoration: none; color: black; cursor: default;">{{ $cart_item['amount'] }}</a> <span id="{{ $cart_item['food_id'] }}" class="amount-btn" aria-hidden="true" style="cursor: pointer; color: red;">-</span>
+							</center>
+						</td>
 						<td>
-							{!! Form::open(['route' => 'cart.delete']) !!}
-							<button name="food_id" id="btn-submit" type="submit" class="btn btn-danger" value="<?php echo $cart_item['food_id'] ?>" style="width:24px;height:24px;padding:1px 1px 1px 1px; margin:1px 1px 1px 20px;">
-							  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-							</button>
-							{!! Form::close() !!}
+							<center>
+								{!! Form::open(['route' => 'cart.delete']) !!}
+									<button name="food_id" id="btn-submit" type="submit" class="btn btn-danger" value="{{ $cart_item['food_id'] }}" style="width:24px;height:24px;padding:1px 1px 1px 1px; margin:1px 1px 1px 20px;">
+									  	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+									</button>
+								{!! Form::close() !!}
+							</center>
 						</td>
 
                     </tr>
@@ -127,4 +136,7 @@
     </div>
 </div>
 </br></br>
+@endsection
+@section('script')
+<script type="text/javascript" src="/js/cart.js"></script>
 @endsection
