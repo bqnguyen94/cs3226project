@@ -302,7 +302,7 @@
                     {!! Form::label('amount', 'Make an Offer',['class'=>'control-label']) !!}
                 </div>
                 <div class="col-sm-4">
-                    {!! Form::number('amount',"NULL",['class'=>'form-control text-center','required','step'=>'0.10', 'min' => 0, 'max' => 1000]) !!}
+                    {!! Form::number('amount', NULL, ['class'=>'form-control text-center','required','step'=>'0.10', 'min' => 0, 'max' => 1000]) !!}
                 </div>
                 <div class="col-sm-3">
                     <button id="btn-submit" type="submit" class="btn btn-success">
@@ -317,7 +317,7 @@
 @section('script')
 <script type="text/javascript">
     var orderId = {{ $order->id }};
-    var isBuyer = {{ Auth::check() && Auth::user()->id == $order->buyer_id }};
+    var isBuyer = {{ (Auth::check() && Auth::user()->id == $order->buyer_id) ? 1 : 0 }};
     var token = "{{ csrf_token() }}";
 </script>
 <script type="text/javascript" src="/js/order.js"></script>
