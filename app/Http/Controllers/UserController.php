@@ -92,6 +92,9 @@ class UserController extends Controller
             $food_id = $request->food_id;
             $amount = $request->amount;
             $user->update_cart($food_id, $amount);
+
+            $jsonData = '{"price":"' . $user->cart_get_total_price() . '"}';
+            return $jsonData;
         }
     }
 

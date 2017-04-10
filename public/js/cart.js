@@ -28,7 +28,9 @@ $('.amount-btn').on('click', function() {
         type: "POST",
         url: "/cart/update",
         data: formData,
-        success: function() {
+        success: function(data) {
+            var jsonData = JSON.parse(data);
+            $('#total_price').text('$' + jsonData.price);
             $button.parent().find("a").text(newVal);
         },
         error: function(data) {

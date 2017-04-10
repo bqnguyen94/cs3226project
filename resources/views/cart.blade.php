@@ -71,7 +71,7 @@
                     <td>
                         Total
                     </td>
-                    <td>
+                    <td id="total_price">
                         ${{ $user->cart_get_total_price() }}
                     </td>
                     <td></td>
