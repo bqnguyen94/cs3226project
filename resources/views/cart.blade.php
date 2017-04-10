@@ -98,6 +98,12 @@
                     <input id="location" name="location" type="text" class="form-control" placeholder="e.g: PGP Residence 4" required/>
                 </div>
             </div>
+            <!--todo add in datetime picker-->
+            <div class="form-group">
+                <div class="input_group col-xs-6">
+
+                </div>
+            </div>
             <center class="cart_buttons">
 				<a href="/foods" class="btn btn-primary btn-lg" id="cart_continueshopping">Return to Food Menu</a>
 				<button id="btn-submit" class="btn btn-success btn-lg" type="submit">PLACE ORDER</button>
