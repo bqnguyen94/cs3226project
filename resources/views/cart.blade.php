@@ -121,11 +121,10 @@
             <div class="form-group">
                 <div class='input-group date' id='datetimepicker1'>
                     {!! Form::label('delivery_time','Delivery Time',['class'=>'col-sm-2 control-label']) !!}
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         {!! Form::text('delivery_time',NULL,['class'=>'form-control']) !!}
                         <span class="input-group-addon">
-	                        <span class="glyphicon glyphicon-calendar">
-                            </span>
+	                        <span class="glyphicon glyphicon-calendar"></span>
 	                    </span>
                     </div>
                 </div>
