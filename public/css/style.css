@@ -280,3 +280,8 @@ footer #copyright{
   color: white;
 }
 /*End of vertical navbar*/
+
+.datepicker {
+    background-color: #fff ;
+    color: #333 ;
+}
