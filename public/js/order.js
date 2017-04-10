@@ -19,7 +19,7 @@ function refreshOffers() {
         for (var i = 0; i < jsonLength; i++) {
             var html = "";
             var result = jsonData.results[i];
-            html += '<tr><td>' + (i + 1) + '</td><td><a href="/profile/' + result.offerer_id + '">' + result.offerer_name + '</a> <a href="/chat/' + result.offerer_id + '"><img src="/img/icons/chat.jpg" style="width: 80px; height:35px; margin: 0px 5px 5px 40px; box-shadow: 2px 2px 2px #888888;"></a></td><td>$' + parseFloat(result.price).toFixed(2) + '</td><td></td>';
+            html += '<tr><td>' + (i + 1) + '</td><td><a href="/profile/' + result.offerer_id + '">' + result.offerer_name + '</a> <a href="/chat/' + result.offerer_id + '"><img src="/img/icons/chatwithdeliverer.jpg" style="width:130px;height:35px;box-shadow: 2px 2px 2px #888888;"></a></td><td>$' + parseFloat(result.price).toFixed(2) + '</td><td></td>';
             if (!isBuyer) {
                 html += '<td></td></tr>';
             } else {

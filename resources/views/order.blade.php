@@ -40,7 +40,7 @@
                 </h4>
                 <div class="col-sm-2 vcenter">
                     <a href="/chat/<?php echo $deliverer->id ?>">
-                        <img style="width:120px;height:35px;margin:0px 5px 5px 0px;box-shadow: 2px 2px 2px #888888;" src="/img/icons/chatwithbuyer.jpg">
+                        <img style="width:120px;height:35px;margin:0px 5px 5px 0px;box-shadow: 2px 2px 2px #888888;" src="/img/icons/chatwithdeliverer.jpg">
                     </a>
                 </div>
             </div>
