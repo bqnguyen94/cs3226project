@@ -313,8 +313,10 @@ div.index_newestfoodstalls div h4 a{
 }
 
 #btn-submit{
-	width:200px;
-	height:65px;
+	width:140px;
+	height:37px;
+    padding: 0px;
+    margin-top: 0px;
 }
 
 #cart_continueshopping{
