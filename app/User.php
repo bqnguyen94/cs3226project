@@ -133,13 +133,14 @@ class User extends Authenticatable
                 ->delete();
     }
 
-    public function cart_to_order($location) {
+    public function cart_to_order($location, $deliveryTime) {
         $user_to_foods = DB::table('user_to_foods')
                 ->where('user_id', $this->id)
                 ->get();
         $order = Order::create([
             'buyer_id' => $this->id,
             'deliver_location' => $location,
+            'delivery_time' => Carbon::createFromFormat('m/d/Y H:i:s',$deliveryTime)->format('Y-m-d H:i:s');
         ]);
         foreach ($user_to_foods as $user_to_food) {
             DB::table('order_to_foods')

@@ -125,10 +125,7 @@ class UserController extends Controller
                     ->where('user_id', $user->id)
                     ->first();
             if ($first_item) {
-                $order = $user->cart_to_order($request->location);
-                $deliveryTime = Carbon::createFromFormat('m/d/Y H:i:s',$request->input('delivery_time'))->format('Y-m-d H:i:s');
-                $order->delivery_time = $deliveryTime;
-                $order->save();
+                $order = $user->cart_to_order($request->location,$request->input('delivery_time'));
                 $deliverer = User::where('id', $order->deliverer_id)->first();
                 return redirect()->to('/order/' . $order->id);
             }
