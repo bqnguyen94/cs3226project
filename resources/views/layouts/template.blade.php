@@ -14,6 +14,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js"></script>
         <link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/banner.css">
         <link href="{{asset("/css/star-rating.css")}}" media="all" rel="stylesheet" type="text/css"/>
         <link href="/css/carousel.css" rel="stylesheet">
         <script type="text/javascript" src="/js/fade.js"></script>

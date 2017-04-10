@@ -6,24 +6,6 @@
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 </head>
-<style>
-#message_warning{
-	
-	font-family: 'Open Sans', sans-serif;
-	width:250px;
-	margin-right:30px;
-	float:right;
-	
-}
-	
-#message_warning p, #message_warning:hover, #message_warning{
-	
-	font-size: 14px;
-	opacity:0.7;
-	
-}
-
-</style>
 
 <?php $user = Auth::user() ?>
 
