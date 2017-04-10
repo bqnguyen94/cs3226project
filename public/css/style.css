@@ -281,7 +281,7 @@ footer #copyright{
 }
 /*End of vertical navbar*/
 
-#datetimepicker1 {
+.bootstrap-datetimepicker-widget {
     background-color: #333 ;
     color: #fff ;
 }
