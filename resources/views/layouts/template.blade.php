@@ -18,7 +18,6 @@
         <link href="/css/carousel.css" rel="stylesheet">
         <script type="text/javascript" src="/js/fade.js"></script>
         <script type="text/javascript" src="/js/moveUp.js"></script>
-        <script type="text/javascript" src="{{asset("/js/star-rating.js")}}"></script>
     </head>
     <body>
         <script>
@@ -60,6 +59,8 @@
         @include('layouts.footer')
     </body>
     <script src="{{asset("js/master.js")}}"></script>
+    <script type="text/javascript" src="{{asset("/js/star-rating.js")}}"></script>
+    <script type="text/javascript" src="{{asset("/js/moment-develop/moment.min.js")}}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     @yield('script')
 </html>
