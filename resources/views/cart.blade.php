@@ -108,20 +108,21 @@
 
         </div>
 
-
+        <div class="row">
+            {!! Form::open() !!}
+            <div class="form-group">
+                <div class="input-group col-xs-6">
+                    <span class="input-group-addon" id="basic-addon2">Deliver to:</span>
+                    <input id="location" name="location" type="text" class="form-control"
+                           placeholder="e.g: PGP Residence 4" required/>
+                </div>
+            </div>
+        </div>
         <!--todo add in datetime picker-->
         <div class="container">
             <div class="row">
-                {!! Form::open() !!}
                 <div class="form-group">
-                    <div class="input-group col-xs-6">
-                        <span class="input-group-addon" id="basic-addon2">Deliver to:</span>
-                        <input id="location" name="location" type="text" class="form-control"
-                               placeholder="e.g: PGP Residence 4" required/>
-                    </div>
-                </div>
-                <div class='col-sm-6'>
-                    <div class="form-group">
+                    <div class='col-sm-6'>
                         <div class='input-group date' id='datetimepicker1'>
                             <span class="input-group-addon" id="basic-addon2">Delivery Time:</span>
                             {!! Form::text('delivery_time',NULL,['class'=>'form-control']) !!}
