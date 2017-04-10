@@ -229,6 +229,7 @@
                     <tr>
                         <th class="col-xs-1"></th>
                         <th class="col-xs-4">Offerer</th>
+						<th class="col-xs-2"></th>
                         <th class="col-xs-3">Price</th>
                         <th></th>
                         <th></th>
@@ -249,7 +250,8 @@
                             <tr>
                         @endif
                             <td >{{ $i }}</td>
-                            <td><a href="/profile/<?php echo $offerer->id ?>">{{ $offerer->name }}</a>  <a href="/chat/<?php echo $offer->offerer_id ?>"><img src="/img/icons/chat.jpg" style="width:80px;height:35px;margin:0px 5px 5px 40px;box-shadow: 2px 2px 2px #888888;"></a></td>
+                            <td><a href="/profile/<?php echo $offerer->id ?>">{{ $offerer->name }}</a></td>
+							<td><a href="/chat/<?php echo $offer->offerer_id ?>"><img src="/img/icons/chatwithdeliverer.jpg" style="width:130px;height:35px;box-shadow: 2px 2px 2px #888888;"></a></td>
     						<?php
     							$price = $offer->price;
     							echo '<td>$' . number_format($price,2) . '</td>';
