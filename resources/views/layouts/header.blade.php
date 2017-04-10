@@ -40,6 +40,7 @@
                     &nbsp;&nbsp;NUS Food
                 </h1>
             </div>
+			
             <div class="col-md-12 col-xs-12" style="margin-top: 30px">
                 <ul class="nav nav-pills">
                     <li role="presentation" ><a href="/">Home</a></li>
@@ -68,7 +69,7 @@
                             </form>
                     </li>
 				<li class="dropdown" id="dropdown_user" role="presentation" style="float:right" >
-							<a role="presentation" class="dropdown-toggle" data-toggle="dropdown">User <span class="caret"></span></a>
+							<a role="presentation" class="dropdown-toggle" data-toggle="dropdown"><?php echo Auth::user()->name ?> <span class="caret"></span></a>
                         	<ul class="dropdown-menu">
 								<li><a href="/profile/<?php echo Auth::user()->id ?>">Profile</a> </li>
 								<li><a role="presentation" href="/threads">Messages <span class="label label-danger label-as-badge">{{ App\Thread::get_total_unread(Auth::user()->id) }}</span></a></li>
