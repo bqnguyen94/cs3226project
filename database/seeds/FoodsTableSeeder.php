@@ -75,28 +75,28 @@ class FoodsTableSeeder extends Seeder
             'restaurant_id' => '2',
             'name' => 'Braised Pork Noodle',
             'price' => '4',
-            'image' => "/img/food/utwon-03.jpg",
+            'image' => "/img/food/utown-03.jpg",
         ]);
 
         Food::create([
             'restaurant_id' => '3',
             'name' => 'Golden Cereal Fried Rice',
             'price' => '3.5',
-            'image' => "/img/food/utwon-04.jpg",
+            'image' => "/img/food/utown-04.jpg",
         ]);
 
         Food::create([
             'restaurant_id' => '3',
             'name' => 'Kong Bao Chicken with Rice',
             'price' => '4.5',
-            'image' => "/img/food/utwon-05.jpg",
+            'image' => "/img/food/utown-05.jpg",
         ]);
 
         Food::create([
             'restaurant_id' => '3',
             'name' => 'Claypot Braised Tofu Set',
             'price' => '4.5',
-            'image' => "/img/food/utwon-06.jpg",
+            'image' => "/img/food/utown-06.jpg",
         ]);
     }
 }

@@ -36,7 +36,7 @@
 	    			<?php $hasRes=false; ?>
 	      			@foreach ($restaurants as $restaurant)
             		<?php
-            			if($restaurant->location=="Universiv Town"){
+            			if($restaurant->location=="University Town"){
             				$hasRes=true;
             		?>
             				@include('_restaurant_panel')
