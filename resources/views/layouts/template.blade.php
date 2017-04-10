@@ -16,10 +16,10 @@
         <link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/banner.css">
         <link href="{{asset("/css/star-rating.css")}}" media="all" rel="stylesheet" type="text/css"/>
+        <link href="{{asset("/js/bootstrap-datetimepicker-master/build/css/bootstrap-datetimepicker.min.css")}}" media="all" rel="stylesheet" type="text/css"/>
         <link href="/css/carousel.css" rel="stylesheet">
         <script type="text/javascript" src="/js/fade.js"></script>
         <script type="text/javascript" src="/js/moveUp.js"></script>
-        <script type="text/javascript" src="{{asset("/js/star-rating.js")}}"></script>
     </head>
     <body>
         <script>
@@ -60,7 +60,10 @@
         </div>
         @include('layouts.footer')
     </body>
-    <script src="{{asset("js/master.js")}}"></script>
+    <script src="{{asset("/js/master.js")}}"></script>
+    <script type="text/javascript" src="{{asset("/js/star-rating.js")}}"></script>
+    <script type="text/javascript" src="{{asset("/js/moment-develop/min/moment.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("/js/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js")}}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     @yield('script')
 </html>

@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-sm-6 col-xs-6">
-                {!! Form::label('paypal', 'Name:', ['class' => 'control-label']) !!}
+                {!! Form::label('paypal', 'Paypal:', ['class' => 'control-label']) !!}
                 <input class="form-control" name="paypal" type="email" value="<?php echo $target->paypal ?>" placeholder="Enter your paypal account">
             </div>
         </div>

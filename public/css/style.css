@@ -281,6 +281,7 @@ footer #copyright{
 }
 /*End of vertical navbar*/
 
+<<<<<<< HEAD
 /*Slight amendment to index */
 div.index_newestfoodstalls div h4 a{
 
@@ -350,3 +351,9 @@ div.index_newestfoodstalls div h4 a{
 }
 
 /* End of style code for message */
+=======
+.bootstrap-datetimepicker-widget {
+    background-color: #333 ;
+    color: #fff ;
+}
+>>>>>>> refs/remotes/origin/add_delivery_time

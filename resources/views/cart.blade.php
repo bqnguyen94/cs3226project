@@ -98,6 +98,26 @@
                     <input id="location" name="location" type="text" class="form-control" placeholder="e.g: PGP Residence 4" required/>
                 </div>
             </div>
+            <!--todo add in datetime picker-->
+        <div class="container">
+            <div class="row">
+                <div class='col-sm-6'>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="form-group">
+                <div class="input_group col-xs-6">
+
+                </div>
+            </div>
             <center class="cart_buttons">
 				<a href="/foods" class="btn btn-primary btn-lg" id="cart_continueshopping">Return to Food Menu</a>
 				<button id="btn-submit" class="btn btn-success btn-lg" type="submit">PLACE ORDER</button>
