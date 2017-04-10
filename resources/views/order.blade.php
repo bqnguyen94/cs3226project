@@ -195,15 +195,15 @@
                     <tr>
                         <td class="hidden-xs">{{ $i }}</td>
                         <td>{{ $item['food']->name }}</td>
-						<?php
-						$res_id=$item['food']-> restaurant_id;
+        				<?php
+        				$res_id=$item['food']-> restaurant_id;
                         $res=App\Restaurant::where('id', $res_id)->first();
                         echo '<td>' . $res-> location . '</td>';
                         echo '<td>' . $res-> name . '</td>';
 
-						$price = $item['food']-> price;
-						echo '<td>$' . number_format($price,2) . '</td>';
-						?>
+        				$price = $item['food']-> price;
+        				echo '<td>$' . number_format($price,2) . '</td>';
+        				?>
 
                         <td>{{ $item['amount'] }}</td>
                     </tr>
@@ -224,7 +224,7 @@
         @if ($offers->isNotEmpty())
             <div class="row">
                 <h4>This order's offers:</h4>
-                <table class="table table-condensed">
+                <table class="table table-condensed" id="offer_table">
                     <thead>
                     <tr>
                         <th class="col-xs-1"></th>
@@ -246,32 +246,32 @@
                         @if (Auth::check() && Auth::user()->id == $offer->offerer_id)
                             <tr class="highlight">
                         @else
-                            <tr >
-                                @endif
-                                <td >{{ $i }}</td>
-                                <td><a href="/profile/<?php echo $offerer->id ?>">{{ $offerer->name }}</a>  <a href="/chat/<?php echo $offer->offerer_id ?>"><img src="/img/icons/chat.jpg" style="width:80px;height:35px;margin:0px 5px 5px 40px;box-shadow: 2px 2px 2px #888888;"></a></td>
-								<?php
-									$price = $offer->price;
-									echo '<td>$' . number_format($price,2) . '</td>';
-								?>
+                            <tr>
+                        @endif
+                            <td >{{ $i }}</td>
+                            <td><a href="/profile/<?php echo $offerer->id ?>">{{ $offerer->name }}</a>  <a href="/chat/<?php echo $offer->offerer_id ?>"><img src="/img/icons/chat.jpg" style="width:80px;height:35px;margin:0px 5px 5px 40px;box-shadow: 2px 2px 2px #888888;"></a></td>
+    						<?php
+    							$price = $offer->price;
+    							echo '<td>$' . number_format($price,2) . '</td>';
+    						?>
 
-                                @if (Auth::check() && Auth::user()->id == $order->buyer_id)
-                                    <td>
+                            @if (Auth::check() && Auth::user()->id == $order->buyer_id)
+                                <td>
 
-                                    </td>
-                                    <td>
-                                        {!! Form::open() !!}
-                                        <button name="offer_id" id="btn-submit" type="submit" class="btn btn-success"
-                                                value="{{ $offer->id }}">Accept Offer
-                                        </button>
-                                        {!! Form::close() !!}
-                                    </td>
-                                @else
-                                    <td></td>
-                                    <td></td>
-                                @endif
+                                </td>
+                                <td>
+                                    {!! Form::open() !!}
+                                    <button name="offer_id" id="btn-submit" type="submit" class="btn btn-success"
+                                            value="{{ $offer->id }}">Accept Offer
+                                    </button>
+                                    {!! Form::close() !!}
+                                </td>
+                            @else
+                                <td></td>
+                                <td></td>
+                            @endif
                             </tr>
-                            @endforeach
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -287,15 +287,15 @@
             ?>
             {!! Form::open(['url' => '/makeoffer/' . $order->id]) !!}
 
-            <!--
-            <div class="row">
-                <div class="col-sm-2">
-                    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1"
-                         height="1">
-                    </form>
-                </div>
-            </div>
-            -->
+    <!--
+    <div class="row">
+        <div class="col-sm-2">
+            <img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1"
+                 height="1">
+            </form>
+        </div>
+    </div>
+    -->
             <div class="row">
                 <div class="col-sm-2">
                     <br>
@@ -309,11 +309,19 @@
                         Make Offer
                     </button>
                 </div>
-                {!! Form::close() !!}
-                @endif
             </div>
-        @endsection
-
+            {!! Form::close() !!}
+        @endif
+    </div>
+@endsection
+@section('script')
+<script type="text/javascript">
+    var orderId = {{ $order->id }};
+    var isBuyer = {{ Auth::check() && Auth::user()->id == $order->buyer_id }};
+    var token = "{{ csrf_token() }}";
+</script>
+<script type="text/javascript" src="/js/order.js"></script>
+@endsection
 
 
 
