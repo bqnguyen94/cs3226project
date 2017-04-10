@@ -1,8 +1,8 @@
 <div class="panel-body">
     <div class="panel panel-success">
-        <div class="panel-heading">
+        <div class="panel-heading" data-toggle="collapse" href="#res{{$restaurant->id}}">
             <h4 class="panel-title">
-                <a data-toggle="collapse" href="#res{{$restaurant->id}}">{{$restaurant->name}}</a>
+                <a>{{$restaurant->name}}</a>
             </h4>
         </div>
         <div id="res{{$restaurant->id}}" class="panel-collapse collapse">
@@ -12,9 +12,9 @@
             if($food->restaurant_id==$restaurant->id){
             ?>
                 @include('_food_card')
-            <?php 
+            <?php
             }
-            ?>  
+            ?>
             @endforeach
             </div>
         </div>

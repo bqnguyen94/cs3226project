@@ -65,6 +65,7 @@ class User extends Authenticatable
         $cart = array();
         foreach ($user_to_foods as $user_to_food) {
             $cart[] = [
+                'food_id' => $user_to_food->food_id,
                 'food' => Food::where('id', $user_to_food->food_id)->first(),
                 'amount' => $user_to_food->food_amount,
             ];
@@ -113,6 +114,25 @@ class User extends Authenticatable
         }
     }
 
+    public function delete_from_cart($food_id) {
+        $user_to_food = DB::table('user_to_foods')
+                ->where('user_id', $this->id)
+                ->where('food_id', $food_id)
+                ->first();
+        if ($user_to_food) {
+            DB::table('user_to_foods')
+                    ->where('user_id', $this->id)
+                    ->where('food_id', $food_id)
+                    ->delete();
+        }
+    }
+
+    public function clear_cart() {
+        DB::table('user_to_foods')
+                ->where('user_id', $this->id)
+                ->delete();
+    }
+
     public function cart_to_order($location) {
         $user_to_foods = DB::table('user_to_foods')
                 ->where('user_id', $this->id)
@@ -129,9 +149,7 @@ class User extends Authenticatable
                     'food_amount' => $user_to_food->food_amount,
                 ]);
         }
-        DB::table('user_to_foods')
-                ->where('user_id', $this->id)
-                ->delete();
+        $this->clear_cart();
         return $order;
     }
 

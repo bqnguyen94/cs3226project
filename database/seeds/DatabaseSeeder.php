@@ -14,10 +14,10 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(RestaurantsTableSeeder::class);
         $this->call(FoodsTableSeeder::class);
-        $this->call(OrdersTableSeeder::class);
-        $this->call(OrderToFoodsTableSeeder::class);
-        $this->call(UserToFoodsTableSeeder::class);
-        $this->call(ThreadsAndMessagesSeeder::class);
-        $this->call(OfferTableSeeder::class);
+        //$this->call(OrdersTableSeeder::class);
+        //$this->call(OrderToFoodsTableSeeder::class);
+        //$this->call(UserToFoodsTableSeeder::class);
+        //$this->call(ThreadsAndMessagesSeeder::class);
+        //$this->call(OfferTableSeeder::class);
     }
 }

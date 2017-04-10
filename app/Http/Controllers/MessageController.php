@@ -61,11 +61,29 @@ class MessageController extends Controller
         if ($receiver_id == $user->id) {
             $receiver_id = $thread->second_user_id;
         }
+        $messages = $thread->get_all_messages();
+        if ($user->id == $thread->first_user_id) {
+            $temp = $messages
+                ->where('sender_id', '!=', $user->id)
+                ->last();
+            if ($temp) {
+                $thread->first_user_last_read = $temp->id;
+            }
+
+        } else {
+            $temp = $messages
+                ->where('sender_id', '!=', $user->id)
+                ->last();
+            if ($temp) {
+                $thread->second_user_last_read = $temp->id;
+            }
+        }
+        $thread->save();
         $receiver = User::where('id', $receiver_id)->first();
         return view('messages')
             ->with('thread', $thread)
             ->with('receiver', $receiver)
-            ->with('messages', $thread->get_all_messages()->take(-10));
+            ->with('messages', $messages);
     }
 
     public function reply(Request $request) {
@@ -103,6 +121,22 @@ class MessageController extends Controller
             $user = Auth::user();
             if ($user->id == $thread->first_user_id || $user->id == $thread->second_user_id) {
                 $messages = $thread->get_all_messages();
+                if ($user->id == $thread->first_user_id) {
+                    $temp = $messages
+                        ->where('sender_id', '!=', $user->id)
+                        ->last();
+                    if ($temp) {
+                        $thread->first_user_last_read = $temp->id;
+                    }
+
+                } else {
+                    $temp = $messages
+                        ->where('sender_id', '!=', $user->id)
+                        ->last();
+                    if ($temp) {
+                        $thread->second_user_last_read = $temp->id;
+                    }
+                }
                 $data = array();
                 $line = new \stdClass();
                 foreach ($messages as $message) {

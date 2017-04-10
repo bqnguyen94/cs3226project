@@ -50,6 +50,22 @@ class UserController extends Controller
         return redirect()->to('/');
     }
 
+    public function updatePaypal($id, Request $request) {
+        if (Auth::check() && Auth::user()->id == $id) {
+            if ($request->paypal) {
+                $this->validate($request, [
+                    'paypal' => 'email',
+                ]);
+                Auth::user()->paypal = $request->paypal;
+            } else {
+                Auth::user()->paypal = null;
+            }
+            Auth::user()->save();
+            Session::flash('alert-success', 'Your Paypal account is successfully updated!');
+        }
+        return redirect()->back();
+    }
+
     public function cart() {
         if (Auth::check()) {
             $user = Auth::user();
@@ -70,6 +86,22 @@ class UserController extends Controller
         return redirect()->to('/');
     }
 
+    public function delete_from_cart(Request $request) {
+        if (Auth::check() && $request->food_id) {
+            Auth::user()->delete_from_cart($request->food_id);
+            Session::flash('alert-success', 'Item is removed from your cart.');
+        }
+        return redirect()->back();
+    }
+
+    public function clear_cart(Request $request) {
+        if (Auth::check()) {
+            Auth::user()->clear_cart();
+            Session::flash('alert-success', 'Your cart has been cleared.');
+        }
+        return redirect()->back();
+    }
+
     public function confirm_order(Request $request) {
         if (Auth::check()) {
             $user = Auth::user();
@@ -86,14 +118,30 @@ class UserController extends Controller
         return redirect()->to('/');
     }
 
+    public function cancel_order($id) {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $order = Order::where('id', $id)->first();
+            if ($order && $user->id == $order->buyer_id) {
+                $order->delete();
+                Session::flash('alert-success', 'Order is cancelled.');
+            }
+            return redirect()->to('/');
+        }
+    }
+
     public function make_offer($id, Request $request) {
         if (Auth::check()) {
             $user = Auth::user();
             $order = Order::where('id', $id)->first();
-            if ($order && !$order->deliverer_id && $order->buyer_id != $user->id) {
+            if ($order && !$order->deliverer_id && $order->buyer_id != $user->id
+                    && $request->amount <= 1000 && $request->amount >= 0) {
                 $user->make_offer($order->id, $request->amount);
-                return redirect()->back();
+                Session::flash('alert-success', 'Offer made!');
+            } else {
+                Session::flash('alert-error', 'You are not allowed to do that!');
             }
+            return redirect()->back();
         }
     }
 
@@ -115,8 +163,8 @@ class UserController extends Controller
 
     private function processPayment($order, $offer) {
         $params = array(
-            'cancelUrl'=>'http://project.dev:8000/',
-            'returnUrl'=>'http://project.dev:8000/order/' . $order->id . '/confirmed/' . $offer->id . '/',
+            'cancelUrl'=>'https://nusfood.com/',
+            'returnUrl'=>'https://nusfood.com/order/' . $order->id . '/confirmed/' . $offer->id . '/',
             'amount' =>  $offer->price,
             'currency' => 'SGD'
         );
@@ -126,9 +174,9 @@ class UserController extends Controller
 
         $gateway = Omnipay::create('PayPal_Express');
         $gateway->setUsername('jhcs_api1.hotmail.sg');
-        $gateway->setPassword('C7PFEQSUMAQLAKKP');
-        $gateway->setSignature('AFcWxV21C7fd0v3bYYYRCpSSRl31AbJBDMUQ2rqLv4jFxGAqS.eqn5g2');
-        $gateway->setTestMode(true);
+        $gateway->setPassword('VG4ESKFEJ4SLNUL4');
+        $gateway->setSignature('AFcWxV21C7fd0v3bYYYRCpSSRl31APrilmu6WQdlaXAQvK6TlJEB-AfH');
+        //$gateway->setTestMode(true);
 
         $response = $gateway->purchase($params)->send();
         if ($response->isRedirect()) {
@@ -145,9 +193,9 @@ class UserController extends Controller
         if ($order && $offer) {
             $gateway = Omnipay::create('PayPal_Express');
             $gateway->setUsername('jhcs_api1.hotmail.sg');
-            $gateway->setPassword('7JU76R46GVAW6WSN');
-            $gateway->setSignature('AFcWxV21C7fd0v3bYYYRCpSSRl31AJgctxh96ZgCbsyH1uePbINrbSNd');
-            $gateway->setTestMode(true);
+            $gateway->setPassword('VG4ESKFEJ4SLNUL4');
+            $gateway->setSignature('AFcWxV21C7fd0v3bYYYRCpSSRl31APrilmu6WQdlaXAQvK6TlJEB-AfH');
+            //$gateway->setTestMode(true);
 
             $params = Session::get('params');
             $response = $gateway->completePurchase($params)->send();

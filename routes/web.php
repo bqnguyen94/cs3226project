@@ -24,11 +24,15 @@ Route::get('user/activation/{token}', 'Auth\LoginController@activateUser')->name
 
 Route::get('profile/{id}', 'UserController@profile');
 
+Route::post('profile/{id}', 'UserController@updatePaypal');
+
 Route::get('foods', 'FoodController@foods');
 
 Route::get('orders', 'OrderController@orders');
 
 Route::get('order/{id}', 'OrderController@order');
+
+Route::get('order/{id}/delete/', 'UserController@cancel_order');
 
 Route::post('order/{order}/confirm-deliver',['as'=>'confirm.deliver','uses'=>'OrderController@confirmDeliver']);
 
@@ -54,6 +58,16 @@ Route::get('cart', 'UserController@cart');
 
 Route::post('cart', 'UserController@confirm_order');
 
+Route::post('/cart/delete', [
+    'as' => 'cart.delete',
+    'uses' => 'UserController@delete_from_cart',
+    ]);
+
+Route::post('/cart/clear', [
+    'as' => 'cart.clear',
+    'uses' => 'UserController@clear_cart',
+    ]);
+
 Route::get('threads', 'MessageController@index');
 
 Route::get('chat/{id}', 'MessageController@chatWith');
@@ -65,8 +79,6 @@ Route::get('messages/{id}', 'MessageController@messages');
 Route::post('messages/{id}', 'MessageController@reply');
 
 Route::get('refreshmessages/{id}', 'MessageController@refresh_messages');
-
-Route::get('/contact', function(){return view('contact');});
 
 Route::get('/about', function(){return view('about');});
 

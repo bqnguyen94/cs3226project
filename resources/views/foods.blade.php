@@ -18,17 +18,16 @@
 <div class="container">
     <h1>Choose the Location:</h1>
     <div class="row">
-
-	    <div class="panel-group">
+	    <div id="menu_ut" class="panel-group" >
 	  		<div class="panel panel-warning">
-	    		<div class="panel-heading">
-			    	<div class="row">
+	    		<div class="panel-heading" data-toggle="collapse" href="#collapse1">
+			    	<div class="row" >
 			    		<div class="col-sm-6 hidden-xs imgView">
-			    			<a data-toggle="collapse" href="#collapse1"><img alt="Utown" src="/img/UTown.jpg"></a>
+			    			<a><img alt="Utown" src="/img/UTown.jpg"></a>
 			    		</div>
-			    		<div class="col-sm-4 info">
+			    		<div class="col-sm-4 info" >
 			    			<h4 class="panel-title">
-			        			<a data-toggle="collapse" href="#collapse1">University Town</a>
+			        			<a >University Town</a>
 			      			</h4>
 			    		</div>
 			    	</div>
@@ -56,18 +55,19 @@
 	  		</div>
 		</div>
 
-		<div class="panel-group">
-	  		<div class="panel panel-warning">
-	    		<div class="panel-heading">
+		<div id="menu_deck" class="panel-group" >
+	  		<div class="panel panel-warning" >
+	    		<div class="panel-heading" data-toggle="collapse" href="#collapse2">
 		    		<div class="row">
 		      			<div class="col-sm-6 hidden-xs imgView">
-				    		<a data-toggle="collapse" href="#collapse2"><img alt="TheDeck" src="/img/TheDeck.png"></a>
+				    		<a><img alt="TheDeck" src="/img/TheDeck.jpg"></a>
 				    	</div>
 				    	<div class="col-sm-4 info">
 				    		<h4 class="panel-title">
-				        		<a data-toggle="collapse" href="#collapse2">The Deck</a>
+				        		<a >The Deck</a>
 				      		</h4>
 				    	</div>
+
 			    	</div>
 	    		</div>
 	    		<div id="collapse2" class="panel-collapse collapse">
@@ -93,16 +93,16 @@
 	  		</div>
 		</div>
 
-		<div class="panel-group">
+		<div class="panel-group" >
 	  		<div class="panel panel-warning">
-	    		<div class="panel-heading">
+	    		<div class="panel-heading"  data-toggle="collapse" href="#collapse3" id="menu_biz">
 		    		<div class="row">
 		      			<div class="col-sm-6 hidden-xs imgView">
-				    		<a data-toggle="collapse" href="#collapse3"><img alt="BizCan" src="/img/BizCan.jpg"></a>
+				    		<a><img alt="BizCan" src="/img/BizCan.jpg"></a>
 				    	</div>
 				    	<div class="col-sm-4 info">
 				    		<h4 class="panel-title">
-				        		<a data-toggle="collapse" href="#collapse3">Biz Canteen</a>
+				        		<a >Biz Canteen</a>
 				      		</h4>
 				    	</div>
 			    	</div>
@@ -130,16 +130,16 @@
 	  		</div>
 		</div>
 
-		<div class="panel-group">
+		<div id="menu_yih" class="panel-group">
 	  		<div class="panel panel-warning">
-	    		<div class="panel-heading">
+	    		<div class="panel-heading" data-toggle="collapse" href="#collapse4" >
 		    		<div class="row">
 		      			<div class="col-sm-6 hidden-xs imgView">
-				    		<a data-toggle="collapse" href="#collapse4"><img alt="YIH" src="/img/YIH.JPG"></a>
+				    		<a><img alt="YIH" src="/img/YIH.JPG"></a>
 				    	</div>
-				    	<div class="col-sm-4 info">
-				    		<h4 class="panel-title">
-				        		<a data-toggle="collapse" href="#collapse4">Yusof Ishak House</a>
+				    	<div class="col-sm-4 info" >
+				    		<h4 class="panel-title" >
+				        		<a >Yusof Ishak House</a>
 				      		</h4>
 				    	</div>
 			    	</div>
@@ -169,14 +169,14 @@
 
 		<div class="panel-group">
 	  		<div class="panel panel-warning">
-	    		<div class="panel-heading">
+	    		<div id="menu_science" class="panel-heading" data-toggle="collapse" href="#collapse5" >
 		    		<div class="row">
 		      			<div class="col-sm-6 hidden-xs imgView">
-				    		<a data-toggle="collapse" href="#collapse5"><img alt="SciCan" src="/img/SciCan.JPG"></a>
+				    		<a ><img alt="SciCan" src="/img/SciCan.JPG"></a>
 				    	</div>
 				    	<div class="col-sm-4 info">
 				    		<h4 class="panel-title">
-				        		<a data-toggle="collapse" href="#collapse5">Science Canteen</a>
+				        		<a >Science Canteen</a>
 				      		</h4>
 				    	</div>
 			    	</div>

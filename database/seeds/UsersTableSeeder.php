@@ -55,7 +55,7 @@ class UsersTableSeeder extends Seeder
             'role' => User::ROLE_USER,
             'activated' => true,
         ]);
-
+/*
         for ($i = 0; $i < $limit; $i++) {
             User::create([
                 'name' => $faker->name,
@@ -66,5 +66,6 @@ class UsersTableSeeder extends Seeder
                 'activated' => true,
             ]);
         }
+*/
     }
 }

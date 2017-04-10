@@ -10,6 +10,13 @@ html, body {
   margin: 0 auto;
 }
 
+/*spacing*/
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
 /* Header */
 .header {
   padding: 40px;
@@ -22,21 +29,24 @@ html, body {
 }
 
 .nav-pills li a {
-  background-color: white;
-  color: #d8192f;
+  
   border: 1px solid #d8192f;
   border-radius: 4px;
   margin-left: 10px;
   width: 120px;
   text-align: center;
+	
+  background-color:#d8192f;
+  color: white;
 }
 
 .nav-pills li.active a,
 .nav-pills li a:hover,
 .section .btn:hover {
-  background-color:#d8192f;
+  
   box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
-  color: white;
+  background-color: white;
+  color: #d8192f;
 }
 
 .nav-pills li.active a:hover {
@@ -161,6 +171,7 @@ footer{
   font-family: 'Arvo', serif;
   text-decoration:none;
   padding-top:10px;
+  margin-top:15px;
   height:45px;
 
 
@@ -234,3 +245,38 @@ footer #copyright{
   background-color: #efefef;
 }
 /* End of chat panel */
+
+/*vertical navbar*/
+.outerVN{
+    list-style-type: none;
+    width: 18%;
+    background-color: white;
+    position: fixed;
+    height: 90%;
+    overflow: auto;
+    z-index: 100;
+}
+
+.verticalNav{
+    list-style-type: none;
+    margin-left: 1%;
+    margin-top: 1%;
+    padding-left: 1.5%;
+    width: 17%;
+    background-color: #7b0b0a;
+    position: fixed;
+    height: 90%;
+    overflow: auto;
+    border-radius: 10px;
+}
+
+.verticalNav h3{
+  color: white;
+}
+.verticalNav h4{
+  color: white;
+}
+.verticalNav h5{
+  color: white;
+}
+/*End of vertical navbar*/

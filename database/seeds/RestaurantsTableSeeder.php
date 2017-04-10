@@ -19,6 +19,7 @@ class RestaurantsTableSeeder extends Seeder
             'Biz Canteen',
             'Science Canteen',
         ];
+        /*
         $faker = Faker\Factory::create();
 
         $limit = 10;
@@ -31,6 +32,11 @@ class RestaurantsTableSeeder extends Seeder
                 'location' => $location
             ]);
         }
+        */
+        Restaurant::create([
+            'name' => 'Hwang\'s Korean Restaurant',
+            'location' => $locations[3],
+        ]);
 
     }
 }

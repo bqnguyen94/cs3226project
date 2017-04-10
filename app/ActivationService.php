@@ -31,7 +31,7 @@ class ActivationService
         $token = $this->activationRepo->createActivation($user);
 
         $link = route('user.activate', $token);
-        $message = sprintf('Activate account <a href="%s">%s</a>', $link, $link);
+        $message = sprintf('Please click on the following link to activate your NUSFood account: %s', $link);
 
         $this->mailer->raw($message, function (Message $m) use ($user) {
             $m->to($user->email)->subject('Verify your NUSFood account');

@@ -17,6 +17,7 @@ class CreateFoodsTable extends Migration
             $table->increments('id');
             $table->integer('restaurant_id')->unsigned();
             $table->string('name');
+            $table->string('image')->default("http://ghk.h-cdn.co/assets/cm/15/11/54fe25783596c-cajun-rice-chicken-orig-master-1.jpg");
             $table->float('price', 5, 2);
             $table->timestamps();
             $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');

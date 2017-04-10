@@ -3,7 +3,38 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @stop
 @section('main')
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+</head>
+<style>
+#message_warning{
+	
+	font-family: 'Open Sans', sans-serif;
+	width:250px;
+	margin-right:30px;
+	float:right;
+	
+}
+	
+#message_warning p, #message_warning:hover, #message_warning{
+	
+	font-size: 14px;
+	opacity:0.7;
+	
+}
+
+</style>
+
 <?php $user = Auth::user() ?>
+
+
+<div id="message_warning" class="alert alert-warning alert-dismissable close" data-dismiss="alert">
+    <strong>Warning:</strong> <p> Please do not give away your password and other personal information over this platform. Thank you! </p>
+	<a href="#" class="close" data-dismiss="alert" aria-label="close" >
+	  
+   </a>
+</div>
+
 <div class="container">
     <h3>This page shows all messages this user has with a specific user.</h3>
     <div class="panel-group">
@@ -12,7 +43,7 @@
                 From: {{ $receiver->name }}
             </div>
             <div id="panel_messages" class="panel panel-default">
-                <div class="panel-body" style="height: 800px;overflow-y: scroll;">
+                <div class="panel-body" style="height: 400px;overflow-y: scroll;">
                     <ul class="media-list" id="message-list">
                     @foreach ($messages as $message)
                     <?php
