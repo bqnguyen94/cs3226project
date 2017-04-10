@@ -120,7 +120,7 @@
             </div>
             <center class="cart_buttons">
 				<a href="/foods" class="btn btn-primary btn-lg" id="cart_continueshopping">Return to Food Menu</a>
-				<button id="btn-submit" class="btn btn-success btn-lg" type="submit">PLACE ORDER</button>
+				<button id="btn-submit" class="btn btn-success btn-lg po" type="submit">PLACE ORDER</button>
 
             </center>
         {!! Form::close() !!}

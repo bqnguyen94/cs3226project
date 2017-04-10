@@ -18,7 +18,7 @@
 		</p>
         {!! Form::open() !!}
         <input id="food_id" name="food_id" type="hidden" value="<?php echo $food->id ?>">
-        <button id="btn-submit" class="btn btn-success" type="submit">ADD TO CART</button>
+        <button id="btn-submit" class="btn btn-success atc" type="submit">ADD TO CART</button>
         {!! Form::close() !!}
     </div>
     <!--/.Card content-->

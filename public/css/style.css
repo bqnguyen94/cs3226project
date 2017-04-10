@@ -312,13 +312,6 @@ div.index_newestfoodstalls div h4 a{
 
 }
 
-#btn-submit{
-	width:140px;
-	height:37px;
-    padding: 0px;
-    margin-top: 0px;
-}
-
 #cart_continueshopping{
 	width:200px;
 	height:65px;
@@ -350,6 +343,32 @@ div.index_newestfoodstalls div h4 a{
 	opacity:0.7;
 	
 }
+
+/*button size*/
+.ao{
+  width:140px;
+  height:37px;
+  padding: 0px;
+  margin-top: 0px;
+}
+
+.po{
+  width:200px;
+  height:65px;
+}
+
+.atc{
+  width:190px;
+  height:60px;
+  margin-left: 0px;
+}
+
+.detail{
+  margin-left: 0px;
+  width:205px;
+}
+
+/*End of button size*/
 
 /* End of style code for message */
 =======

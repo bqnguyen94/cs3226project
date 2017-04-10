@@ -261,7 +261,7 @@
                                 </td>
                                 <td>
                                     {!! Form::open() !!}
-                                    <button name="offer_id" id="btn-submit" type="submit" class="btn btn-success"
+                                    <button name="offer_id" id="btn-submit" type="submit" class="btn btn-success ao"
                                             value="{{ $offer->id }}">Accept Offer
                                     </button>
                                     {!! Form::close() !!}
