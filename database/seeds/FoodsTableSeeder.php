@@ -98,5 +98,54 @@ class FoodsTableSeeder extends Seeder
             'price' => '4.5',
             'image' => "/img/food/utown-06.jpg",
         ]);
+
+        Food::create([
+            'restaurant_id' => '4',
+            'name' => 'Chicken Rice',
+            'price' => '2.3',
+            'image' => "/img/food/biz-chickenRice.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '4',
+            'name' => 'Char Siew Rice',
+            'price' => '2.3',
+            'image' => "/img/food/biz-charSiewRice.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '5',
+            'name' => 'Chicken Katsu Curry Rice',
+            'price' => '3.5',
+            'image' => "/img/food/biz-chickenKatsu.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '5',
+            'name' => 'Oyako Rice',
+            'price' => '3.5',
+            'image' => "/img/food/biz-oyakoRice.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '6',
+            'name' => 'Steamed Chicken Set',
+            'price' => '4.2',
+            'image' => "/img/food/utown-steamedChicken.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '6',
+            'name' => 'Sotong Panggang Set',
+            'price' => '5.5',
+            'image' => "/img/food/utown-sotong.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '6',
+            'name' => 'Ayam Penyet Set',
+            'price' => '5',
+            'image' => "/img/food/utown-ayamPenyet.jpg",
+        ]);
     }
 }

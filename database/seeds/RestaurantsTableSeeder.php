@@ -48,5 +48,22 @@ class RestaurantsTableSeeder extends Seeder
             'location' => $locations[0],
         ]);
 
+        Restaurant::create([
+            'name' => 'Chicken Rice',
+            'location' => $locations[3],
+        ]);
+
+        Restaurant::create([
+            'name' => 'Japanese Food',
+            'location' => $locations[3],
+        ]);
+
+        Restaurant::create([
+            'name' => 'Foodclique Indonesian',
+            'location' => $locations[0],
+        ]);
+
+
+
     }
 }
