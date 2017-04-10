@@ -117,23 +117,24 @@
                            placeholder="e.g: PGP Residence 4" required/>
                 </div>
             </div>
-            <!--todo add in datetime picker-->
-            <div class="container">
-                <div class="row">
-                    <div class='col-sm-6'>
-                        <div class="form-group">
-                            <div class='input-group date' id='datetimepicker1'>
-                                <span class="input-group-addon" id="basic-addon2">Delivery Time:</span>
-                                {!! Form::text('delivery_time',NULL,['class'=>'form-control']) !!}
-                                <span class="input-group-addon">
+        </div>
+        <!--todo add in datetime picker-->
+        <div class="container">
+            <div class="row">
+                <div class='col-sm-6'>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <span class="input-group-addon" id="basic-addon2">Delivery Time:</span>
+                            {!! Form::text('delivery_time',NULL,['class'=>'form-control']) !!}
+                            <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
         <div class="form-group">
             <div class="input_group col-xs-6">
 
