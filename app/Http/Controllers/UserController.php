@@ -116,6 +116,7 @@ class UserController extends Controller
 
     public function confirm_order(Request $request) {
         if (Auth::check()) {
+            dd($request->delivery_time);
             $this->validate($request,[
                'location' => 'max:100|string|required',
                 'delivery_time'=>'date_format:m/d/Y H:i:s|required'
