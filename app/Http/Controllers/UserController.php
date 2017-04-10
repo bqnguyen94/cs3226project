@@ -119,7 +119,7 @@ class UserController extends Controller
             dd($request->delivery_time);
             $this->validate($request,[
                'location' => 'max:100|string|required',
-                'delivery_time'=>'date_format:m/d/Y H:i:s|required'
+                'delivery_time'=>'date_format:m/d/Y H:i meridian|required'
             ]);
             $user = Auth::user();
             $first_item = DB::table('user_to_foods')

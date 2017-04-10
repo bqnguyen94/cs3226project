@@ -137,7 +137,7 @@ class User extends Authenticatable
         $user_to_foods = DB::table('user_to_foods')
                 ->where('user_id', $this->id)
                 ->get();
-        $deliveryTime = Carbon::createFromFormat('m/d/Y H:i:s',$deliveryTime)->format('Y-m-d H:i:s');
+        $deliveryTime = Carbon::createFromFormat('m/d/Y H:i meridian',$deliveryTime)->format('Y-m-d H:i:s');
         $order = Order::create([
             'buyer_id' => $this->id,
             'deliver_location' => $location,
