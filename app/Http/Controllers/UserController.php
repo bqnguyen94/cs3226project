@@ -116,14 +116,19 @@ class UserController extends Controller
 
     public function confirm_order(Request $request) {
         if (Auth::check()) {
+            $this->validate($request,[
+               'location' => 'max:100|string|required',
+                'delivery_time'=>'date_format:m/d/Y H:i:s|required'
+            ]);
             $user = Auth::user();
             $first_item = DB::table('user_to_foods')
                     ->where('user_id', $user->id)
                     ->first();
             if ($first_item) {
                 $order = $user->cart_to_order($request->location);
-                dd($request->delivery_time);
                 $deliveryTime = Carbon::createFromFormat('m/d/Y H:i:s',$request->input('delivery_time'))->format('Y-m-d H:i:s');
+                $order->delivery_time = $deliveryTime;
+                $order->save();
                 $deliverer = User::where('id', $order->deliverer_id)->first();
                 return redirect()->to('/order/' . $order->id);
             }
