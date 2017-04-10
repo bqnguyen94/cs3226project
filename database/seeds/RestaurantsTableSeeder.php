@@ -38,5 +38,15 @@ class RestaurantsTableSeeder extends Seeder
             'location' => $locations[3],
         ]);
 
+        Restaurant::create([
+            'name' => 'Koufu Noodle house',
+            'location' => $locations[1],
+        ]);
+
+        Restaurant::create([
+            'name' => 'Koufu Tzi char',
+            'location' => $locations[1],
+        ]);
+
     }
 }
