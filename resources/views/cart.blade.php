@@ -41,7 +41,9 @@
 						<td>${{ number_format($cart_item['food']->price, 2) }}</td>
                         <td>
 							<center>
-								<span id="{{ $cart_item['food_id'] }}" class="amount-btn" aria-hidden="true" style="cursor: pointer; color: red;">+</span> <a style="text-decoration: none; color: black; cursor: default;">{{ $cart_item['amount'] }}</a> <span id="{{ $cart_item['food_id'] }}" class="amount-btn" aria-hidden="true" style="cursor: pointer; color: red;">-</span>
+								<span id="{{ $cart_item['food_id'] }}" class="amount-btn" aria-hidden="true" style="cursor: pointer; color: red;"><button class="btn-change">+</button></span>
+                                <a style="text-decoration: none; color: black; cursor: default;display: inline-block;width: 20px;">{{ $cart_item['amount'] }}</a>
+                                <span id="{{ $cart_item['food_id'] }}" class="amount-btn" aria-hidden="true" style="cursor: pointer; color: red;"><button class="btn-change">-</button></span>
 							</center>
 						</td>
 						<td>
