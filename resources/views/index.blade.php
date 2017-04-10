@@ -121,16 +121,6 @@
     </div>
 </div>
 @endsection
-<style>
-
-	div.index_newestfoodstalls div h4 a{
-
-	font-style:none;
-	color:#e40c25;
-}
-
-
-</style>
 
 @section('script')
 <script>

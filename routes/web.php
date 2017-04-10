@@ -32,6 +32,10 @@ Route::get('orders', 'OrderController@orders');
 
 Route::get('order/{id}', 'OrderController@order');
 
+Route::get('order/{id}/refresh', 'OrderController@refresh_offers');
+
+Route::get('order/{id}/delete/', 'UserController@cancel_order');
+
 Route::post('order/{order}/confirm-deliver',['as'=>'confirm.deliver','uses'=>'OrderController@confirmDeliver']);
 
 Route::post('order/{order}/confirm-receive',['as'=>'confirm.receive','uses'=>'OrderController@confirmReceive']);
@@ -55,6 +59,8 @@ Route::post('foods', 'UserController@add_to_cart');
 Route::get('cart', 'UserController@cart');
 
 Route::post('cart', 'UserController@confirm_order');
+
+Route::post('/cart/update', 'UserController@update_cart');
 
 Route::post('/cart/delete', [
     'as' => 'cart.delete',

@@ -13,7 +13,7 @@ class RestaurantsTableSeeder extends Seeder
     public function run()
     {
         $locations = [
-            'Universiy Town',
+            'University Town',
             'The Deck',
             'Yusof Ishak House',
             'Biz Canteen',
@@ -38,20 +38,32 @@ class RestaurantsTableSeeder extends Seeder
             'location' => $locations[3],
         ]);
 
-        Restaurant::insert([
-            'name' => "Hwang's Korean Restaurant",
-            'location' => "The Terrace NUS Business Canteen"
+        Restaurant::create([
+            'name' => 'Koufu Noodle house',
+            'location' => $locations[0],
         ]);
 
-        Restaurant::insert([
-            'name' => "Ayam Penyet",
-            'location' => "Frontier, Faculty of Science"
+        Restaurant::create([
+            'name' => 'Koufu Tzi char',
+            'location' => $locations[0],
         ]);
 
-        Restaurant::insert([
-            'name' => "West Twin Bar, Western Food",
-            'location' => "Frontier, Faculty of Science"
+        Restaurant::create([
+            'name' => 'Chicken Rice',
+            'location' => $locations[3],
         ]);
+
+        Restaurant::create([
+            'name' => 'Japanese Food',
+            'location' => $locations[3],
+        ]);
+
+        Restaurant::create([
+            'name' => 'Foodclique Indonesian',
+            'location' => $locations[0],
+        ]);
+
+
 
     }
 }

@@ -1,4 +1,7 @@
 @extends('layouts.template')
+@section('link')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@stop
 @section('main')
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Acme|Belleza|Vollkorn" rel="stylesheet">
@@ -17,9 +20,9 @@
                     <th class="col-xs-1"></th>
                     <th class="col-xs-4">Item name</th>
                     <th class="col-xs-1">Price</th>
-                    <th class="col-xs-1">Amount</th>
+                    <th class="col-xs-1"><center>Amount</center></th>
 					 <th class="col-xs-1"></th>
-					
+
                 </tr>
             </thead>
             <tbody id="cart_tbody">
@@ -35,30 +38,22 @@
                     <tr class="cart_trow">
                         <td>{{ $i }}</td>
                         <td>{{ $cart_item['food']->name }}</td>
-                        <?php
-
-						$temp = $cart_item['food']-> price;
-						$period = strpos($temp, ".");
-						$length = strlen($temp);
-						$temp2 =  $length-$period-1;
-						if( $temp2 == 1){
-							echo '<td>$' . $temp . '0</td>';
-						}else {
-							echo '<td>$' . $temp . '</td>';
-						}
-						?>
-
-                        <td>{{ $cart_item['amount'] }} </td>
-						<td>
-							{!! Form::open(['route' => 'cart.delete']) !!}
-							<button name="food_id" id="btn-submit" type="submit" class="btn btn-danger" value="<?php echo $cart_item['food_id'] ?>" style="width:24px;height:24px;padding:1px 1px 1px 1px; margin:1px 1px 1px 20px;">
-							  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-							</button>
-							{!! Form::close() !!}
-							
-							
+						<td>${{ number_format($cart_item['food']->price, 2) }}</td>
+                        <td>
+							<center>
+								<span id="{{ $cart_item['food_id'] }}" class="amount-btn" aria-hidden="true" style="cursor: pointer; color: red;">+</span> <a style="text-decoration: none; color: black; cursor: default;">{{ $cart_item['amount'] }}</a> <span id="{{ $cart_item['food_id'] }}" class="amount-btn" aria-hidden="true" style="cursor: pointer; color: red;">-</span>
+							</center>
 						</td>
-						
+						<td>
+							<center>
+								{!! Form::open(['route' => 'cart.delete']) !!}
+									<button name="food_id" id="btn-submit" type="submit" class="btn btn-danger" value="{{ $cart_item['food_id'] }}" style="width:24px;height:24px;padding:1px 1px 1px 1px; margin:1px 1px 1px 20px;">
+									  	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+									</button>
+								{!! Form::close() !!}
+							</center>
+						</td>
+
                     </tr>
                 @endforeach
 
@@ -68,7 +63,7 @@
                         <td></td>
                         <td></td>
 						<td></td>
-						
+
                 </tr>
                 <tr id="cart_lastrow">
                     <td>
@@ -80,9 +75,9 @@
                     <td></td>
                     <td></td>
 					<td></td>
-					
+
                 </tr>
-				
+
 				     <tr>
                     <td></td>
                     <td></td>
@@ -91,17 +86,17 @@
 					<td>{!! Form::open(['route' => 'cart.clear']) !!}
 						<center>
 							<button name="food_id" id="cart_clearcart" type="submit" class="btn btn-danger glyphicon glyphicon-trash">
-								Clear Cart 
+								Clear Cart
 							</button>
 
 
 						</center>
 						{!! Form::close() !!}</td>
-						 
+
                 	</tr>
             </tbody>
         </table>
-		
+
     </div>
 
     <div class="row">
@@ -112,9 +107,29 @@
                     <input id="location" name="location" type="text" class="form-control" placeholder="e.g: PGP Residence 4" required/>
                 </div>
             </div>
+            <!--todo add in datetime picker-->
+	        <div class="container">
+	            <div class="row">
+	                <div class='col-sm-6'>
+	                    <div class="form-group">
+	                        <div class='input-group date' id='datetimepicker1'>
+	                            <input type='text' class="form-control" />
+	                    <span class="input-group-addon">
+	                        <span class="glyphicon glyphicon-calendar"></span>
+	                    </span>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+            <div class="form-group">
+                <div class="input_group col-xs-6">
+
+                </div>
+            </div>
             <center class="cart_buttons">
 				<a href="/foods" class="btn btn-primary btn-lg" id="cart_continueshopping">Return to Food Menu</a>
-				<button id="btn-submit" class="btn btn-primary btn-lg" type="submit">PLACE ORDER</button>
+				<button id="btn-submit" class="btn btn-success btn-lg po" type="submit">PLACE ORDER</button>
 
             </center>
         {!! Form::close() !!}
@@ -122,71 +137,6 @@
 </div>
 </br></br>
 @endsection
-
-<style>
-
-	#cart_heading_background{
-
-		background-image:url("/img/banner/banner2.png");
-		width:100%;
-		max-height:140px;
-		min-height:105px;
-		margin-bottom:40px;
-	}
-
-
-	#cart_heading{
-
-		padding-top:20px;
-		text-align:50%;
-		font-size:48px;
-		text-align:center;
-		color:white;
-		font-weight:900;
-		font-family:'Belleza', sans-serif;
-		text-shadow:2px 2px black;
-
-
-
-	}
-
-	#cart_thead{
-
-		font-size:20px;
-		font-family: 'Belleza', sans-serif;
-		font-weight:bold;
-
-	}
-
-	.cart_trow td{
-
-		border-bottom:1pt solid #f2f2f2;
-
-	}
-
-	#cart_lastrow td{
-
-		border-top:1pt solid #cccccc;
-		border-bottom:1pt solid #cccccc;
-
-	}
-
-	#btn-submit{
-		width:200px;
-		height:65px;
-	}
-
-	#cart_continueshopping{
-		width:200px;
-		height:65px;
-	}
-	
-	#cart_clearcart{
-		width:150px;
-		height:50px;
-		padding:1px 1px 1px 1px; 
-		margin:1px 1px 1px 20px;
-		
-	}
-	
-</style>
+@section('script')
+<script type="text/javascript" src="/js/cart.js"></script>
+@endsection

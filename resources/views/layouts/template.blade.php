@@ -14,11 +14,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js"></script>
         <link rel="stylesheet" href="/css/style.css">
-        <link href="{{asset("/css/star-rating.css")}}" media="all" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" href="/css/banner.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.1/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" media="all" rel="stylesheet" type="text/css"/>
         <link href="/css/carousel.css" rel="stylesheet">
         <script type="text/javascript" src="/js/fade.js"></script>
         <script type="text/javascript" src="/js/moveUp.js"></script>
-        <script type="text/javascript" src="{{asset("/js/star-rating.js")}}"></script>
     </head>
     <body>
         <script>
@@ -46,13 +47,23 @@
                 <strong>{{ Session::get('alert-success') }}</strong>
             </div>
         </div>
+        @elseif (Session::has('alert-error'))
+        <div class="container">
+            <div class="alert alert-danger alert-dismissable fade in" role="alert" align="center">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>{{ Session::get('alert-error') }}</strong>
+            </div>
+        </div>
 		@endif
         <div id="Animate" style="margin-top:20vh">
         @yield('main')
         </div>
         @include('layouts.footer')
     </body>
-    <script src="{{asset("js/master.js")}}"></script>
+    <script src="{{asset("/js/master.js")}}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.1/js/star-rating.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     @yield('script')
 </html>

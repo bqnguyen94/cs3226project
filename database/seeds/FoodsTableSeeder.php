@@ -34,28 +34,119 @@ class FoodsTableSeeder extends Seeder
             'restaurant_id' => '1',
             'name' => 'Doeji Bulgogi',
             'price' => '4',
-            'image' => "https://www.thefooddictator.com/wp-content/uploads/2016/02/image-18.jpeg",
+            'image' => "/img/food/biz-01.jpg",
         ]);
 
         Food::create([
             'restaurant_id' => '1',
             'name' => 'Dak Bulgogi',
             'price' => '4',
-            'image' => "http://4.bp.blogspot.com/_UIXOn06Pz70/S85COq9tHxI/AAAAAAAAKCg/-BTJ3EX9vtA/s800/Pineapple+Dak+Bulgogi+(Pineapple+Korean+BBQ+Chicken)+3+500.jpg",
+            'image' => "/img/food/biz-02.jpg",
         ]);
 
         Food::create([
             'restaurant_id' => '1',
             'name' => 'Bulgogi',
             'price' => '4.5',
-            'image' => "http://www.trifood.com/image/food/bulgogi.JPG",
+            'image' => "/img/food/biz-03.jpg",
         ]);
 
         Food::create([
             'restaurant_id' => '1',
             'name' => 'Saba',
             'price' => '4.5',
-            'image' => "https://s3.burpple.com/foods/32a0a832d69a0d7312770605_original.?1376242530",
+            'image' => "/img/food/biz-04.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '2',
+            'name' => 'Braised Beef Noodle',
+            'price' => '5.0',
+            'image' => "/img/food/utown-01.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '2',
+            'name' => 'Egg fried rice w pork chop',
+            'price' => '4.5',
+            'image' => "/img/food/utown-02.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '2',
+            'name' => 'Braised Pork Noodle',
+            'price' => '4',
+            'image' => "/img/food/utown-03.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '3',
+            'name' => 'Golden Cereal Fried Rice',
+            'price' => '3.5',
+            'image' => "/img/food/utown-04.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '3',
+            'name' => 'Kong Bao Chicken with Rice',
+            'price' => '4.5',
+            'image' => "/img/food/utown-05.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '3',
+            'name' => 'Claypot Braised Tofu Set',
+            'price' => '4.5',
+            'image' => "/img/food/utown-06.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '4',
+            'name' => 'Chicken Rice',
+            'price' => '2.3',
+            'image' => "/img/food/biz-chickenRice.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '4',
+            'name' => 'Char Siew Rice',
+            'price' => '2.3',
+            'image' => "/img/food/biz-charSiewRice.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '5',
+            'name' => 'Chicken Katsu Curry Rice',
+            'price' => '3.5',
+            'image' => "/img/food/biz-chickenKatsu.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '5',
+            'name' => 'Oyako Rice',
+            'price' => '3.5',
+            'image' => "/img/food/biz-oyakoRice.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '6',
+            'name' => 'Steamed Chicken Set',
+            'price' => '4.2',
+            'image' => "/img/food/utown-steamedChicken.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '6',
+            'name' => 'Sotong Panggang Set',
+            'price' => '5.5',
+            'image' => "/img/food/utown-sotong.jpg",
+        ]);
+
+        Food::create([
+            'restaurant_id' => '6',
+            'name' => 'Ayam Penyet Set',
+            'price' => '5',
+            'image' => "/img/food/utown-ayamPenyet.jpg",
         ]);
 
         // Science Canteen Ayam Penyet Food Stall ID = 2

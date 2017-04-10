@@ -86,6 +86,15 @@ class UserController extends Controller
         return redirect()->to('/');
     }
 
+    public function update_cart(Request $request) {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $food_id = $request->food_id;
+            $amount = $request->amount;
+            $user->update_cart($food_id, $amount);
+        }
+    }
+
     public function delete_from_cart(Request $request) {
         if (Auth::check() && $request->food_id) {
             Auth::user()->delete_from_cart($request->food_id);
@@ -118,14 +127,30 @@ class UserController extends Controller
         return redirect()->to('/');
     }
 
+    public function cancel_order($id) {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $order = Order::where('id', $id)->first();
+            if ($order && $user->id == $order->buyer_id) {
+                $order->delete();
+                Session::flash('alert-success', 'Order is cancelled.');
+            }
+            return redirect()->to('/');
+        }
+    }
+
     public function make_offer($id, Request $request) {
         if (Auth::check()) {
             $user = Auth::user();
             $order = Order::where('id', $id)->first();
-            if ($order && !$order->deliverer_id && $order->buyer_id != $user->id) {
+            if ($order && !$order->deliverer_id && $order->buyer_id != $user->id
+                    && $request->amount <= 1000 && $request->amount >= 0) {
                 $user->make_offer($order->id, $request->amount);
-                return redirect()->back();
+                Session::flash('alert-success', 'Offer made!');
+            } else {
+                Session::flash('alert-error', 'You are not allowed to do that!');
             }
+            return redirect()->back();
         }
     }
 

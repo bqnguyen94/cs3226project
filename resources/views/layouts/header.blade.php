@@ -39,8 +39,8 @@
 	            <h1 class="hidden-xs hidden-sm" style="display: inline;">
                     &nbsp;&nbsp;NUS Food
                 </h1>
-            </div><br>
-            <div class="col-md-12 col-xs-12">
+            </div>
+            <div class="col-md-12 col-xs-12" style="margin-top: 30px">
                 <ul class="nav nav-pills">
                     <li role="presentation" ><a href="/">Home</a></li>
                     @if (Auth::guest())

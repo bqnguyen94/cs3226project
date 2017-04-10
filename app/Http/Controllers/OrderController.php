@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Order;
 use App\User;
+use App\Offer;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -149,6 +150,29 @@ class OrderController extends Controller
         if ($deliverer) {
             $deliverer->balance = $deliverer->balance + $order->final_price;
             $deliverer->save();
+        }
+    }
+
+    public function refresh_offers($id) {
+        if (Auth::check()) {
+            $order = Order::where('id', $id)->first();
+            if ($order) {
+                $offers = Offer::where('order_id', $order->id)->orderBy('price')->get();
+                $data = array();
+                $line = new \stdClass();
+                foreach ($offers as $offer) {
+                    $offerer = User::where('id', $offer->offerer_id)->first();
+                    $line->offer_id = $offer->id;
+                    $line->price = $offer->price;
+                    $line->offerer_id = $offerer->id;
+                    $line->offerer_name = $offerer->name;
+                    $data[] = json_encode($line);
+                }
+                $jsonData = '{"results":[';
+                $jsonData .= implode(",", $data);
+                $jsonData .= ']}';
+                return $jsonData;
+            }
         }
     }
 }

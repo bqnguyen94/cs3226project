@@ -16,6 +16,7 @@ class Order extends Model
         'buyer_rates','deliverer_rates',
         'deliver_location', 'final_price',
         'is_delivered', 'is_received',
+        'delivery_time',
     ];
 
     public function deliverer(){
