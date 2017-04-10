@@ -59,7 +59,7 @@
         </div>
         @include('layouts.footer')
     </body>
-    <script src="{{asset("js/master.js")}}"></script>
+    <script src="{{asset("/js/master.js")}}"></script>
     <script type="text/javascript" src="{{asset("/js/star-rating.js")}}"></script>
     <script type="text/javascript" src="{{asset("/js/moment-develop/min/moment.min.js")}}"></script>
     <script type="text/javascript" src="{{asset("/js/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js")}}"></script>
