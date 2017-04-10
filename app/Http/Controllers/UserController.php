@@ -118,7 +118,7 @@ class UserController extends Controller
         if (Auth::check()) {
             $this->validate($request,[
                'location' => 'max:100|string|required',
-                'delivery_time'=>'date_format:m/d/Y H:i meridian|required'
+                'delivery_time'=>'date_format:m/d/Y g:i A|required'
             ]);
             $user = Auth::user();
             $first_item = DB::table('user_to_foods')
