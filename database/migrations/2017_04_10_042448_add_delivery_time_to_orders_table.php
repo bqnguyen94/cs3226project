@@ -15,6 +15,7 @@ class AddDeliveryTimeToOrdersTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             //
+            $table->dateTime('delivery_time');
         });
     }
 
@@ -27,6 +28,7 @@ class AddDeliveryTimeToOrdersTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             //
+            $table->dropColumn(['delivery_time']);
         });
     }
 }
