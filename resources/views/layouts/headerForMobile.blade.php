@@ -31,7 +31,7 @@
                         <a class="collapsed" data-toggle="collapse" data-target="#user_collapse">
                             User <span class="caret"></span>
                         </a>
-                        <div class="collapse navbar-collapse" id="user_collapse">
+                        <div class="collapse" id="user_collapse">
                             <ul class="nav navbar-nav">
                                 <li><a href="/profile/<?php echo Auth::user()->id ?>">Profile</a> </li>
                                 <li><a role="presentation" href="/threads">Messages <span class="label label-danger label-as-badge">{{ App\Thread::get_total_unread(Auth::user()->id) }}</span></a></li>
