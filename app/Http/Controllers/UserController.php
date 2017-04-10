@@ -127,6 +127,7 @@ class UserController extends Controller
             if ($first_item) {
                 $order = $user->cart_to_order($request->location,$request->input('delivery_time'));
                 $deliverer = User::where('id', $order->deliverer_id)->first();
+                Session::flash('alert-success', 'Order is made.');
                 return redirect()->to('/order/' . $order->id);
             }
         }
