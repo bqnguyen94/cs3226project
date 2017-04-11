@@ -8,6 +8,7 @@ use App\User;
 use App\Offer;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 use Srmklive\PayPal\Services\AdaptivePayments;
 
@@ -30,7 +31,7 @@ class OrderController extends Controller
      */
     public function orders()
     {
-        $orders = Order::all();
+        $orders = Order::where('delivery_time', '>=', Carbon::now())->get();
         return view('orders')
             ->with('orders', $orders);
     }
@@ -40,6 +41,10 @@ class OrderController extends Controller
         $order = Order::where('id', $id)->first();
         if (!$order) {
             return redirect()->to('/');
+        } else {
+            if ($order->delivery_time < Carbon::now()) {
+                Offer::where('order_id', $order->id)->delete();
+            }
         }
         return view('order')->with('order', $order);
     }
@@ -156,7 +161,7 @@ class OrderController extends Controller
     public function refresh_offers($id) {
         if (Auth::check()) {
             $order = Order::where('id', $id)->first();
-            if ($order) {
+            if ($order && $order->delivery_time >= Carbon::now()) {
                 $offers = Offer::where('order_id', $order->id)->orderBy('price')->get();
                 $data = array();
                 $line = new \stdClass();

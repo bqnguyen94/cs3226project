@@ -34,6 +34,7 @@ class MessageController extends Controller
         return view('threads')->with('threads', $user->get_all_threads());
     }
 
+
     public function chatWith($id) {
         $user = Auth::user();
         $otherUser = User::where('id', $id)->first();

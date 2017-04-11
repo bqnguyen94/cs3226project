@@ -14,6 +14,9 @@
         <h4 class="card-title">To: {{ $order->deliver_location }}</h4>
         <!--Text-->
         <p class="card-text">Price: ${{ $order->get_total_food_price() }}</p>
+        <p class="card-text">
+            Expired in: {{ $order->delivery_time->diffForHumans() }}
+        </p>
         <a href="/order/<?php echo $order->id ?>" class="btn btn-primary detail">Details</a>
     </div>
     <!--/.Card content-->

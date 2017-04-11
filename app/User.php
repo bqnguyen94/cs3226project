@@ -165,7 +165,7 @@ class User extends Authenticatable
 
     public function make_offer($order_id, $amt) {
         $order = Order::where('id', $order_id)->first();
-        if ($order) {
+        if ($order && $order->delivery_time >= Carbon::now()) {
             $offer = Offer::where('order_id', $order_id)
                     ->where('offerer_id', $this->id)
                     ->first();
@@ -186,7 +186,7 @@ class User extends Authenticatable
         $offer = Offer::where('id', $offer_id)->first();
         if ($offer) {
             $order = Order::where('id', $offer->order_id)->first();
-            if ($order && $order->buyer_id == $this->id) {
+            if ($order && $order->buyer_id == $this->id && $order->delivery_time >= Carbon::now()) {
                 $order->deliverer_id = $offer->offerer_id;
                 $order->final_price = $offer->price;
                 $order->save();

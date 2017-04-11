@@ -99,6 +99,22 @@
             </div>
         @endif
 
+
+        <div class="row">
+            @if ($order->delivery_time >= \Carbon\Carbon::now())
+                <h4 class="col-sm-2">
+                    Expired in:
+                </h4>
+            @else
+                <h4 class="col-sm-2">
+                    Expired:
+                </h4>
+            @endif
+            <h4 class="col-sm-4">
+                {{ $order->delivery_time->diffForHumans() }}
+            </h4>
+        </div>
+
         @if($order->buyer_id)
             <div class="row">
                 @if($order->is_received)
@@ -292,7 +308,7 @@
                 <a href="/order/<?php echo $order->id ?>/delete" class="btn btn-danger">Cancel Order</a>
             </center>
         @endif
-        @if (Auth::check() && Auth::user()->id != $order->buyer_id && !$order->deliverer_id)
+        @if (Auth::check() && Auth::user()->id != $order->buyer_id && !$order->deliverer_id && $order->delivery_time >= \Carbon\Carbon::now())
             <?php
             $offer = App\Offer::where('offerer_id', $user->id)->where('order_id', $order->id)->first();
             ?>
@@ -313,7 +329,7 @@
                     {!! Form::label('amount', 'Make an Offer',['class'=>'control-label']) !!}
                 </div>
                 <div class="col-sm-4">
-                    {!! Form::number('amount', NULL, ['class'=>'form-control text-center','required','step'=>'0.10', 'min' => 0, 'max' => 1000]) !!}
+                    {!! Form::number('amount', NULL, ['class'=>'form-control text-center','required','step'=>'0.10', 'min' => 0, 'max' => 999]) !!}
                 </div>
                 <div class="col-sm-3">
                     <button id="btn-submit" type="submit" class="btn btn-success">

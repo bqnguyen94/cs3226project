@@ -118,7 +118,7 @@ class UserController extends Controller
         if (Auth::check()) {
             $this->validate($request,[
                'location' => 'max:100|string|required',
-                'delivery_time'=>'date_format:m/d/Y g:i A|required'
+               'delivery_time'=>'date_format:m/d/Y g:i A|required'
             ]);
             $user = Auth::user();
             $first_item = DB::table('user_to_foods')
@@ -152,7 +152,8 @@ class UserController extends Controller
             $user = Auth::user();
             $order = Order::where('id', $id)->first();
             if ($order && !$order->deliverer_id && $order->buyer_id != $user->id
-                    && $request->amount <= 1000 && $request->amount >= 0) {
+                    && $request->amount <= 1000 && $request->amount >= 0
+                    && $order->delivery_time >= Carbon::now()) {
                 $user->make_offer($order->id, $request->amount);
                 Session::flash('alert-success', 'Offer made!');
             } else {
@@ -170,7 +171,8 @@ class UserController extends Controller
             if ($order && $offer
                         && !$order->deliverer_id
                         && $offer->order_id == $order->id
-                        && $order->buyer_id == $user->id) {
+                        && $order->buyer_id == $user->id
+                        && $order->delivery_time >= Carbon::now()) {
                 $this->processPayment($order, $offer);
 
                 //return redirect()->back();
