@@ -8,6 +8,7 @@ use App\Food;
 
 class Order extends Model
 {
+    protected $dates = ['delivery_time'];
     //
     protected $fillable = [
         'buyer_id','deliverer_id',

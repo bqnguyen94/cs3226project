@@ -92,6 +92,9 @@ class UserController extends Controller
             $food_id = $request->food_id;
             $amount = $request->amount;
             $user->update_cart($food_id, $amount);
+
+            $jsonData = '{"price":"' . $user->cart_get_total_price() . '"}';
+            return $jsonData;
         }
     }
 
@@ -113,13 +116,18 @@ class UserController extends Controller
 
     public function confirm_order(Request $request) {
         if (Auth::check()) {
+            $this->validate($request,[
+               'location' => 'max:100|string|required',
+                'delivery_time'=>'date_format:m/d/Y g:i A|required'
+            ]);
             $user = Auth::user();
             $first_item = DB::table('user_to_foods')
                     ->where('user_id', $user->id)
                     ->first();
             if ($first_item) {
-                $order = $user->cart_to_order($request->location);
+                $order = $user->cart_to_order($request->location,$request->input('delivery_time'));
                 $deliverer = User::where('id', $order->deliverer_id)->first();
+                Session::flash('alert-success', 'Order is made.');
                 return redirect()->to('/order/' . $order->id);
             }
         }
