@@ -13,10 +13,9 @@ class FoodsTableSeeder extends Seeder
     */
     public function run()
     {
-        //
+
         /*
         $faker = Faker\Factory::create();
-
         $limit = 50;
         for ($i = 1; $i <= $limit; $i++) {
             $restaurant_id = $faker->numberBetween($min = 1, $max = 10);
@@ -27,8 +26,8 @@ class FoodsTableSeeder extends Seeder
                 'name' => $name,
                 'price' => $price
             ]);
-        }
-<<<<<<< HEAD
+        }*/
+
         // Business Canteen Korean Food Stall ID = 1
         Food::create([
             'restaurant_id' => '1',

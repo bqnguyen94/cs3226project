@@ -6,12 +6,14 @@
     $deliverer = App\User::where('id', $order->deliverer_id)->first();
     $offers = App\Offer::where('order_id', $order->id)->orderBy('price')->get();
     ?>
-    <div class="container">
+    <div class="hidden-sm hidden-md hidden-lg">
+        @include('orderForMobile')
+    </div>
+    <div class="container hidden-xs">
         <center>
             <h3>This is order {{ $order->id }} 's details.</h3>
         </center>
         <br/>
-
         <div class="row">
             <h4 class="col-sm-2 vcenter">
                 Buyer:
