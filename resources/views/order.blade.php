@@ -157,7 +157,7 @@
                 <h4 class="col-sm-2">
                     Buyer Feedback:
                 </h4>
-                <h4 class="col-sm-6">
+                <h4 class="col-sm-4">
                     {{$order->buyer_feedback}}
                 </h4>
                 <h4 class="col-sm-2">
