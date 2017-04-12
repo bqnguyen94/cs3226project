@@ -31,7 +31,7 @@ class OrderController extends Controller
      */
     public function orders()
     {
-        $orders = Order::where('delivery_time', '>=', Carbon::now())->get();
+        $orders = Order::where('delivery_time', '>=', Carbon::now()->subMinutes(30))->get();
         return view('orders')
             ->with('orders', $orders);
     }
@@ -42,7 +42,7 @@ class OrderController extends Controller
         if (!$order) {
             return redirect()->to('/');
         } else {
-            if ($order->delivery_time < Carbon::now()) {
+            if ($order->delivery_time < Carbon::now()->subMinutes(30)) {
                 Offer::where('order_id', $order->id)->delete();
             }
         }
@@ -161,7 +161,7 @@ class OrderController extends Controller
     public function refresh_offers($id) {
         if (Auth::check()) {
             $order = Order::where('id', $id)->first();
-            if ($order && $order->delivery_time >= Carbon::now()) {
+            if ($order && $order->delivery_time >= Carbon::now()->subMinutes(30)) {
                 $offers = Offer::where('order_id', $order->id)->orderBy('price')->get();
                 $data = array();
                 $line = new \stdClass();

@@ -36,6 +36,8 @@ Route::get('order/{id}/refresh', 'OrderController@refresh_offers');
 
 Route::get('order/{id}/delete/', 'UserController@cancel_order');
 
+Route::post('order/{id}/update', 'UserController@update_order_delivery_time');
+
 Route::post('order/{order}/confirm-deliver',['as'=>'confirm.deliver','uses'=>'OrderController@confirmDeliver']);
 
 Route::post('order/{order}/confirm-receive',['as'=>'confirm.receive','uses'=>'OrderController@confirmReceive']);

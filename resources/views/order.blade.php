@@ -191,7 +191,27 @@
                 </h4>
             </div>
         @endif
-
+        <br />
+        @if (Auth::check() && Auth::user()->id == $order->buyer_id)
+            {!! Form::open(['url' => 'order/' . $order->id . '/update']) !!}
+                <div class="row">
+                    <div class='col-sm-6'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <span class="input-group-addon" id="basic-addon2">Delivery Time:</span>
+                                {!! Form::text('delivery_time',NULL,['class'=>'form-control', 'required' => true, 'value' => old('delivery_time')]) !!}
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-sm-6'>
+                        <button id="btn-submit" class="btn btn-success btn-lg po" type="submit">UPDATE TIME</button>
+                    </div>
+                </div>
+            {!! Form::close() !!}
+        @endif
 
         <br/>
         <div class="row">
@@ -308,7 +328,7 @@
                 <a href="/order/<?php echo $order->id ?>/delete" class="btn btn-danger">Cancel Order</a>
             </center>
         @endif
-        @if (Auth::check() && Auth::user()->id != $order->buyer_id && !$order->deliverer_id && $order->delivery_time >= \Carbon\Carbon::now())
+        @if (Auth::check() && Auth::user()->id != $order->buyer_id && !$order->deliverer_id && $order->delivery_time >= \Carbon\Carbon::now()->subMinutes(30))
             <?php
             $offer = App\Offer::where('offerer_id', $user->id)->where('order_id', $order->id)->first();
             ?>

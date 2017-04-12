@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Omnipay\Omnipay;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 use App\Order;
 use App\Offer;
 use App\Food;
@@ -120,6 +121,11 @@ class UserController extends Controller
                'location' => 'max:100|string|required',
                'delivery_time'=>'date_format:m/d/Y g:i A|required'
             ]);
+            $delivery_time = Carbon::createFromFormat('m/d/Y g:i A', $request->delivery_time)->format('Y-m-d H:i:s');
+            if ($delivery_time < Carbon::now()->addMinutes(10)) {
+                Session::flash('alert-error', 'Please allow at least 10 minutes for delivery time');
+                return redirect()->back()->withInput();
+            }
             $user = Auth::user();
             $first_item = DB::table('user_to_foods')
                     ->where('user_id', $user->id)
@@ -131,7 +137,30 @@ class UserController extends Controller
                 return redirect()->to('/order/' . $order->id);
             }
         }
+        Session::flash('alert-error', 'Thou shall not pass!');
+        return redirect()->to('/');
+    }
 
+    public function update_order_delivery_time($id, Request $request) {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $order = Order::where('id', $id)->first();
+            if ($order && $order->buyer_id == $user->id) {
+                $this->validate($request, [
+                   'delivery_time'=>'date_format:m/d/Y g:i A|required'
+                ]);
+                $delivery_time = Carbon::createFromFormat('m/d/Y g:i A', $request->delivery_time)->format('Y-m-d H:i:s');
+                if ($delivery_time < Carbon::now()->addMinutes(10)) {
+                    Session::flash('alert-error', 'Please allow at least 10 minutes for delivery time');
+                } else {
+                    $order->delivery_time = $delivery_time;
+                    $order->save();
+                    Session::flash('alert-success', 'Delivery time is updated.');
+                }
+                return redirect()->back()->withInput();
+            }
+        }
+        Session::flash('alert-error', 'Thou shall not pass!');
         return redirect()->to('/');
     }
 
@@ -152,8 +181,8 @@ class UserController extends Controller
             $user = Auth::user();
             $order = Order::where('id', $id)->first();
             if ($order && !$order->deliverer_id && $order->buyer_id != $user->id
-                    && $request->amount <= 1000 && $request->amount >= 0
-                    && $order->delivery_time >= Carbon::now()) {
+                    && $request->amount < 1000 && $request->amount >= 0
+                    && $order->delivery_time >= Carbon::now()->subMinutes(30)) {
                 $user->make_offer($order->id, $request->amount);
                 Session::flash('alert-success', 'Offer made!');
             } else {
@@ -172,7 +201,7 @@ class UserController extends Controller
                         && !$order->deliverer_id
                         && $offer->order_id == $order->id
                         && $order->buyer_id == $user->id
-                        && $order->delivery_time >= Carbon::now()) {
+                        && $order->delivery_time >= Carbon::now()->subMinutes(30)) {
                 $this->processPayment($order, $offer);
 
                 //return redirect()->back();
